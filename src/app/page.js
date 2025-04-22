@@ -1,6 +1,6 @@
 
 export default function Home() {
   return (
-      <div className="text-8xl text-rose-400 font-merriweather">Hello, This is News Website</div>
+      <main className="text-8xl text-rose-400 font-merriweather">Hello, This is News Website</main>
   );
 }
