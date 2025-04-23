@@ -1,6 +1,7 @@
 import { Merriweather, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Shared/Navbar";
+import { ReduxProvider } from "@/provider/ReduxProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -28,8 +29,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${inter.variable} ${merriWeather.variable} antialiased`}
       >
-        <Navbar />
-        {children}
+        <ReduxProvider>
+          <Navbar />
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );

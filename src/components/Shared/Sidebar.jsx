@@ -40,7 +40,7 @@ const Sidebar = ( { isOpen } ) => {
         </div>
 
         {/* ============ social links =============== */}
-        <div className="mt-7 mb-20 flex flex-wrap w-full items-center gap-5">
+        <div className="mt-7 mb-28 sm:mb-20 flex flex-wrap w-full items-center gap-5">
           {socialLinks.map((social) => (
             <Link
               key={social.id}
