@@ -1,7 +1,14 @@
+"use client"
 
+import { useGetBreakingNewsQuery } from "@/features/BreackingNews/brackingNewsApi";
 
 
 const Hero = () => {
+
+
+    const ews = useGetBreakingNewsQuery()
+    console.log(ews.data)
+
     return (
       <section className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] bg-gray-200">
         {/* Background Image */}
