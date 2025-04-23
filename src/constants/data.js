@@ -172,7 +172,7 @@ export const newsData = [
     },
     createdAt: "2025-04-18T14:45:00Z",
     isFeatured: true,
-    isBreaking: false,
+    isBreaking: true,
     views: 3112,
     status: "published"
   },
