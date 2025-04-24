@@ -99,14 +99,14 @@ export const newsData = [
     slug: "global-politics-new-turn",
     content: "<p>Full content of the news article goes here...</p>",
     excerpt: "World leaders meet to discuss the future of international relations.",
-    thumbnail: "/images/thumbs/politics1.jpg",
+    thumbnail: "/images/thumb/thumb1.avif",
     bannerImage: "/images/banners/politics1.jpg",
     category: "International",
     tags: ["Politics", "World", "Diplomacy"],
     author: {
       id: "auth001",
       name: "John Doe",
-      avatar: "/images/authors/john.jpg"
+      avatar:  "/images/users/user1.jpg"
     },
     createdAt: "2025-04-20T08:00:00Z",
     updatedAt: "2025-04-21T10:00:00Z",
@@ -121,14 +121,14 @@ export const newsData = [
     slug: "ai-domination-tech-giants",
     content: "<p>AI advancements are creating fierce competition...</p>",
     excerpt: "Google, Microsoft, and OpenAI in a heated race to lead the AI revolution.",
-    thumbnail: "/images/thumbs/tech1.jpg",
-    bannerImage: "/images/banners/tech1.jpg",
+    thumbnail: "/images/thumb/thumb2.avif",
+    bannerImage: "/images/banners/tech2.jpg",
     category: "Technology",
     tags: ["AI", "Tech", "Innovation"],
     author: {
       id: "auth002",
       name: "Jane Smith",
-      avatar: "/images/authors/jane.jpg"
+      avatar: "/images/users/user1.jpg"
     },
     createdAt: "2025-04-21T12:30:00Z",
     isFeatured: false,
@@ -142,13 +142,13 @@ export const newsData = [
     slug: "economic-forecast-2025",
     content: "<p>Experts believe inflation will gradually ease...</p>",
     excerpt: "Markets remain volatile amid uncertain global outlook.",
-    thumbnail: "/images/thumbs/economy1.jpg",
+    thumbnail: "/images/thumb/thumb1.avif",
     category: "Business",
     tags: ["Economy", "Forecast", "Finance"],
     author: {
       id: "auth003",
       name: "Richard Lee",
-      avatar: "/images/authors/richard.jpg"
+      avatar: "/images/users/user1.jpg"
     },
     createdAt: "2025-04-19T09:15:00Z",
     isFeatured: false,
@@ -162,13 +162,13 @@ export const newsData = [
     slug: "champions-league-final-2025",
     content: "<p>Two legendary teams will face off in the biggest football event...</p>",
     excerpt: "Europe’s top football clubs clash in the ultimate showdown.",
-    thumbnail: "/images/thumbs/sports1.jpg",
+    thumbnail: "/images/thumb/thumb2.avif",
     category: "Sports",
     tags: ["Football", "Champions League", "Final"],
     author: {
       id: "auth004",
       name: "Alex Morgan",
-      avatar: "/images/authors/alex.jpg"
+      avatar:  "/images/users/user1.jpg"
     },
     createdAt: "2025-04-18T14:45:00Z",
     isFeatured: true,
@@ -182,7 +182,7 @@ export const newsData = [
     slug: "oscars-2025-contenders",
     content: "<p>The Academy announces this year’s most awaited films...</p>",
     excerpt: "From drama to sci-fi, these films are leading the race for awards.",
-    thumbnail: "/images/thumbs/entertainment1.jpg",
+    thumbnail: "/images/thumb/thumb1.avif",
     category: "Entertainment",
     tags: ["Oscars", "Movies", "Hollywood"],
     author: {
@@ -202,13 +202,13 @@ export const newsData = [
     slug: "nasa-lunar-mission-2025",
     content: "<p>NASA aims to establish permanent base on the moon by 2030...</p>",
     excerpt: "Next step in space exploration: Moon base in development.",
-    thumbnail: "/images/thumbs/space1.jpg",
+    thumbnail: "/images/thumb/thumb2.avif",
     category: "Science",
     tags: ["NASA", "Moon", "Space"],
     author: {
       id: "auth006",
       name: "Neil Carter",
-      avatar: "/images/authors/neil.jpg"
+      avatar:  "/images/users/user1.jpg"
     },
     createdAt: "2025-04-22T09:00:00Z",
     isFeatured: true,
@@ -222,13 +222,13 @@ export const newsData = [
     slug: "climate-change-agriculture",
     content: "<p>Farmers face uncertainty due to erratic weather...</p>",
     excerpt: "Changing climate threatens global food security.",
-    thumbnail: "/images/thumbs/environment1.jpg",
+    thumbnail: "/images/thumb/thumb1.avif",
     category: "Environment",
     tags: ["Climate", "Agriculture", "Environment"],
     author: {
       id: "auth007",
       name: "Linda Green",
-      avatar: "/images/authors/linda.jpg"
+      avatar:  "/images/users/user1.jpg"
     },
     createdAt: "2025-04-20T16:40:00Z",
     isFeatured: false,
@@ -242,13 +242,13 @@ export const newsData = [
     slug: "stock-market-drop-2025",
     content: "<p>Unexpected sell-off hits major global indices...</p>",
     excerpt: "Investors react to latest inflation data and Fed comments.",
-    thumbnail: "/images/thumbs/finance1.jpg",
+    thumbnail: "/images/thumb/thumb2.avif",
     category: "Finance",
     tags: ["Stock Market", "Inflation", "Economy"],
     author: {
       id: "auth003",
       name: "Richard Lee",
-      avatar: "/images/authors/richard.jpg"
+      avatar: "/images/users/user1.jpg"
     },
     createdAt: "2025-04-23T06:10:00Z",
     isFeatured: false,
@@ -262,13 +262,13 @@ export const newsData = [
     slug: "meta-vr-headset-2025",
     content: "<p>New features include retina tracking and haptic feedback...</p>",
     excerpt: "The tech giant redefines virtual reality experience.",
-    thumbnail: "/images/thumbs/vr1.jpg",
+    thumbnail: "/images/thumb/thumb1.avif",
     category: "Technology",
     tags: ["Meta", "VR", "Gadgets"],
     author: {
       id: "auth002",
       name: "Jane Smith",
-      avatar: "/images/authors/jane.jpg"
+      avatar:  "/images/users/user1.jpg"
     },
     createdAt: "2025-04-22T13:25:00Z",
     isFeatured: false,
@@ -282,13 +282,13 @@ export const newsData = [
     slug: "uk-election-2025",
     content: "<p>Polls suggest a tight contest between parties...</p>",
     excerpt: "Public opinion divided ahead of key national vote.",
-    thumbnail: "/images/thumbs/uk-election.jpg",
+    thumbnail: "/images/thumb/thumb2.avif",
     category: "Politics",
     tags: ["Elections", "UK", "Politics"],
     author: {
       id: "auth001",
       name: "John Doe",
-      avatar: "/images/authors/john.jpg"
+      avatar: "/images/users/user1.jpg"
     },
     createdAt: "2025-04-23T08:15:00Z",
     isFeatured: true,

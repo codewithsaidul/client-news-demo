@@ -1,21 +1,17 @@
-"use client";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselNext,
-  CarouselPrevious
-} from "@/components/ui/carousel";
-import { useGetBreakingNewsQuery } from "@/features/BreackingNews/brackingNewsApi";
-import BreackingNewsItem from "./BreakingNewsItem";
 
-const BreakingSlider = () => {
-  const { data: breakingNews, isLoading } = useGetBreakingNewsQuery();
+import { useGetBreakingNewsQuery } from '@/features/BreackingNews/brackingNewsApi';
+import React from 'react'
+import PopularNewsItem from './PopularNewsItem';
+import { Carousel, CarouselContent, CarouselNext, CarouselPrevious } from '../ui/carousel';
+
+const PopularNewsSlider = () => {
+    const { data: breakingNews, isLoading } = useGetBreakingNewsQuery();
 
   if (isLoading) return <div>Loading...</div>;
 
   return (
     //   33% of the carousel width.
-    <div className="w-full px-12 md:px-8">
+    <div className="w-full px-12 md:px-8 mt-10">
       <Carousel
         opts={{
           align: "start",
@@ -24,7 +20,7 @@ const BreakingSlider = () => {
       >
         <CarouselContent>
           {breakingNews.map((news) => (
-            <BreackingNewsItem key={news.id} item={news} />
+            <PopularNewsItem key={news.id} item={news} />
           ))}
         </CarouselContent>
 
@@ -33,6 +29,6 @@ const BreakingSlider = () => {
       </Carousel>
     </div>
   );
-};
+}
 
-export default BreakingSlider;
+export default PopularNewsSlider

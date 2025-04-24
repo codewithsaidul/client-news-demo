@@ -4,6 +4,7 @@ import { useGetBreakingNewsQuery } from "@/features/BreackingNews/brackingNewsAp
 import BreakingNewsDropDown from "./BreakingNewsOptions";
 import BreakingSlider from "./BreakingSlider";
 import { Button } from "../ui/button";
+import PopularNewsSlider from "./PopularNewsSlider";
 
 const Hero = () => {
   const { data } = useGetBreakingNewsQuery();
@@ -20,6 +21,7 @@ const Hero = () => {
             <Button className="bg-red-500 hover:bg-red-500/90 text-2xl py-6 font-title font-semibold">Breaking News</Button>
           </div>
           <BreakingSlider />
+          <PopularNewsSlider />
         </div>
       </div>
     </section>
