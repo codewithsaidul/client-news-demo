@@ -20,7 +20,7 @@ const PopularNewsItem = ({ item }) => {
             />
           </figure>
     
-          <h2 className="text-2xl font-bold font-title text-black mt-5">{item.excerpt}</h2>
+          <h2 className="text-2xl font-bold font-title text-black mt-5 line-clamp-2">{item.excerpt}</h2>
       </div>
     </CarouselItem>
   );

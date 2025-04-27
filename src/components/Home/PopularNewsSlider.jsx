@@ -1,13 +1,16 @@
 
-import { useGetBreakingNewsQuery } from '@/features/BreackingNews/brackingNewsApi';
-import React from 'react'
-import PopularNewsItem from './PopularNewsItem';
+import { useGetAllNewsQuery } from '@/features/AllNews/allNewsAPI';
 import { Carousel, CarouselContent, CarouselNext, CarouselPrevious } from '../ui/carousel';
+import PopularNewsItem from './PopularNewsItem';
 
 const PopularNewsSlider = () => {
-    const { data: breakingNews, isLoading } = useGetBreakingNewsQuery();
+    const { data, isLoading } = useGetAllNewsQuery();
 
   if (isLoading) return <div>Loading...</div>;
+
+
+  const featuredNews = data.filter(news => news.isFeatured)
+
 
   return (
     //   33% of the carousel width.
@@ -19,7 +22,7 @@ const PopularNewsSlider = () => {
         }}
       >
         <CarouselContent>
-          {breakingNews.map((news) => (
+          {featuredNews.map((news) => (
             <PopularNewsItem key={news.id} item={news} />
           ))}
         </CarouselContent>

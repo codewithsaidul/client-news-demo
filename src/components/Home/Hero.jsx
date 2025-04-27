@@ -1,15 +1,13 @@
 "use client";
 
-import { useGetBreakingNewsQuery } from "@/features/BreackingNews/brackingNewsApi";
+import { Button } from "../ui/button";
 import BreakingNewsDropDown from "./BreakingNewsOptions";
 import BreakingSlider from "./BreakingSlider";
-import { Button } from "../ui/button";
+import EconomyCategory from "./EconomyCategory";
+import LatestNews from "./LatestNews";
 import PopularNewsSlider from "./PopularNewsSlider";
 
 const Hero = () => {
-  const { data } = useGetBreakingNewsQuery();
-  console.log(data);
-
   return (
     <section className="mt-24">
       <div>
@@ -18,10 +16,23 @@ const Hero = () => {
 
         <div>
           <div className="mb-5">
-            <Button className="bg-red-500 hover:bg-red-500/90 text-2xl py-6 font-title font-semibold">Breaking News</Button>
+            <Button className="bg-red-500 hover:bg-red-500/90 text-2xl py-6 font-title font-semibold">
+              Breaking News
+            </Button>
           </div>
           <BreakingSlider />
           <PopularNewsSlider />
+
+          <div className="mt-16">
+            <div className="grid grid-cols-12 gap-10">
+              <div className="col-span-12 md:col-span-8">
+                <EconomyCategory />
+              </div>
+              <div className="col-span-12 md:col-span-4">
+                <LatestNews />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

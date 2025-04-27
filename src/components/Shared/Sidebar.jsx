@@ -11,7 +11,7 @@ const Sidebar = ( { isOpen } ) => {
   const editionsMenu = navMenuList.editions;
 
   return (
-    <div className={twMerge("w-[90%] min-[480px]:w-[60%] sm:w-[50%] md:w-[40%] lg:w-[30%] xl:w-[20%] h-screen bg-news-dark absolute top-20 left-0 overflow-y-auto transform transition-transform duration-500 ease-in-out z-[10000]",
+    <div className={twMerge("w-[90%] min-[480px]:w-[60%] sm:w-[50%] md:w-[40%] lg:w-[30%] xl:w-[20%] h-screen bg-news-dark absolute top-20 left-0 overflow-y-auto sidebar transform transition-transform duration-500 ease-in-out z-[10000]",
         isOpen ? "translate-x-0 duration-500" : "-translate-x-full"
     )}>
       <div className="px-8 py-12">

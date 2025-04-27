@@ -5,13 +5,15 @@ import {
   CarouselNext,
   CarouselPrevious
 } from "@/components/ui/carousel";
-import { useGetBreakingNewsQuery } from "@/features/BreackingNews/brackingNewsApi";
+import { useGetAllNewsQuery } from "@/features/AllNews/allNewsAPI";
 import BreackingNewsItem from "./BreakingNewsItem";
 
 const BreakingSlider = () => {
-  const { data: breakingNews, isLoading } = useGetBreakingNewsQuery();
+  const { data, isLoading } = useGetAllNewsQuery();
 
   if (isLoading) return <div>Loading...</div>;
+
+  const breakingNews = data.filter(news => news.isBreaking)
 
   return (
     //   33% of the carousel width.

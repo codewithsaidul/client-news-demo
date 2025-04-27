@@ -129,9 +129,15 @@
     @apply bg-news-white-bg font-body;
   }
 
-  ::-webkit-scrollbar {
-    overflow: hidden;
+  .sidebar {
+    scrollbar-width: none !important; /* Firefox এর জন্য */
   }
+  
+  /* Chrome, Safari, Edge এর জন্য */
+  .sidebar::-webkit-scrollbar {
+    display: none !important;
+  }
+  
   
 }
 
