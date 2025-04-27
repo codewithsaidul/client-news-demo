@@ -1,10 +1,10 @@
-import { useGetAllNewsQuery } from "@/features/AllNews/allNewsAPI";
+import { useGetLatestNewsQuery } from "@/features/LatestNews/latestNewsAPI";
 import Image from "next/image";
-import { Button } from "../ui/button";
 import Link from "next/link";
+import { Button } from "../ui/button";
 
 const EconomyCategory = () => {
-  const { data, isLoading } = useGetAllNewsQuery();
+  const { data, isLoading } = useGetLatestNewsQuery();
 
   if (isLoading) return <div>Loading...</div>;
 
@@ -14,7 +14,6 @@ const EconomyCategory = () => {
     (news) => !news.isFeatured && !news.isBreaking
   );
 
-  const economyNews = filterNews.filter((news) => news.category === "Finance");
 
   const dateFormater = (newsDate) => {
     const date = new Date(newsDate);
@@ -31,18 +30,18 @@ const EconomyCategory = () => {
   return (
     <div className="mb-20">
       {/* ================= Featured Economy & Finance Category ================= */}
-      {economyNews.length > 0 && (
+      {filterNews.length > 0 && (
         <div>
           <figure className="relative">
             <Image
-              src={economyNews[0]?.thumbnail}
-              alt={economyNews[0].title}
+              src={filterNews[0]?.thumbnail}
+              alt={filterNews[0].title}
               width={1280}
               height={780}
               className="w-full h-96 object-cover"
             />
             <Button className="text-xl font-title py-5 px-7 absolute -bottom-4 left-1/2 transform -translate-x-1/2">
-              Economy & {economyNews[0].category}
+              Economy & {filterNews[0].category}
             </Button>
           </figure>
 
@@ -51,23 +50,23 @@ const EconomyCategory = () => {
               href={"#"}
               className="text-3xl md:text-5xl font-bold font-title text-news-headline"
             >
-              {economyNews[0].title}
+              {filterNews[0].title}
             </Link>
 
             <p className="text-lg mt-5 text-news-text">
-              <span className="font-bold">{economyNews[0].author.name}</span>
+              <span className="font-bold">{filterNews[0].author.name}</span>
 
               <span className="mx-2">|</span>
 
-              <span>{dateFormater(economyNews[0].createdAt)}</span>
+              <span>{dateFormater(filterNews[0].createdAt)}</span>
             </p>
           </div>
         </div>
       )}
 
       <div className="flex flex-col md:flex-row gap-5 mt-16 w-full">
-        {economyNews.length > 0 &&
-          economyNews.slice(1, 3).map((news) => (
+        {filterNews.length > 0 &&
+          filterNews.slice(1, 3).map((news) => (
             <div key={news.id} className="w-full">
               <figure>
                 <Image
@@ -96,9 +95,9 @@ const EconomyCategory = () => {
 
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-16 w-full">
-        {economyNews.length > 0 &&
-          economyNews.slice(4, 8).map((news) => (
-            <div key={news.id} className="w-full flex items-center gap-2">
+        {filterNews.length > 0 &&
+          filterNews.slice(4, 8).map((news) => (
+            <div key={news.id} className="w-full flex flex-row md:flex-col lg:flex-row items-center gap-2">
               <figure>
                 <Image
                   src={news.thumbnail}

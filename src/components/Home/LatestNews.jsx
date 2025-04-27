@@ -9,8 +9,9 @@ const LatestNews = () => {
 
   if (isLoading) return <div>Loading...</div>
 
-  const filteredNews = data.filter(news => !news.isFeatured && !news.isBreaking && news.category !== "Finance")
+  const filteredNews = data.filter(news => !news.isFeatured && !news.isBreaking)
 
+  console.log(filteredNews.slice(0, 8))
 
   const dateFormater = (newsDate) => {
     const date = new Date(newsDate);
@@ -32,8 +33,8 @@ const LatestNews = () => {
       
       <div className="grid grid-cols-1 gap-5 mt-16 w-full">
         {filteredNews.length > 0 &&
-          filteredNews.slice(0, 7).map((news) => (
-            <div key={news.id} className="w-full flex items-center gap-2">
+          filteredNews.slice(7, 14).map((news) => (
+            <div key={news.id} className="w-full flex flex-row md:flex-col lg:flex-row items-center gap-2">
               <figure>
                 <Image
                   src={news.thumbnail}

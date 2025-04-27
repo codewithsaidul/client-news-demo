@@ -28,7 +28,7 @@ const Hero = () => {
               <div className="col-span-12 md:col-span-8">
                 <EconomyCategory />
               </div>
-              <div className="col-span-12 md:col-span-4">
+              <div className="col-span-12 md:col-span-4 p-4 h-fit bg-news-white-bg shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg">
                 <LatestNews />
               </div>
             </div>

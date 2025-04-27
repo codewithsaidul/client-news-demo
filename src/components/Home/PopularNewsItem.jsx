@@ -6,10 +6,10 @@ const PopularNewsItem = ({ item }) => {
   return (
     <CarouselItem
       className={
-        "basis-full min-[700px]:basis-1/2 min-[930px]:basis-1/3 min-[1120px]:basis-1/4 cursor-pointer"
+        "basis-full min-[700px]:basis-1/2 min-[930px]:basis-1/3 min-[1120px]:basis-1/4 cursor-pointer mt-5"
       }
     >
-      <div className="bg-news-section-bg p-3 shadow-lg">
+      <div className="h-fit p-3 bg-news-white-bg shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg">
           <figure>
             <Image
               src={item.thumbnail}
