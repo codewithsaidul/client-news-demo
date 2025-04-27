@@ -2,16 +2,14 @@ import { useGetLatestNewsQuery } from "@/features/LatestNews/latestNewsAPI";
 import Image from "next/image";
 import Link from "next/link";
 
+const RightLatestNews = () => {
+  const { data, isLoading } = useGetLatestNewsQuery();
 
-const LatestNews = () => {
+  if (isLoading) return <div>Loading...</div>;
 
-  const { data, isLoading } = useGetLatestNewsQuery()
-
-  if (isLoading) return <div>Loading...</div>
-
-  const filteredNews = data.filter(news => !news.isFeatured && !news.isBreaking)
-
-  console.log(filteredNews.slice(0, 8))
+  const filteredNews = data.filter(
+    (news) => !news.isFeatured && !news.isBreaking
+  );
 
   const dateFormater = (newsDate) => {
     const date = new Date(newsDate);
@@ -26,15 +24,18 @@ const LatestNews = () => {
   };
 
   return (
-    <div>
+    <div className="p-4 bg-news-white-bg shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg h-fit">
       <h2 className="text-center text-2xl font-title font-semibold">
         Latest News
       </h2>
-      
+
       <div className="grid grid-cols-1 gap-5 mt-16 w-full">
         {filteredNews.length > 0 &&
           filteredNews.slice(7, 14).map((news) => (
-            <div key={news.id} className="w-full flex flex-row md:flex-col lg:flex-row items-center gap-2">
+            <div
+              key={news.id}
+              className="w-full flex flex-row md:flex-col lg:flex-row items-center gap-2"
+            >
               <figure>
                 <Image
                   src={news.thumbnail}
@@ -65,4 +66,4 @@ const LatestNews = () => {
   );
 };
 
-export default LatestNews;
+export default RightLatestNews;

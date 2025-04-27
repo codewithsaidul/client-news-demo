@@ -1,19 +1,17 @@
 import { useGetLatestNewsQuery } from "@/features/LatestNews/latestNewsAPI";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
-const EconomyCategory = () => {
+const LeftLatestNews = () => {
   const { data, isLoading } = useGetLatestNewsQuery();
 
   if (isLoading) return <div>Loading...</div>;
 
-  // console.log(data)
 
   const filterNews = data.filter(
     (news) => !news.isFeatured && !news.isBreaking
   );
-
 
   const dateFormater = (newsDate) => {
     const date = new Date(newsDate);
@@ -31,7 +29,7 @@ const EconomyCategory = () => {
     <div className="mb-20">
       {/* ================= Featured Economy & Finance Category ================= */}
       {filterNews.length > 0 && (
-        <div>
+        <div className="w-full pr-4">
           <figure className="relative">
             <Image
               src={filterNews[0]?.thumbnail}
@@ -67,7 +65,7 @@ const EconomyCategory = () => {
       <div className="flex flex-col md:flex-row gap-5 mt-16 w-full">
         {filterNews.length > 0 &&
           filterNews.slice(1, 3).map((news) => (
-            <div key={news.id} className="w-full">
+            <div key={news.id} className="w-full pr-4">
               <figure>
                 <Image
                   src={news.thumbnail}
@@ -78,11 +76,11 @@ const EconomyCategory = () => {
                 />
               </figure>
               <div className="mt-2">
-                <Link href={"#"} className="text-2xl font-title font-bold">{news.title}</Link>
+                <Link href={"#"} className="text-2xl font-title font-bold">
+                  {news.title}
+                </Link>
                 <p className="text-lg mt-0.5 text-news-text">
-                  <span className="font-bold">
-                    {news.author.name}
-                  </span>
+                  <span className="font-bold">{news.author.name}</span>
 
                   <span className="mx-2">|</span>
 
@@ -93,11 +91,13 @@ const EconomyCategory = () => {
           ))}
       </div>
 
-
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-16 w-full">
         {filterNews.length > 0 &&
           filterNews.slice(4, 8).map((news) => (
-            <div key={news.id} className="w-full flex flex-row md:flex-col lg:flex-row items-center gap-2">
+            <div
+              key={news.id}
+              className="w-full flex flex-row md:flex-col lg:flex-row items-center gap-2"
+            >
               <figure>
                 <Image
                   src={news.thumbnail}
@@ -109,14 +109,14 @@ const EconomyCategory = () => {
               </figure>
               <div className="mt-2 flex-1 flex justify-center">
                 <div>
-                  <Link href={"#"} className="text-xl font-title font-bold">{news.title}</Link>
+                  <Link href={"#"} className="text-xl font-title font-bold">
+                    {news.title}
+                  </Link>
                   <p className="text-base mt-0.5 text-news-text">
-                    <span className="font-bold">
-                      {news.author.name}
-                    </span>
-  
+                    <span className="font-bold">{news.author.name}</span>
+
                     <span className="mx-2">|</span>
-  
+
                     <span>{dateFormater(news.createdAt)}</span>
                   </p>
                 </div>
@@ -128,4 +128,4 @@ const EconomyCategory = () => {
   );
 };
 
-export default EconomyCategory;
+export default LeftLatestNews;

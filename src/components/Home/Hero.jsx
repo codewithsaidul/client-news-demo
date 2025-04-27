@@ -3,11 +3,13 @@
 import { Button } from "../ui/button";
 import BreakingNewsDropDown from "./BreakingNewsOptions";
 import BreakingSlider from "./BreakingSlider";
-import EconomyCategory from "./EconomyCategory";
-import LatestNews from "./LatestNews";
+import LatestNews from "./latestNews/LatestNews";
 import PopularNewsSlider from "./PopularNewsSlider";
 
+
 const Hero = () => {
+
+
   return (
     <section className="mt-24">
       <div>
@@ -24,14 +26,7 @@ const Hero = () => {
           <PopularNewsSlider />
 
           <div className="mt-16">
-            <div className="grid grid-cols-12 gap-10">
-              <div className="col-span-12 md:col-span-8">
-                <EconomyCategory />
-              </div>
-              <div className="col-span-12 md:col-span-4 p-4 h-fit bg-news-white-bg shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg">
-                <LatestNews />
-              </div>
-            </div>
+            <LatestNews /> 
           </div>
         </div>
       </div>
