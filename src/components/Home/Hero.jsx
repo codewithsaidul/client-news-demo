@@ -31,7 +31,7 @@ const Hero = () => {
 
           <div className="mt-20">
             <LatestNews /> 
-            {/* <Business /> */}
+            <Business />
           </div>
         </div>
       </div>

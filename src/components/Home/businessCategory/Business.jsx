@@ -11,12 +11,12 @@ const Business = () => {
             <div className="w-full h-1 mt-3 bg-news-headline"></div>
         </div>
 
-        <div className="relative min-h-screen grid grid-cols-12 gap-10">
-          <div className="col-span-12 md:col-span-8 relative">
+        <div className="relative min-h-screen grid grid-cols-1 md:grid-cols-12 gap-10">
+          <div className="md:col-span-8 relative">
             {/* Left Column Content */}
             <LeftBusinessCategory />
           </div>
-          <div className="col-span-12 md:col-span-4">
+          <div className="md:col-span-4">
             <div className="sticky top-28">
               {/* Right Column Content */}
               <RightBusinessCategory />

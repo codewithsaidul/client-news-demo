@@ -17,7 +17,7 @@ const RightBusinessCategory = () => {
   );
 
   return (
-    <div className="p-4 bg-news-white-bg shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg h-fit">
+    <div className="min-[500px]:p-4 bg-news-white-bg min-[500px]:shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg h-fit">
       <div className="flex flex-col gap-5 w-full">
         {businessNews.length > 0 &&
           businessNews.slice(6, 8).map((news) => (
