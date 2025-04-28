@@ -126,23 +126,17 @@
     @apply border-border;
   }
   body {
-    @apply bg-news-white-bg font-body;
+    @apply bg-news-white-bg font-body box-border;
   }
 
   .sidebar {
     scrollbar-width: none !important; /* Firefox এর জন্য */
   }
-  
+
   /* Chrome, Safari, Edge এর জন্য */
   .sidebar::-webkit-scrollbar {
     display: none !important;
   }
-  
-  
 }
-
-
-
-
 
 

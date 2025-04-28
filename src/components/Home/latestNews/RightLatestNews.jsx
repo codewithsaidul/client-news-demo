@@ -1,4 +1,5 @@
 import { useGetLatestNewsQuery } from "@/features/LatestNews/latestNewsAPI";
+import { dateFormater } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,20 +12,8 @@ const RightLatestNews = () => {
     (news) => !news.isFeatured && !news.isBreaking
   );
 
-  const dateFormater = (newsDate) => {
-    const date = new Date(newsDate);
-
-    // Format the date to "Apr 23, 2025"
-    const formattedDate = date.toLocaleDateString("en-US", {
-      month: "short", // Short month name (e.g., Apr)
-      day: "2-digit", // 2-digit day (e.g., 23)
-      year: "numeric", // Numeric year (e.g., 2025)
-    });
-    return formattedDate;
-  };
-
   return (
-    <div className="p-4 bg-news-white-bg shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg h-fit">
+    <div className="md:p-4 bg-news-white-bg md:shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg h-fit">
       <h2 className="text-center text-2xl font-title font-semibold">
         Latest News
       </h2>
@@ -34,18 +23,18 @@ const RightLatestNews = () => {
           filteredNews.slice(7, 14).map((news) => (
             <div
               key={news.id}
-              className="w-full flex flex-row md:flex-col lg:flex-row items-center gap-2"
+              className="w-full flex max-[450px]:flex-col flex-row md:flex-col lg:flex-row min-[451px]:items-center gap-2"
             >
               <figure>
                 <Image
                   src={news.thumbnail}
                   alt={news.title}
-                  width={250}
-                  height={250}
-                  className="w-full h-full"
+                  width={150}
+                  height={350}
+                  className="w-full h-auto object-cover"
                 />
               </figure>
-              <div className="mt-2 flex-1 flex justify-center">
+              <div className="mt-2 flex-1 flex">
                 <div>
                   <Link href={"#"} className="text-xl font-title font-bold">
                     {news.title}

@@ -8,7 +8,6 @@ const LeftLatestNews = () => {
 
   if (isLoading) return <div>Loading...</div>;
 
-
   const filterNews = data.filter(
     (news) => !news.isFeatured && !news.isBreaking
   );
@@ -29,7 +28,7 @@ const LeftLatestNews = () => {
     <div className="mb-20">
       {/* ================= Featured Economy & Finance Category ================= */}
       {filterNews.length > 0 && (
-        <div className="w-full pr-4">
+        <div>
           <figure className="relative">
             <Image
               src={filterNews[0]?.thumbnail}
@@ -38,7 +37,7 @@ const LeftLatestNews = () => {
               height={780}
               className="w-full h-96 object-cover"
             />
-            <Button className="text-xl font-title py-5 px-7 absolute -bottom-4 left-1/2 transform -translate-x-1/2">
+            <Button className="text-base min-[350px]:text-xl font-title py-5 px-7 absolute -bottom-4 left-1/2 transform -translate-x-1/2">
               Economy & {filterNews[0].category}
             </Button>
           </figure>
@@ -46,7 +45,7 @@ const LeftLatestNews = () => {
           <div className="text-center mt-8">
             <Link
               href={"#"}
-              className="text-3xl md:text-5xl font-bold font-title text-news-headline"
+              className="text-2xl min-[350px]:text-3xl md:text-5xl font-bold font-title text-news-headline"
             >
               {filterNews[0].title}
             </Link>
@@ -65,7 +64,7 @@ const LeftLatestNews = () => {
       <div className="flex flex-col md:flex-row gap-5 mt-16 w-full">
         {filterNews.length > 0 &&
           filterNews.slice(1, 3).map((news) => (
-            <div key={news.id} className="w-full pr-4">
+            <div key={news.id} className="w-full">
               <figure>
                 <Image
                   src={news.thumbnail}
@@ -96,18 +95,18 @@ const LeftLatestNews = () => {
           filterNews.slice(4, 8).map((news) => (
             <div
               key={news.id}
-              className="w-full flex flex-row md:flex-col lg:flex-row items-center gap-2"
+              className="w-full flex max-[450px]:flex-col flex-row md:flex-col lg:flex-row min-[451px]:items-center gap-2"
             >
               <figure>
                 <Image
                   src={news.thumbnail}
                   alt={news.title}
-                  width={250}
-                  height={250}
-                  className="w-full h-full"
+                  width={150}
+                  height={350}
+                  className="w-full h-auto object-cover"
                 />
               </figure>
-              <div className="mt-2 flex-1 flex justify-center">
+              <div className="mt-2 flex-1 flex">
                 <div>
                   <Link href={"#"} className="text-xl font-title font-bold">
                     {news.title}
