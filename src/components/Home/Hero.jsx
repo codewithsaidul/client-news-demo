@@ -8,6 +8,7 @@ import Entrepreneurs from "./Entrepreneurs/Entrepreneurs";
 import ForbesWomen from "./Forbes/ForbesWomen";
 import LatestNews from "./latestNews/LatestNews";
 import PopularNewsSlider from "./PopularNewsSlider";
+import Sustainability from "./Sustainability/Sustainability";
 
 const Hero = () => {
   return (
@@ -32,6 +33,7 @@ const Hero = () => {
             <Business />
             <ForbesWomen />
             <Entrepreneurs />
+            <Sustainability />
           </div>
         </div>
       </div>
