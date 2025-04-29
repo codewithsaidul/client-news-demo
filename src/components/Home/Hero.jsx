@@ -4,20 +4,17 @@ import { Button } from "../ui/button";
 import BreakingNewsDropDown from "./BreakingNewsOptions";
 import BreakingSlider from "./BreakingSlider";
 import Business from "./businessCategory/Business";
+import Entrepreneurs from "./Entrepreneurs/Entrepreneurs";
 import ForbesWomen from "./Forbes/ForbesWomen";
 import LatestNews from "./latestNews/LatestNews";
 import PopularNewsSlider from "./PopularNewsSlider";
 
-
 const Hero = () => {
-
-  
-
   return (
     <section className="mt-24">
       <div>
-        <BreakingNewsDropDown />
-        <div className="my-4 h-[1px] w-full bg-black/50" />
+        {/* <BreakingNewsDropDown />
+        <div className="my-4 h-[1px] w-full bg-black/50" /> */}
 
         <div>
           <div className="mb-5">
@@ -31,9 +28,10 @@ const Hero = () => {
           </div>
 
           <div className="mt-20">
-            <LatestNews /> 
+            <LatestNews />
             <Business />
             <ForbesWomen />
+            <Entrepreneurs />
           </div>
         </div>
       </div>
