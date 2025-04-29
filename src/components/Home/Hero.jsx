@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import BreakingNewsDropDown from "./BreakingNewsOptions";
 import BreakingSlider from "./BreakingSlider";
 import Business from "./businessCategory/Business";
+import EconomyFinance from "./Economy and Finance/EconomyFinance";
 import Entrepreneurs from "./Entrepreneurs/Entrepreneurs";
 import ForbesWomen from "./Forbes/ForbesWomen";
 import LatestNews from "./latestNews/LatestNews";
@@ -34,6 +35,7 @@ const Hero = () => {
             <ForbesWomen />
             <Entrepreneurs />
             <Sustainability />
+            <EconomyFinance />
           </div>
         </div>
       </div>
