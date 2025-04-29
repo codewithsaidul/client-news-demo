@@ -4,13 +4,16 @@ import { Button } from "../ui/button";
 import BreakingNewsDropDown from "./BreakingNewsOptions";
 import BreakingSlider from "./BreakingSlider";
 import Business from "./businessCategory/Business";
+import CountryBranding from "./CountryBranding/CountryBranding";
 import EconomyFinance from "./Economy and Finance/EconomyFinance";
 import Entrepreneurs from "./Entrepreneurs/Entrepreneurs";
-import { ForbesNetwork, ForbesWomen } from "./Forbes";
+import { ForbesLife, ForbesLiveEvents, ForbesNetwork, ForbesWomen } from "./Forbes";
+import HumanCapital from "./Human Capital/HumanCapital";
 import LatestNews from "./latestNews/LatestNews";
 import PersonalFinances from "./Personal Finances/PersonalFinances";
 import PopularNewsSlider from "./PopularNewsSlider";
 import Sustainability from "./Sustainability/Sustainability";
+import Technology from "./Technology/Technology";
 
 const Hero = () => {
   return (
@@ -39,6 +42,11 @@ const Hero = () => {
             <EconomyFinance />
             <PersonalFinances />
             <ForbesNetwork />
+            <ForbesLife />
+            <HumanCapital />
+            <Technology />
+            <ForbesLiveEvents />
+            <CountryBranding />
           </div>
         </div>
       </div>

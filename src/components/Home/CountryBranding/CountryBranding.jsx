@@ -5,7 +5,7 @@ import SidebarNews from "../NewsSection/SidebarNews";
 import Heading from "@/components/SectionHeading/Heading";
 import Loader from "@/components/loading/Loader";
 
-const ForbesLife = () => {
+const CountryBranding = () => {
   const { data, isLoading } = useGetAllNewsQuery();
 
   if (isLoading) {
@@ -24,32 +24,32 @@ const ForbesLife = () => {
     (news) => !news.isFeatured && !news.isBreaking
   );
 
-  const forbesLife = filterNews.filter(
-    (news) => news.category === "Forbes Women" // "Forbes Life"
+  const countryBranding = filterNews.filter(
+    (news) => news.category === "Forbes Women" // "Country Branding"
   );
 
-  if (!isLoading && forbesLife <= 0) return null;
+  if (!isLoading && countryBranding <= 0) return null;
 
   return (
     <div className="mt-20">
       {/* ========================= Section Heading ====================== */}
-      <Heading title="Forbes Life" link="#" />
+      <Heading title="Country Branding" link="#" />
       {/* ========================= Section Heading ====================== */}
 
       <div className="relative min-h-screen grid grid-cols-1 md:grid-cols-12 gap-10">
         <div className="md:col-span-8 relative order-2">
           {/* Left Column Content */}
-          {forbesLife.length > 0 && (
+          {countryBranding.length > 0 && (
             <div>
-              <FeatureNews news={forbesLife[0]} />
-              <LeftNewsList allNews={forbesLife} />
+              <FeatureNews news={countryBranding[0]} />
+              <LeftNewsList allNews={countryBranding} />
             </div>
           )}
         </div>
         <div className="md:col-span-4 order-1">
           <div className="sticky top-28">
             {/* Right Column Content */}
-            {forbesLife.length > 0 && <SidebarNews allNews={forbesLife} />}
+            {countryBranding.length > 0 && <SidebarNews allNews={countryBranding} />}
           </div>
         </div>
       </div>
@@ -57,4 +57,4 @@ const ForbesLife = () => {
   );
 };
 
-export default ForbesLife;
+export default CountryBranding;

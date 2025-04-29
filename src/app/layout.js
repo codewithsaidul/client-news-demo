@@ -2,6 +2,7 @@ import Navbar from "@/components/Shared/Navbar";
 import { ReduxProvider } from "@/provider/ReduxProvider";
 import { Inter, Merriweather } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Shared/Footer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
         <ReduxProvider>
           <Navbar />
           {children}
+          <Footer />
         </ReduxProvider>
       </body>
     </html>

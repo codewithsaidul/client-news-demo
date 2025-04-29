@@ -47,7 +47,7 @@ const Sidebar = ( { isOpen } ) => {
               href={social.link}
               aria-label={social.name}
               target="_blank"
-              className="text-4xl"
+              className="text-2xl"
             >
               {social.icon}
             </Link>

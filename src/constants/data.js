@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 export const navMenuList = {
@@ -66,22 +66,27 @@ export const navMenuList = {
 export const socialLinks = [
   {
     id: 1,
-    icon: <FaFacebook size={36} color="#fff" />,
+    icon: <FaFacebook size={28} color="#fff" />,
     link: "https://www.facebook.com",
   },
   {
     id: 2,
-    icon: <FaXTwitter size={36} color="#fff" />,
+    icon: <FaXTwitter size={28} color="#fff" />,
     link: "https://www.twitter.com",
   },
   {
     id: 3,
-    icon: <FaInstagram size={36} color="#fff" />,
+    icon: <FaInstagram size={28} color="#fff" />,
     link: "https://www.instagram.com",
   },
   {
     id: 4,
-    icon: <FaYoutube size={36} color="#fff" />,
+    icon: <FaLinkedin size={28} color="#fff" />,
+    link: "https://www.linkedin.com",
+  },
+  {
+    id: 5,
+    icon: <FaYoutube size={28} color="#fff" />,
     link: "https://www.youtube.com",
   },
 ];
