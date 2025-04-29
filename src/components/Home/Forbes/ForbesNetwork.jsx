@@ -4,7 +4,7 @@ import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";
 import Heading from "@/components/SectionHeading/Heading";
 
-const Entrepreneurs = () => {
+const ForbesNetwork = () => {
   const { data, isLoading } = useGetAllNewsQuery();
 
   if (isLoading) return <div>Loading...</div>;
@@ -13,33 +13,33 @@ const Entrepreneurs = () => {
     (news) => !news.isFeatured && !news.isBreaking
   );
 
-  const entrepreneurs = filterNews.filter(
-    (news) => news.category === "Forbes Women" //"Entrepreneurs"
+  const forbesNetwork = filterNews.filter(
+    (news) => news.category === "Forbes Women" // Forbes Network
   );
 
-  if (!isLoading && entrepreneurs <= 0) return null
+  if (!isLoading && forbesNetwork <= 0) return null
 
   return (
     <div className="mt-20">
       {/* ========================= Section Heading ====================== */}
-      <Heading title="Entrepreneurs" link="#" />
+      <Heading title="Forbes Network" link="#" />
       {/* ========================= Section Heading ====================== */}
 
       <div className="relative min-h-screen grid grid-cols-1 md:grid-cols-12 gap-10">
         <div className="md:col-span-8 relative order-1">
           {/* Left Column Content */}
-          {entrepreneurs.length > 0 && (
+          {forbesNetwork.length > 0 && (
             <div>
-              <FeatureNews news={entrepreneurs[0]} />
-              <LeftNewsList allNews={entrepreneurs} />
+              <FeatureNews news={forbesNetwork[0]} />
+              <LeftNewsList allNews={forbesNetwork} />
             </div>
           )}
         </div>
         <div className="md:col-span-4 order-2">
           <div className="sticky top-28">
             {/* Right Column Content */}
-            {entrepreneurs.length > 0 && (
-              <SidebarNews allNews={entrepreneurs} />
+            {forbesNetwork.length > 0 && (
+              <SidebarNews allNews={forbesNetwork} />
             )}
           </div>
         </div>
@@ -48,4 +48,4 @@ const Entrepreneurs = () => {
   );
 };
 
-export default Entrepreneurs;
+export default ForbesNetwork;

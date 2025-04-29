@@ -14,7 +14,7 @@ const Sustainability = () => {
   );
 
   const sustainability = filterNews.filter(
-    (news) => news.category === "Forbes Women"
+    (news) => news.category === "Forbes Women"  // "Sustainability"
   );
 
   if (!isLoading && sustainability <= 0) return null

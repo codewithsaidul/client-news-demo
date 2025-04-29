@@ -6,8 +6,9 @@ import BreakingSlider from "./BreakingSlider";
 import Business from "./businessCategory/Business";
 import EconomyFinance from "./Economy and Finance/EconomyFinance";
 import Entrepreneurs from "./Entrepreneurs/Entrepreneurs";
-import ForbesWomen from "./Forbes/ForbesWomen";
+import { ForbesNetwork, ForbesWomen } from "./Forbes";
 import LatestNews from "./latestNews/LatestNews";
+import PersonalFinances from "./Personal Finances/PersonalFinances";
 import PopularNewsSlider from "./PopularNewsSlider";
 import Sustainability from "./Sustainability/Sustainability";
 
@@ -36,6 +37,8 @@ const Hero = () => {
             <Entrepreneurs />
             <Sustainability />
             <EconomyFinance />
+            <PersonalFinances />
+            <ForbesNetwork />
           </div>
         </div>
       </div>

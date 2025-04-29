@@ -4,7 +4,7 @@ import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";
 import Heading from "@/components/SectionHeading/Heading";
 
-const Entrepreneurs = () => {
+const ForbesLife = () => {
   const { data, isLoading } = useGetAllNewsQuery();
 
   if (isLoading) return <div>Loading...</div>;
@@ -13,34 +13,32 @@ const Entrepreneurs = () => {
     (news) => !news.isFeatured && !news.isBreaking
   );
 
-  const entrepreneurs = filterNews.filter(
-    (news) => news.category === "Forbes Women" //"Entrepreneurs"
+  const forbesLife = filterNews.filter(
+    (news) => news.category === "Forbes Women" // "Forbes Life"
   );
 
-  if (!isLoading && entrepreneurs <= 0) return null
+  if (!isLoading && forbesLife <= 0) return null;
 
   return (
     <div className="mt-20">
       {/* ========================= Section Heading ====================== */}
-      <Heading title="Entrepreneurs" link="#" />
+      <Heading title="Forbes Life" link="#" />
       {/* ========================= Section Heading ====================== */}
 
       <div className="relative min-h-screen grid grid-cols-1 md:grid-cols-12 gap-10">
-        <div className="md:col-span-8 relative order-1">
+        <div className="md:col-span-8 relative order-2">
           {/* Left Column Content */}
-          {entrepreneurs.length > 0 && (
+          {forbesLife.length > 0 && (
             <div>
-              <FeatureNews news={entrepreneurs[0]} />
-              <LeftNewsList allNews={entrepreneurs} />
+              <FeatureNews news={forbesLife[0]} />
+              <LeftNewsList allNews={forbesLife} />
             </div>
           )}
         </div>
-        <div className="md:col-span-4 order-2">
+        <div className="md:col-span-4 order-1">
           <div className="sticky top-28">
             {/* Right Column Content */}
-            {entrepreneurs.length > 0 && (
-              <SidebarNews allNews={entrepreneurs} />
-            )}
+            {forbesLife.length > 0 && <SidebarNews allNews={forbesLife} />}
           </div>
         </div>
       </div>
@@ -48,4 +46,4 @@ const Entrepreneurs = () => {
   );
 };
 
-export default Entrepreneurs;
+export default ForbesLife;
