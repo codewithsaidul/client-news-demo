@@ -1,20 +1,27 @@
+import { useGetAllNewsQuery } from "@/features/AllNews/allNewsAPI";
+import { dateFormater } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
-import FeatureNews from "../NewsSection/FeatureNews";
-import LeftNewsList from "../NewsSection/LeftNewsList";
-import { dateFormater } from "@/lib/utils";
 
-const LeftLatestNews = ({ latestNews }) => {
+const SidebarNews = ( { businessNews } ) => {
+//   const { data, isLoading } = useGetAllNewsQuery();
+
+//   if (isLoading) return <div>Loading...</div>;
+
+//   const filterNews = data.filter(
+//     (news) => !news.isFeatured && !news.isBreaking
+//   );
+
+//   const businessNews = filterNews.filter(
+//     (news) => news.category === "Business"
+//   );
+
   return (
-    <div className="mb-20">
-      {/* ================= Latest Featured News ================= */}
-      {latestNews.length > 0 && <FeatureNews businessNews={latestNews[0]} />}
-
-      {/* =============== Latest News Card ======================= */}
-      <div className="flex flex-col md:flex-row gap-5 mt-16 w-full">
-        {latestNews.length > 0 &&
-          latestNews.slice(1, 3).map((news) => (
-            <div key={news.id} className="w-full">
+    <div className="min-[500px]:p-4 bg-news-white-bg min-[500px]:shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg h-fit">
+      <div className="flex flex-col gap-5 w-full">
+        {businessNews.length > 0 &&
+          businessNews.slice(6, 8).map((news) => (
+            <div key={news.id} className="w-full pr-4">
               <figure>
                 <Image
                   src={news.thumbnail}
@@ -39,11 +46,8 @@ const LeftLatestNews = ({ latestNews }) => {
             </div>
           ))}
       </div>
-
-      {/* =================== Latest Left News List ================== */}
-      {latestNews.length > 0 && <LeftNewsList businessNews={latestNews} />}
     </div>
   );
 };
 
-export default LeftLatestNews;
+export default SidebarNews;

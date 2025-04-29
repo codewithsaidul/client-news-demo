@@ -3,14 +3,8 @@ import { dateFormater } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
-const RightLatestNews = () => {
-  const { data, isLoading } = useGetLatestNewsQuery();
+const RightLatestNews = ( { latestNews } ) => {
 
-  if (isLoading) return <div>Loading...</div>;
-
-  const filteredNews = data.filter(
-    (news) => !news.isFeatured && !news.isBreaking
-  );
 
   return (
     <div className="md:p-4 bg-news-white-bg md:shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg h-fit">
@@ -19,8 +13,8 @@ const RightLatestNews = () => {
       </h2>
 
       <div className="grid grid-cols-1 gap-5 mt-16 w-full">
-        {filteredNews.length > 0 &&
-          filteredNews.slice(7, 14).map((news) => (
+        {latestNews.length > 0 &&
+          latestNews.slice(7, 14).map((news) => (
             <div
               key={news.id}
               className="w-full flex max-[450px]:flex-col flex-row md:flex-col lg:flex-row min-[451px]:items-center gap-2"
