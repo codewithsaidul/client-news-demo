@@ -3,17 +3,28 @@ import {
   Carousel,
   CarouselContent,
   CarouselNext,
-  CarouselPrevious
+  CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useGetAllNewsQuery } from "@/features/AllNews/allNewsAPI";
 import BreackingNewsItem from "./BreakingNewsItem";
+import Loader from "../loading/Loader";
 
 const BreakingSlider = () => {
   const { data, isLoading } = useGetAllNewsQuery();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-10 mb-10">
+        <Loader />
+        <Loader />
+        <Loader />
+        <Loader />
+        <Loader />
+      </div>
+    );
+  }
 
-  const breakingNews = data.filter(news => news.isBreaking)
+  const breakingNews = data.filter((news) => news.isBreaking);
 
   return (
     //   33% of the carousel width.
