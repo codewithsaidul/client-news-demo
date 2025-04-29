@@ -4,6 +4,7 @@ import { Button } from "../ui/button";
 import BreakingNewsDropDown from "./BreakingNewsOptions";
 import BreakingSlider from "./BreakingSlider";
 import Business from "./businessCategory/Business";
+import ForbesWomen from "./Forbes/ForbesWomen";
 import LatestNews from "./latestNews/LatestNews";
 import PopularNewsSlider from "./PopularNewsSlider";
 
@@ -32,6 +33,7 @@ const Hero = () => {
           <div className="mt-20">
             <LatestNews /> 
             <Business />
+            <ForbesWomen />
           </div>
         </div>
       </div>

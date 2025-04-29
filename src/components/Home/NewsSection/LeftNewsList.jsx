@@ -3,11 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const LeftNewsList = ({ businessNews }) => {
+const LeftNewsList = ({ allNews }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-16 w-full">
-      {businessNews.length > 0 &&
-        businessNews.slice(1, 5).map((news) => (
+      {allNews.length > 0 &&
+        allNews.slice(1, 5).map((news) => (
           <div
             key={news.id}
             className="w-full flex max-[450px]:flex-col flex-row md:flex-col lg:flex-row min-[451px]:items-center gap-2"

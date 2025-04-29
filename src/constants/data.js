@@ -88,7 +88,7 @@ export const socialLinks = [
 
 export const newsData = [
   // ==================== 01 to 10 =========================
-  { 
+  {
     id: "nws001",
     title: "Global Politics Takes a New Turn",
     slug: "global-politics-new-turn",
@@ -199,8 +199,7 @@ export const newsData = [
     id: "nws006",
     title: "NASA Plans New Lunar Mission",
     slug: "nasa-lunar-mission-2025",
-    content:
-      "NASA aims to establish permanent base on the moon by 2030...",
+    content: "NASA aims to establish permanent base on the moon by 2030...",
     excerpt: "Next step in space exploration: Moon base in development.",
     thumbnail: "/images/thumb/thumb2.avif",
     category: "Forbes Women",
@@ -260,8 +259,7 @@ export const newsData = [
     id: "nws009",
     title: "Meta Launches New VR Headset",
     slug: "meta-vr-headset-2025",
-    content:
-      "New features include retina tracking and haptic feedback...",
+    content: "New features include retina tracking and haptic feedback...",
     excerpt: "The tech giant redefines virtual reality experience.",
     thumbnail: "/images/thumb/thumb1.avif",
     category: "Technology",
@@ -297,8 +295,8 @@ export const newsData = [
     views: 2110,
     status: "published",
   },
-  
-// ==================== 11 to 20 =========================
+
+  // ==================== 11 to 20 =========================
   {
     id: "nws011",
     title: "Global Politics Takes a New Turn",
@@ -410,11 +408,10 @@ export const newsData = [
     id: "nws016",
     title: "NASA Plans New Lunar Mission",
     slug: "nasa-lunar-mission-2025",
-    content:
-      "NASA aims to establish permanent base on the moon by 2030...",
+    content: "NASA aims to establish permanent base on the moon by 2030...",
     excerpt: "Next step in space exploration: Moon base in development.",
     thumbnail: "/images/thumb/thumb2.avif",
-    category: "Science",
+    category: "Forbes Women",
     tags: ["NASA", "Moon", "Space"],
     author: {
       id: "auth006",
@@ -471,8 +468,7 @@ export const newsData = [
     id: "nws019",
     title: "Meta Launches New VR Headset",
     slug: "meta-vr-headset-2025",
-    content:
-      "New features include retina tracking and haptic feedback...",
+    content: "New features include retina tracking and haptic feedback...",
     excerpt: "The tech giant redefines virtual reality experience.",
     thumbnail: "/images/thumb/thumb1.avif",
     category: "Technology",
@@ -621,11 +617,10 @@ export const newsData = [
     id: "nws026",
     title: "NASA Plans New Lunar Mission",
     slug: "nasa-lunar-mission-2025",
-    content:
-      "NASA aims to establish permanent base on the moon by 2030...",
+    content: "NASA aims to establish permanent base on the moon by 2030...",
     excerpt: "Next step in space exploration: Moon base in development.",
     thumbnail: "/images/thumb/thumb2.avif",
-    category: "Science",
+    category: "Forbes Women",
     tags: ["NASA", "Moon", "Space"],
     author: {
       id: "auth006",
@@ -682,8 +677,7 @@ export const newsData = [
     id: "nws029",
     title: "Meta Launches New VR Headset",
     slug: "meta-vr-headset-2025",
-    content:
-      "New features include retina tracking and haptic feedback...",
+    content: "New features include retina tracking and haptic feedback...",
     excerpt: "The tech giant redefines virtual reality experience.",
     thumbnail: "/images/thumb/thumb1.avif",
     category: "Technology",
@@ -832,11 +826,10 @@ export const newsData = [
     id: "nws036",
     title: "NASA Plans New Lunar Mission",
     slug: "nasa-lunar-mission-2025",
-    content:
-      "NASA aims to establish permanent base on the moon by 2030...",
+    content: "NASA aims to establish permanent base on the moon by 2030...",
     excerpt: "Next step in space exploration: Moon base in development.",
     thumbnail: "/images/thumb/thumb2.avif",
-    category: "Science",
+    category: "Forbes Women",
     tags: ["NASA", "Moon", "Space"],
     author: {
       id: "auth006",
@@ -893,8 +886,7 @@ export const newsData = [
     id: "nws039",
     title: "Meta Launches New VR Headset",
     slug: "meta-vr-headset-2025",
-    content:
-      "New features include retina tracking and haptic feedback...",
+    content: "New features include retina tracking and haptic feedback...",
     excerpt: "The tech giant redefines virtual reality experience.",
     thumbnail: "/images/thumb/thumb1.avif",
     category: "Technology",
@@ -1043,11 +1035,10 @@ export const newsData = [
     id: "nws046",
     title: "NASA Plans New Lunar Mission",
     slug: "nasa-lunar-mission-2025",
-    content:
-      "NASA aims to establish permanent base on the moon by 2030...",
+    content: "NASA aims to establish permanent base on the moon by 2030...",
     excerpt: "Next step in space exploration: Moon base in development.",
     thumbnail: "/images/thumb/thumb2.avif",
-    category: "Science",
+    category: "Forbes Women",
     tags: ["NASA", "Moon", "Space"],
     author: {
       id: "auth006",
@@ -1104,8 +1095,7 @@ export const newsData = [
     id: "nws049",
     title: "Meta Launches New VR Headset",
     slug: "meta-vr-headset-2025",
-    content:
-      "New features include retina tracking and haptic feedback...",
+    content: "New features include retina tracking and haptic feedback...",
     excerpt: "The tech giant redefines virtual reality experience.",
     thumbnail: "/images/thumb/thumb1.avif",
     category: "Technology",
@@ -1254,11 +1244,10 @@ export const newsData = [
     id: "nws056",
     title: "NASA Plans New Lunar Mission",
     slug: "nasa-lunar-mission-2025",
-    content:
-      "NASA aims to establish permanent base on the moon by 2030...",
+    content: "NASA aims to establish permanent base on the moon by 2030...",
     excerpt: "Next step in space exploration: Moon base in development.",
     thumbnail: "/images/thumb/thumb2.avif",
-    category: "Science",
+    category: "Forbes Women",
     tags: ["NASA", "Moon", "Space"],
     author: {
       id: "auth006",
@@ -1315,8 +1304,7 @@ export const newsData = [
     id: "nws059",
     title: "Meta Launches New VR Headset",
     slug: "meta-vr-headset-2025",
-    content:
-      "New features include retina tracking and haptic feedback...",
+    content: "New features include retina tracking and haptic feedback...",
     excerpt: "The tech giant redefines virtual reality experience.",
     thumbnail: "/images/thumb/thumb1.avif",
     category: "Technology",
@@ -1465,11 +1453,10 @@ export const newsData = [
     id: "nws066",
     title: "NASA Plans New Lunar Mission",
     slug: "nasa-lunar-mission-2025",
-    content:
-      "NASA aims to establish permanent base on the moon by 2030...",
+    content: "NASA aims to establish permanent base on the moon by 2030...",
     excerpt: "Next step in space exploration: Moon base in development.",
     thumbnail: "/images/thumb/thumb2.avif",
-    category: "Science",
+    category: "Forbes Women",
     tags: ["NASA", "Moon", "Space"],
     author: {
       id: "auth006",
@@ -1526,8 +1513,7 @@ export const newsData = [
     id: "nws069",
     title: "Meta Launches New VR Headset",
     slug: "meta-vr-headset-2025",
-    content:
-      "New features include retina tracking and haptic feedback...",
+    content: "New features include retina tracking and haptic feedback...",
     excerpt: "The tech giant redefines virtual reality experience.",
     thumbnail: "/images/thumb/thumb1.avif",
     category: "Technology",
@@ -1676,11 +1662,10 @@ export const newsData = [
     id: "nws076",
     title: "NASA Plans New Lunar Mission",
     slug: "nasa-lunar-mission-2025",
-    content:
-      "NASA aims to establish permanent base on the moon by 2030...",
+    content: "NASA aims to establish permanent base on the moon by 2030...",
     excerpt: "Next step in space exploration: Moon base in development.",
     thumbnail: "/images/thumb/thumb2.avif",
-    category: "Science",
+    category: "Forbes Women",
     tags: ["NASA", "Moon", "Space"],
     author: {
       id: "auth006",
@@ -1737,8 +1722,7 @@ export const newsData = [
     id: "nws079",
     title: "Meta Launches New VR Headset",
     slug: "meta-vr-headset-2025",
-    content:
-      "New features include retina tracking and haptic feedback...",
+    content: "New features include retina tracking and haptic feedback...",
     excerpt: "The tech giant redefines virtual reality experience.",
     thumbnail: "/images/thumb/thumb1.avif",
     category: "Technology",
@@ -1887,8 +1871,7 @@ export const newsData = [
     id: "nws086",
     title: "NASA Plans New Lunar Mission",
     slug: "nasa-lunar-mission-2025",
-    content:
-      "NASA aims to establish permanent base on the moon by 2030...",
+    content: "NASA aims to establish permanent base on the moon by 2030...",
     excerpt: "Next step in space exploration: Moon base in development.",
     thumbnail: "/images/thumb/thumb2.avif",
     category: "Science",
@@ -1948,8 +1931,7 @@ export const newsData = [
     id: "nws089",
     title: "Meta Launches New VR Headset",
     slug: "meta-vr-headset-2025",
-    content:
-      "New features include retina tracking and haptic feedback...",
+    content: "New features include retina tracking and haptic feedback...",
     excerpt: "The tech giant redefines virtual reality experience.",
     thumbnail: "/images/thumb/thumb1.avif",
     category: "Technology",
@@ -2098,8 +2080,7 @@ export const newsData = [
     id: "nws096",
     title: "NASA Plans New Lunar Mission",
     slug: "nasa-lunar-mission-2025",
-    content:
-      "NASA aims to establish permanent base on the moon by 2030...",
+    content: "NASA aims to establish permanent base on the moon by 2030...",
     excerpt: "Next step in space exploration: Moon base in development.",
     thumbnail: "/images/thumb/thumb2.avif",
     category: "Science",
@@ -2159,8 +2140,7 @@ export const newsData = [
     id: "nws099",
     title: "Meta Launches New VR Headset",
     slug: "meta-vr-headset-2025",
-    content:
-      "New features include retina tracking and haptic feedback...",
+    content: "New features include retina tracking and haptic feedback...",
     excerpt: "The tech giant redefines virtual reality experience.",
     thumbnail: "/images/thumb/thumb1.avif",
     category: "Technology",
@@ -2196,5 +2176,5 @@ export const newsData = [
     views: 2110,
     status: "published",
   },
-
 ];
+

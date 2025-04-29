@@ -1,26 +1,14 @@
-import { useGetAllNewsQuery } from "@/features/AllNews/allNewsAPI";
 import { dateFormater } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
-const SidebarNews = ( { businessNews } ) => {
-//   const { data, isLoading } = useGetAllNewsQuery();
-
-//   if (isLoading) return <div>Loading...</div>;
-
-//   const filterNews = data.filter(
-//     (news) => !news.isFeatured && !news.isBreaking
-//   );
-
-//   const businessNews = filterNews.filter(
-//     (news) => news.category === "Business"
-//   );
+const SidebarNews = ( { allNews } ) => {
 
   return (
     <div className="min-[500px]:p-4 bg-news-white-bg min-[500px]:shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg h-fit">
       <div className="flex flex-col gap-5 w-full">
-        {businessNews.length > 0 &&
-          businessNews.slice(6, 8).map((news) => (
+        {allNews.length > 0 &&
+          allNews.slice(6, 8).map((news) => (
             <div key={news.id} className="w-full pr-4">
               <figure>
                 <Image

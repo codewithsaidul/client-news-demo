@@ -8,7 +8,7 @@ const LeftLatestNews = ({ latestNews }) => {
   return (
     <div className="mb-20">
       {/* ================= Latest Featured News ================= */}
-      {latestNews.length > 0 && <FeatureNews businessNews={latestNews[0]} />}
+      {latestNews.length > 0 && <FeatureNews news={latestNews[0]} />}
 
       {/* =============== Latest News Card ======================= */}
       <div className="flex flex-col md:flex-row gap-5 mt-16 w-full">
@@ -41,7 +41,7 @@ const LeftLatestNews = ({ latestNews }) => {
       </div>
 
       {/* =================== Latest Left News List ================== */}
-      {latestNews.length > 0 && <LeftNewsList businessNews={latestNews} />}
+      {latestNews.length > 0 && <LeftNewsList allNews={latestNews} />}
     </div>
   );
 };
