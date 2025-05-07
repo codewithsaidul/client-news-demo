@@ -1,7 +1,6 @@
 import { socialLinks } from "@/constants/data";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const Footer = () => {
   return (
@@ -35,18 +34,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* =================== Copy Right ================= */}
-      <p className="text-center text-sm text-gray-400 py-4 mt-7">
-        <span>&copy; 2025 All rights reserved | Developed by</span>
-        <Link
-          href="https://codewithsaidul.netlify.app/"
-          target="_blank"
-          className="font-semibold text-white ml-1"
-        >
-          Saidul Islam Rana
-        </Link>
-        <span className="ml-1 text-gray-400">(CodeWithSaidul)</span>
-      </p>
     </footer>
   );
 };
