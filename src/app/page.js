@@ -21,7 +21,7 @@ export default function Home() {
     <main>
       <Hero />
 
-      <div className="px-4 md:px-8">
+      <div className="px-4 md:px-8 mt-32 relative">
         <div className="mt-20">
           <LatestNews />
           <Business />
