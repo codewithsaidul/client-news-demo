@@ -5,6 +5,8 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaMagnifyingGlass } from "react-icons/fa6";
+import { navMenuList } from "@/constants/data";
+import NavLink from "./NavLink";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,9 +14,34 @@ const Navbar = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-news-headline py-6">
       <nav className="px-4 md:px-8">
-       <div className="flex justify-between items-center">
-          <div>
-            <span className="text-3xl font-bold cursor-pointer transition-all duration-1000">
+        <div className="flex justify-between items-center">
+          {/* =============== logo ================== */}
+          <div className="flex items-center gap-16">
+            <Link href="/">
+              <Image
+                src="/logo.webp"
+                alt="news logo"
+                width={100}
+                height={100}
+                className="w-full h-full"
+              />
+            </Link>
+
+            <div className="max-sm:hidden">
+              <ul className="flex gap-5">
+                {navMenuList.map((menu) => (
+                  <NavLink key={menu.id} name={menu.name} link={menu.link} />
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* =============== search icon =================== */}
+          <div className="flex items-center gap-5">
+            <span>
+              <FaMagnifyingGlass size={24} color="#FFF" />
+            </span>
+            <span className="text-3xl min-sm:hidden font-bold cursor-pointer transition-all duration-1000">
               {isOpen ? (
                 <IoMdClose
                   size={36}
@@ -32,29 +59,13 @@ const Navbar = () => {
               )}
             </span>
           </div>
-  
-          {/* =============== logo ================== */}
-          <div>
-            <Link href="/">
-              <Image src="/logo.webp" alt="news logo" width={100} height={100} className="w-full h-full" />
-            </Link>
-          </div>
-  
-          {/* =============== search icon =================== */}
-          <div>
-            <span>
-              <FaMagnifyingGlass size={24} color="#FFF" />
-            </span>
-          </div>
-       </div>
+        </div>
 
         {/* ================= Side bar ==================== */}
-      <div>
-        <Sidebar isOpen={isOpen} />
-      </div>
+        <div>
+          <Sidebar isOpen={isOpen} />
+        </div>
       </nav>
-
-      
     </header>
   );
 };

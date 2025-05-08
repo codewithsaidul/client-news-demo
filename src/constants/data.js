@@ -1,67 +1,33 @@
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
-export const navMenuList = {
-  sections: [
-    {
-      id: 1,
-      name: "Human Capital",
-      link: "#",
-    },
-    {
-      id: 2,
-      name: "Business",
-      link: "#",
-    },
-    {
-      id: 3,
-      name: "Technology",
-      link: "#",
-    },
-    {
-      id: 4,
-      name: "Forbes Network",
-      link: "#",
-    },
-    {
-      id: 5,
-      name: "Forbes Life",
-      link: "#",
-    },
-    {
-      id: 6,
-      name: "Forbes Women",
-      link: "#",
-    },
-  ],
-  editions: [
-    {
-      id: 1,
-      name: "Mexico",
-      link: "#",
-    },
-    {
-      id: 2,
-      name: "Dominican Republic",
-      link: "#",
-    },
-    {
-      id: 3,
-      name: "Peru",
-      link: "#",
-    },
-    {
-      id: 4,
-      name: "Chili",
-      link: "#",
-    },
-    {
-      id: 5,
-      name: "Central America",
-      link: "#",
-    },
-  ],
-};
+export const navMenuList = [
+  {
+    id: 1,
+    name: "News",
+    link: "#",
+  },
+  {
+    id: 2,
+    name: "Events",
+    link: "#",
+  },
+  {
+    id: 3,
+    name: "Lists",
+    link: "#",
+  },
+  {
+    id: 4,
+    name: "Life",
+    link: "#",
+  },
+  {
+    id: 5,
+    name: "Magazine",
+    link: "#",
+  },
+]
 
 export const socialLinks = [
   {
