@@ -6,18 +6,18 @@ import { twMerge } from "tailwind-merge";
 
 
 // if need also can add type safty for this props
-const Sidebar = ( { isOpen } ) => {
+const Sidebar = ( { isOpen, setIsOpen } ) => {
 
   return (
-    <div className={twMerge(" h-screen bg-news-dark absolute top-20 right-0 overflow-y-auto sidebar transform transition-transform duration-500 ease-in-out z-[10000]",
+    <div className={twMerge("h-screen bg-news-dark absolute top-20 right-0 overflow-y-auto sidebar transform transition-transform duration-500 ease-in-out z-[10000]",
         isOpen ? "translate-x-0 duration-500" : "translate-x-full"
     )}>
       <div className="px-8 py-12">
         {/* =========== nav secctions ============== */}
         <div>
-          <ul className="flex flex-col gap-5">
+          <ul className="flex flex-col gap-7">
             {navMenuList.map((menu) => (
-              <NavLink key={menu.id} name={menu.name} link={menu.link} />
+              <NavLink key={menu.id} name={menu.name} link={menu.link} setIsOpen={setIsOpen} />
             ))} 
           </ul>
         </div>

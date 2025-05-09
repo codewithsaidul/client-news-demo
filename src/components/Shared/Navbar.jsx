@@ -29,8 +29,13 @@ const Navbar = () => {
 
             <div className="max-sm:hidden">
               <ul className="flex gap-5">
-                {navMenuList.map((menu) => (
-                  <NavLink key={menu.id} name={menu.name} link={menu.link} />
+                {navMenuList.map(({id,link, name}) => (
+                  <li
+                  key={id}
+                    className="text-news-white-bg text-xl font-title max-sm:border-b max-sm:border-white/30 max-sm:pb-7"
+                  >
+                    <Link href={link}>{name}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -63,7 +68,7 @@ const Navbar = () => {
 
         {/* ================= Side bar ==================== */}
         <div>
-          <Sidebar isOpen={isOpen} />
+          <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
         </div>
       </nav>
     </header>

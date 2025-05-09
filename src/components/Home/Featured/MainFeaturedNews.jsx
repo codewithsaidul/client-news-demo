@@ -11,31 +11,31 @@ const MainFeaturedNews = ( { featuredNews } ) => {
 
   return (
     <div>
-      <div className="border-b pb-10">
-        <Link href={`${id}`} className="relative">
-          <figure className="w-full">
+      <div className="border-b pb-10 w-full">
+        <Link href={`${id}`} className="relative w-full">
+          <figure className="relative w-full overflow-hidden">
             <Image
               src={thumbnail}
               alt={title}
               width={450}
               height={200}
-              className="w-full h-auto"
+              className="w-full h-auto object-cover"
             />
           </figure>
 
           <div
-            className="absolute bottom-0 w-full h-80 bg__gradient"
+            className="absolute bottom-0 w-full h-[80%] bg__gradient"
             style={{
               zIndex: 1, // To ensure overlay is above the background image
             }}
           />
 
-          <div className="text-white absolute bottom-12 left-5  z-2  w-[70%] h-fit">
-            <span className="text-xl">{category}</span>
-            <h2 className="text-2xl md:text-4xl font-bold font-title my-5">
+          <div className="text-white absolute bottom-4 left-2 min-[540px]:bottom-12 min-[540px]:left-5 z-2 w-[90%] h-auto">
+            <span className="text-base">{category}</span>
+            <h2 className="max-[430px]:text-xl text-3xl sm:text-4xl md:text-4xl font-bold font-title my-2">
               {title}
             </h2>
-            <p className="text-lg font-medium">{excerpt}</p>
+            <p className="text-base font-medium">{excerpt}</p>
           </div>
         </Link>
       </div>
