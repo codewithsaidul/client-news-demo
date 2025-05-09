@@ -121,6 +121,12 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@layer components {
+  .bg__gradient {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0, #000 100%);
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -137,6 +143,9 @@
   .sidebar::-webkit-scrollbar {
     display: none !important;
   }
+
+
+
 }
 
 

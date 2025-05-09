@@ -3,6 +3,23 @@
 import Image from "next/image";
 
 const Hero = () => {
+
+    // const { data, isLoading } = useGetAllNewsQuery();
+  
+    // if (isLoading) {
+    //   return (
+    //     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-10 mb-10">
+    //       {/* <Loader />
+    //       <Loader />
+    //       <Loader />
+    //       <Loader />
+    //       <Loader /> */}
+    //     </div>
+    //   );
+    // }
+  
+    // const breakingNews = data.filter((news) => news.isBreaking);
+
   return (
     <section className="my-20 min-h-[calc(100vh - 70px)]">
 
@@ -10,7 +27,7 @@ const Hero = () => {
         className="relative w-full h-[calc(100vh-80px)] bg-cover"
       >
         <figure>
-          <Image src="/images/news/hero.webp" alt="hero image" width={1920} height={1080} className="w-full h-[calc(100vh-80px)] object-cover" />
+          <Image src="/images/news/hero.webp" alt="hero image" width={1920} height={1080} className="w-full h-[calc(100vh-80px)] object-cover" priority />
         </figure>
         <div
           className="absolute inset-0 bg-black opacity-50"
