@@ -18,12 +18,12 @@ const Sidebar = ( { isOpen } ) => {
           <ul className="flex flex-col gap-5">
             {navMenuList.map((menu) => (
               <NavLink key={menu.id} name={menu.name} link={menu.link} />
-            ))}
+            ))} 
           </ul>
         </div>
 
         {/* ============ social links =============== */}
-        <div className="mt-7 mb-28 sm:mb-20 flex flex-wrap w-full items-center gap-5">
+        <div className="mt-20 mb-28 sm:mb-20 flex flex-wrap w-full items-center gap-5">
           {socialLinks.map((social) => (
             <Link
               key={social.id}

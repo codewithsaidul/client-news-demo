@@ -12,6 +12,7 @@
   --color-news-dark: #1e1e1e;
   --font-body: var(--font-inter);
   --font-title: var(--font-merriweather);
+  --font-banner-title: var(--font-lora);
 }
 
 @theme inline {

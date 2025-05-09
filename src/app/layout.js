@@ -1,6 +1,6 @@
 import Navbar from "@/components/Shared/Navbar";
 import { ReduxProvider } from "@/provider/ReduxProvider";
-import { Inter, Merriweather } from "next/font/google";
+import { Inter, Merriweather, Lora } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Shared/Footer";
 
@@ -14,6 +14,11 @@ const merriWeather = Merriweather({
   variable: "--font-merriweather",
   subsets: ["latin"],
   weight: ["300", "400", "700", "900"],
+});
+const loraSerif = Lora({
+  variable: "--font-lora",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata = {
@@ -29,7 +34,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${merriWeather.variable} antialiased`}
+        className={`${inter.variable} ${merriWeather.variable} ${loraSerif.variable} antialiased`}
       >
         <ReduxProvider>
           <Navbar />

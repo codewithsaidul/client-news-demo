@@ -5,27 +5,27 @@ export const navMenuList = [
   {
     id: 1,
     name: "News",
-    link: "#",
+    link: "/news",
   },
   {
     id: 2,
     name: "Events",
-    link: "#",
+    link: "/events",
   },
   {
     id: 3,
     name: "Lists",
-    link: "#",
+    link: "/lists",
   },
   {
     id: 4,
     name: "Life",
-    link: "#",
+    link: "/life",
   },
   {
     id: 5,
     name: "Magazine",
-    link: "#",
+    link: "/magazine",
   },
 ];
 
