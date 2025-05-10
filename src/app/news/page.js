@@ -1,8 +1,6 @@
-import HeroSection from '@/components/CommonPageLayout/HeroSection'
-import HightlightCard from '@/components/CommonPageLayout/HightlightCard'
 import Banner from '@/components/Shared/Banner'
 import PageTabs from '@/components/Shared/PageTabs'
-import React from 'react'
+import AllNews from './AllNews'
 
 const page = () => {
   return (
@@ -13,10 +11,8 @@ const page = () => {
           <PageTabs />
         </div>
 
-        <div className='px-4 md:px-8 mt-20'>
-          <HeroSection />
-          <HightlightCard />
-        </div>
+        {/* all news */}
+        <AllNews />
     </div>
   )
 }
