@@ -19,8 +19,8 @@ export default function PageTabs() {
   console.log(pathname);
 
   return (
-    <nav className="relative w-full border-b border-gray-300 pb-5">
-      <div className="flex gap-x-16 relative px-4 lg:px-8">
+    <nav className="relative w-full min-[900px]:border-b min-[900px]:border-gray-300 min-[900px]:pb-5">
+      <div className="flex max-[899px]:flex-wrap max-[899px]:justify-center gap-5 min-[900px]:gap-x-12 relative px-4 lg:px-8">
         {tabs.map((tab) => {
           const isActive = pathname === tab.href;
 
@@ -41,7 +41,7 @@ export default function PageTabs() {
         {/* Active Tab Full-Width Border */}
         <div
           className={twMerge(
-            "absolute -bottom-5 left-5 h-1 bg-rose-500 transition-all duration-300",
+            "min-[900px]:absolute min-[900px]:-bottom-5 min-[900px]:left-5 min-[900px]:h-1 min-[900px]:bg-rose-500 min-[900px]:transition-all min-[900px]:duration-300",
             pathname === "/news"
               ? "w-[calc(7%)]"
               : pathname === "/category/innovation"

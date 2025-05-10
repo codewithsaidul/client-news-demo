@@ -1,3 +1,4 @@
+import HeroSection from '@/components/CommonPageLayout/HeroSection'
 import Banner from '@/components/Shared/Banner'
 import PageTabs from '@/components/Shared/PageTabs'
 import React from 'react'
@@ -9,6 +10,10 @@ const page = () => {
 
         <div className='mt-20'>
           <PageTabs />
+        </div>
+
+        <div className='px-4 md:px-8 mt-20'>
+          <HeroSection />
         </div>
     </div>
   )
