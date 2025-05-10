@@ -1,18 +1,18 @@
 import Banner from '@/components/Shared/Banner'
 import PageTabs from '@/components/Shared/PageTabs'
-import AllNews from './AllNews'
+import InvestingNews from './InvestingNews'
 
 const page = () => {
   return (
     <div>
-        <Banner image="/images/banner/newsBanner.webp" title="News" />
+        <Banner title="investing" color="bg-news-headline" />
 
         <div className='mt-20'>
           <PageTabs />
         </div>
 
         
-        <AllNews />
+        <InvestingNews />
     </div>
   )
 }
