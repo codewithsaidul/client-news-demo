@@ -27,8 +27,8 @@ const HeroSection = () => {
         <h2 className="text-news-headline font-bold max-sm:text-4xl text-6xl xl:text-8xl font-title">
           {allNews.title}
         </h2>
-        <p className="text-xl font-medium text-news-text">{allNews.content}</p>
-        <p className="flex items-center gap-3">
+        <p className="text-xl font-medium text-news-text my-3">{allNews.content}</p>
+        <p className="flex items-center gap-1 text-base">
           <span className="font-bold">by</span>
           {allNews.author.name}
         </p>

@@ -4,7 +4,7 @@ import React from 'react'
 const page = () => {
   return (
     <div>
-        <Banner title="magazine" color="bg-news-dark" />
+        <Banner title="magazine" color="bg-news-headline" />
     </div>
   )
 }
