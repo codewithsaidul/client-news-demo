@@ -4,6 +4,7 @@ import ArticaleCard from "@/components/CommonPageLayout/ArticaleCard";
 import HeroSection from "@/components/CommonPageLayout/HeroSection";
 import HightlightCard from "@/components/CommonPageLayout/HightlightCard";
 import Loader from "@/components/loading/Loader";
+import PaginationPage from "@/components/Shared/PaginationPage";
 import { useGetAllNewsQuery } from "@/features/AllNews/allNewsAPI";
 
 const AllNews = () => {
@@ -26,6 +27,10 @@ const AllNews = () => {
       <HeroSection news={data[0]} />
       <HightlightCard allNews={data} />
       <ArticaleCard allNews={data} />
+
+      <div>
+        <PaginationPage />
+      </div>
     </div>
   );
 };
