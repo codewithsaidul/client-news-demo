@@ -28,7 +28,7 @@ const AllNews = () => {
       <HightlightCard allNews={data} />
       <ArticaleCard allNews={data} />
 
-      <div className="flex justify-center items-center">
+      <div>
         <PaginationPage />
       </div>
     </div>
