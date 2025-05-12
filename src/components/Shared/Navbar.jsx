@@ -6,14 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { navMenuList } from "@/constants/data";
-import NavLink from "./NavLink";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathName = usePathname();
-
-  console.log(pathName)
 
   let headerColor;
 

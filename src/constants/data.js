@@ -9,21 +9,16 @@ export const navMenuList = [
   },
   {
     id: 2,
-    name: "Events",
-    link: "/events",
-  },
-  {
-    id: 3,
     name: "Lists",
     link: "/lists",
   },
   {
-    id: 4,
+    id: 3,
     name: "Life",
     link: "/life",
   },
   {
-    id: 5,
+    id: 4,
     name: "Magazine",
     link: "/magazine",
   },
