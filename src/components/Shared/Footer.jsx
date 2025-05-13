@@ -1,8 +1,17 @@
+"use client"
 import { socialLinks } from "@/constants/data";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 
 const Footer = () => {
+
+  const pathName = usePathname();
+  if (pathName === "/dashboard") return null;
+
+
+
   return (
     <footer className="bg-news-dark py-20 px-4 md:px-8 mt-24">
       <div className="flex flex-col gap-y-10 justify-between items-center">
