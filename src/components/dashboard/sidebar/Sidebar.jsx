@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FaHome, FaUsers } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
 import { MdAddBox, MdDashboard } from "react-icons/md";
+import { GiNewspaper } from "react-icons/gi";
 
 const navLinks = [
   {
@@ -19,12 +20,18 @@ const navLinks = [
   },
   {
     id: 3,
+    title: "All News",
+    href: "/dashboard/allNews",
+    icon: <GiNewspaper size={32} />
+  },
+  {
+    id: 4,
     title: "Add News",
     href: "/dashboard/addNews",
     icon: <MdAddBox size={32} />,
   },
   {
-    id: 4,
+    id: 5,
     title: "Users",
     href: "/dashboard/users",
     icon: <FaUsers size={32} />,
@@ -66,7 +73,7 @@ const Sidebar = () => {
 
 
       {/* Logout */}
-      <div className="mt-32">
+      <div className="mt-20">
           <p className="cursor-pointer text-white flex items-center gap-2 text-2xl">
             <span>
                 <IoMdLogOut size={32} />

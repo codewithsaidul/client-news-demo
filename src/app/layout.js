@@ -37,9 +37,7 @@ export default function RootLayout({ children }) {
         className={`${inter.variable} ${merriWeather.variable} ${loraSerif.variable} antialiased`}
       >
         <ReduxProvider>
-          <Navbar />
           {children}
-          <Footer />
         </ReduxProvider>
       </body>
     </html>
