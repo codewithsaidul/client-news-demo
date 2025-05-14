@@ -1,5 +1,6 @@
 import React from 'react'
 import NewsCard from './NewsCard'
+import DataTable from './DataTable'
 
 const Overview = () => {
   return (
@@ -8,6 +9,7 @@ const Overview = () => {
 
         <div className='mt-20'>
             <NewsCard />
+            <DataTable />
         </div>
     </div>
   )

@@ -99,7 +99,7 @@ export const newsData = [
     isEditorsPick: false,
     isBreaking: false,
     views: 1345,
-    status: "published",
+    status: "unpublished",
   },
   {
     id: "nws003",
@@ -142,7 +142,7 @@ export const newsData = [
     isEditorsPick: false,
     isBreaking: false,
     views: 3112,
-    status: "published",
+    status: "unpublished",
   },
   {
     id: "nws005",
@@ -185,7 +185,7 @@ export const newsData = [
     isEditorsPick: false,
     isBreaking: false,
     views: 1987,
-    status: "published",
+    status: "unpublished",
   },
   {
     id: "nws007",
