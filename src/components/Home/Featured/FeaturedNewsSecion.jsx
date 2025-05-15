@@ -1,11 +1,11 @@
-import Link from "next/link"
+import Link from "next/link";
 import { IoIosArrowForward } from "react-icons/io";
 import MainFeaturedNews from "./MainFeaturedNews";
 import { useGetLatestNewsQuery } from "@/features/LatestNews/latestNewsAPI";
 import Loader from "@/components/loading/Loader";
 import FeatureSideNews from "./FeatureSideNews";
 import EditorsPick from "./EditorsPick";
-
+import Heading from "@/components/SectionHeading/Heading";
 
 const FeaturedNewsSecion = () => {
   const { data, isLoading } = useGetLatestNewsQuery();
@@ -24,14 +24,13 @@ const FeaturedNewsSecion = () => {
 
   const featuredNews = data.filter((news) => news.isFeatured);
 
-
   return (
     <section className="mb-20">
       {/* ================= Featured Heading ====================== */}
-      <div className="text-news-dark flex justify-between items-center">
-        <h2 className="font-title font-bold text-3xl">Featured</h2>
-        <Link href="#" className="text-lg flex items-center gap-2" >View All <IoIosArrowForward  size={20} /></Link>
-      </div>
+     <Heading title="Featured" link="#" />
+
+
+     {/* ====================== Feature Container =========================== */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-20">
         <div className="lg:col-span-7">
           <MainFeaturedNews featuredNews={featuredNews} />
@@ -43,7 +42,7 @@ const FeaturedNewsSecion = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default FeaturedNewsSecion
+export default FeaturedNewsSecion;

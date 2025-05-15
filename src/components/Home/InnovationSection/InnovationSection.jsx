@@ -5,7 +5,7 @@ import SidebarNews from "../NewsSection/SidebarNews";
 import Heading from "@/components/SectionHeading/Heading";
 import Loader from "@/components/loading/Loader";
 
-const EconomyFinance = () => {
+const InnovationSection = () => {
   const { data, isLoading } = useGetAllNewsQuery();
 
   if (isLoading) {
@@ -24,34 +24,32 @@ const EconomyFinance = () => {
     (news) => !news.isFeatured && !news.isBreaking
   );
 
-  const economyFinance = filterNews.filter(
-    (news) => news.category === "Finance"
+  const innovationNews = filterNews.filter(
+    (news) => news.category === "Business"
   );
 
-  if (!isLoading && economyFinance <= 0) return null;
+  if (!isLoading && innovationNews <= 0) return null;
 
   return (
     <div className="mt-20">
       {/* ========================= Section Heading ====================== */}
-      <Heading title="Economy and Finance" link="#" />
+      <Heading title="Innovation" link="/category/innovation" />
       {/* ========================= Section Heading ====================== */}
 
       <div className="relative min-h-screen grid grid-cols-1 md:grid-cols-12 gap-10">
         <div className="md:col-span-8 relative order-1">
           {/* Left Column Content */}
-          {economyFinance.length > 0 && (
+          {innovationNews.length > 0 && (
             <div>
-              <FeatureNews news={economyFinance[0]} />
-              <LeftNewsList allNews={economyFinance} />
+              <FeatureNews news={innovationNews[0]} />
+              <LeftNewsList allNews={innovationNews} />
             </div>
           )}
         </div>
         <div className="md:col-span-4 order-2">
           <div className="sticky top-28">
             {/* Right Column Content */}
-            {economyFinance.length > 0 && (
-              <SidebarNews allNews={economyFinance} />
-            )}
+            {innovationNews.length > 0 && <SidebarNews allNews={innovationNews} />}
           </div>
         </div>
       </div>
@@ -59,4 +57,4 @@ const EconomyFinance = () => {
   );
 };
 
-export default EconomyFinance;
+export default InnovationSection;

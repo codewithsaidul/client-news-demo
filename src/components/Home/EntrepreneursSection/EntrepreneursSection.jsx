@@ -5,8 +5,7 @@ import SidebarNews from "../NewsSection/SidebarNews";
 import Heading from "@/components/SectionHeading/Heading";
 import Loader from "@/components/loading/Loader";
 
-
-const Entrepreneurs = () => {
+const EntrepreneursSection = () => {
   const { data, isLoading } = useGetAllNewsQuery();
 
   if (isLoading) {
@@ -25,34 +24,32 @@ const Entrepreneurs = () => {
     (news) => !news.isFeatured && !news.isBreaking
   );
 
-  const entrepreneurs = filterNews.filter(
-    (news) => news.category === "Forbes Women" //"Entrepreneurs"
+  const entrepreneursNews = filterNews.filter(
+    (news) => news.category === "Business"
   );
 
-  if (!isLoading && entrepreneurs <= 0) return null;
+  if (!isLoading && entrepreneursNews <= 0) return null;
 
   return (
     <div className="mt-20">
       {/* ========================= Section Heading ====================== */}
-      <Heading title="Entrepreneurs" link="#" />
+      <Heading title="Entrepreneurs" link="/category/entrepreneurs" />
       {/* ========================= Section Heading ====================== */}
 
       <div className="relative min-h-screen grid grid-cols-1 md:grid-cols-12 gap-10">
-        <div className="md:col-span-8 relative order-1">
+        <div className="md:col-span-8 relative order-2">
           {/* Left Column Content */}
-          {entrepreneurs.length > 0 && (
+          {entrepreneursNews.length > 0 && (
             <div>
-              <FeatureNews news={entrepreneurs[0]} />
-              <LeftNewsList allNews={entrepreneurs} />
+              <FeatureNews news={entrepreneursNews[0]} />
+              <LeftNewsList allNews={entrepreneursNews} />
             </div>
           )}
         </div>
-        <div className="md:col-span-4 order-2">
+        <div className="md:col-span-4 order-1">
           <div className="sticky top-28">
             {/* Right Column Content */}
-            {entrepreneurs.length > 0 && (
-              <SidebarNews allNews={entrepreneurs} />
-            )}
+            {entrepreneursNews.length > 0 && <SidebarNews allNews={entrepreneursNews} />}
           </div>
         </div>
       </div>
@@ -60,4 +57,4 @@ const Entrepreneurs = () => {
   );
 };
 
-export default Entrepreneurs;
+export default EntrepreneursSection;

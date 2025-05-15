@@ -5,7 +5,7 @@ import SidebarNews from "../NewsSection/SidebarNews";
 import Heading from "@/components/SectionHeading/Heading";
 import Loader from "@/components/loading/Loader";
 
-const HumanCapital = () => {
+const BillionairesSection = () => {
   const { data, isLoading } = useGetAllNewsQuery();
 
   if (isLoading) {
@@ -24,32 +24,32 @@ const HumanCapital = () => {
     (news) => !news.isFeatured && !news.isBreaking
   );
 
-  const humanCapital = filterNews.filter(
-    (news) => news.category === "Forbes Women" // "Human Capital"
+  const billionairesNews = filterNews.filter(
+    (news) => news.category === "Business"
   );
 
-  if (!isLoading && humanCapital <= 0) return null;
+  if (!isLoading && billionairesNews <= 0) return null;
 
   return (
     <div className="mt-20">
       {/* ========================= Section Heading ====================== */}
-      <Heading title="Human Capital" link="#" />
+      <Heading title="Billionaires" link="/category/billionaires" />
       {/* ========================= Section Heading ====================== */}
 
       <div className="relative min-h-screen grid grid-cols-1 md:grid-cols-12 gap-10">
-        <div className="md:col-span-8 relative order-1">
+        <div className="md:col-span-8 relative order-2">
           {/* Left Column Content */}
-          {humanCapital.length > 0 && (
+          {billionairesNews.length > 0 && (
             <div>
-              <FeatureNews news={humanCapital[0]} />
-              <LeftNewsList allNews={humanCapital} />
+              <FeatureNews news={billionairesNews[0]} />
+              <LeftNewsList allNews={billionairesNews} />
             </div>
           )}
         </div>
-        <div className="md:col-span-4 order-2">
+        <div className="md:col-span-4 order-1">
           <div className="sticky top-28">
             {/* Right Column Content */}
-            {humanCapital.length > 0 && <SidebarNews allNews={humanCapital} />}
+            {billionairesNews.length > 0 && <SidebarNews allNews={billionairesNews} />}
           </div>
         </div>
       </div>
@@ -57,4 +57,4 @@ const HumanCapital = () => {
   );
 };
 
-export default HumanCapital;
+export default BillionairesSection;

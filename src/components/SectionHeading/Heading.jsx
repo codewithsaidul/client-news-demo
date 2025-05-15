@@ -1,12 +1,19 @@
 import Link from "next/link";
+import { IoIosArrowForward } from "react-icons/io";
 
 const Heading = ({ title, link }) => {
   return (
-    <div className="mb-16 flex  items-center gap-3">
-      <Link href={link} className="text-2xl min-[500px]:text-3xl min-sm:text-4xl inline font-title font-bold text-news-headline border-4 border-transparent duration-300 hover:border-b-news-dark hover:duration-300">
+    <div className="mb-16 flex justify-between items-center gap-3">
+      <h2 className="text-2xl min-[500px]:text-3xl min-sm:text-4xl inline font-title font-bold text-news-headline duration-300 hover:duration-300">
         {title}
+      </h2>
+
+      <Link href={link} className="flex items-center gap-1 text-lg">
+        View All
+        <span>
+          <IoIosArrowForward size={20} />
+        </span>
       </Link>
-      <div className="flex-1 h-1 mt-3 bg-news-headline"></div>
     </div>
   );
 };

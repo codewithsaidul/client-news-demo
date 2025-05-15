@@ -1,20 +1,13 @@
 "use client";
-import Business from "@/components/Home/businessCategory/Business";
-import CountryBranding from "@/components/Home/CountryBranding/CountryBranding";
-import EconomyFinance from "@/components/Home/Economy and Finance/EconomyFinance";
-import Entrepreneurs from "@/components/Home/Entrepreneurs/Entrepreneurs";
+import BillionairesSection from "@/components/Home/BillionairesSection/BillionairesSection";
+import EntrepreneursSection from "@/components/Home/EntrepreneursSection/EntrepreneursSection";
 import FeaturedNewsSecion from "@/components/Home/Featured/FeaturedNewsSecion";
-import {
-  ForbesLife,
-  ForbesLiveEvents,
-  ForbesNetwork,
-  ForbesWomen,
-} from "@/components/Home/Forbes";
-import Hero from "@/components/Home/Hero";
-import HumanCapital from "@/components/Home/Human Capital/HumanCapital";
-import PersonalFinances from "@/components/Home/Personal Finances/PersonalFinances";
-import Sustainability from "@/components/Home/Sustainability/Sustainability";
-import Technology from "@/components/Home/Technology/Technology";
+import Hero from "@/components/Home/HeroSection/Hero";
+import InnovationSection from "@/components/Home/InnovationSection/InnovationSection";
+import InvestingSection from "@/components/Home/InvestingSection/InvestingSection";
+import LeadershipSection from "@/components/Home/LeadershipSection/LeadershipSection";
+import LifeSection from "@/components/Home/LifeSection/LifeSection";
+import MagazineSection from "@/components/Home/MagazineSection/MagazineSection";
 
 export default function Home() {
   return (
@@ -24,18 +17,13 @@ export default function Home() {
       <div className="px-4 md:px-8 mt-32 relative">
         <div className="mt-20">
           <FeaturedNewsSecion />
-          <Business />
-          <ForbesWomen />
-          <Entrepreneurs />
-          <Sustainability />
-          <EconomyFinance />
-          <PersonalFinances />
-          <ForbesNetwork />
-          <ForbesLife />
-          <HumanCapital />
-          <Technology />
-          <ForbesLiveEvents />
-          <CountryBranding />
+          <LifeSection />
+          <MagazineSection />
+          <EntrepreneursSection />
+          <InnovationSection />
+          <BillionairesSection />
+          <InvestingSection />
+          <LeadershipSection />
         </div>
       </div>
     </main>
