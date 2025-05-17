@@ -35,15 +35,16 @@ export default function DashboardLayout({ children }) {
     <html lang="en">
       <body>
         <ReduxProvider>
-          <div className="flex items-center justify-between">
-            <div className="w-[20%] h-screen bg-news-dark pb-5">
-              <Sidebar />
+          <div className="flex min-h-screen">
+            <div className="w-[20%] bg-news-dark pb-5">
+              <div className="sticky top-10 h-screen">
+                <Sidebar />
+              </div>
             </div>
-            <div className="w-[80%] h-screen">
-              {children}
-            </div>
+
+
+            <div className="w-[80%]">{children}</div>
           </div>
-          
         </ReduxProvider>
       </body>
     </html>

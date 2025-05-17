@@ -3,7 +3,6 @@ import Loader from "@/components/loading/Loader";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -41,7 +40,7 @@ const DataTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {allNews.slice(0, 6).map((news) => (
+          {allNews.slice(0, 15).map((news) => (
             <TableRow key={news.id}>
               <TableCell className="font-medium">{news.id}</TableCell>
               <TableCell className="text-xl font-title font-semibold truncate">{news.title}</TableCell>
