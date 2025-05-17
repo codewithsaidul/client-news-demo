@@ -15,7 +15,7 @@ const navLinks = [
   {
     id: 2,
     title: "Overview",
-    href: "/dashboard/overview",
+    href: "/dashboard",
     icon: <MdDashboard size={32} />,
   },
   {
