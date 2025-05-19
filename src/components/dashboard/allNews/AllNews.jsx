@@ -65,7 +65,7 @@ const AllNews = () => {
               <TableCell>{dateFormater(news.createdAt)}</TableCell>
               <TableCell className="flex gap-2">
                 <Button className="bg-blue-500">
-                    <Link href={`/editNews/${news.id}`}>Edit</Link>
+                    <Link href={`/dashboard/editNews/${news.id}`}>Edit</Link>
                 </Button>
                 <Button className="bg-red-600">Delete</Button>
               </TableCell>
