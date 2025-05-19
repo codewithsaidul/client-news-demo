@@ -1,9 +1,9 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { X } from "lucide-react";
-import { useState } from "react";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   Select,
   SelectContent,
@@ -13,8 +13,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Button } from "@/components/ui/button";
+import { X } from "lucide-react";
+import { useState } from "react";
 
 const AddNewsForm = () => {
   const [tags, setTags] = useState([]);
@@ -179,7 +179,7 @@ const AddNewsForm = () => {
 
         {/* submit button */}
         <div className="w-full">
-          <Input type="submit" />
+          <Button type="submit" className="w-full text-xl font-medium font-title text-news-white-bg bg-news-dark p-7">Add News</Button>
         </div>
       </form>
     </div>

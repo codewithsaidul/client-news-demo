@@ -10,7 +10,7 @@ const navLinks = [
     id: 1,
     title: "Back to Home",
     href: "/",
-    icon: <FaHome size={32} />
+    icon: <FaHome size={32} />,
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const navLinks = [
     id: 3,
     title: "All News",
     href: "/dashboard/allNews",
-    icon: <GiNewspaper size={32} />
+    icon: <GiNewspaper size={32} />,
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const navLinks = [
 
 const Sidebar = () => {
   return (
-    <div className="mt-16 px-8 flex flex-col justify-between space-y-8">
+    <div className="mt-16 px-8 flex flex-col justify-between h-[90vh]">
       <div>
         <Link href="/">
           <Image
@@ -52,35 +52,34 @@ const Sidebar = () => {
             className="object-cover w-auto h-auto"
           />
         </Link>
-      </div>
 
-      {/* nav links */}
-      <div className="mt-10">
-        <ul className="flex flex-col gap-10">
-          {navLinks.map((item) => (
-            <li key={item.id} className="border-b border-white/20 pb-3">
-              <Link
-                href={item.href}
-                className="flex items-center gap-2 text-white text-2xl"
-              >
-                <span>{item.icon}</span>
-                {item.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {/* nav links */}
+        <div className="mt-10">
+          <ul className="flex flex-col gap-10">
+            {navLinks.map((item) => (
+              <li key={item.id} className="border-b border-white/20 pb-3">
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-2 text-white text-2xl"
+                >
+                  <span>{item.icon}</span>
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-
 
       {/* Logout */}
-      <div className="mt-20">
-          <p className="cursor-pointer text-white flex items-center gap-2 text-2xl">
-            <span>
-                <IoMdLogOut size={32} />
-            </span>
+      <div>
+        <p className="cursor-pointer text-white flex items-center gap-2 text-2xl">
+          <span>
+            <IoMdLogOut size={32} />
+          </span>
 
-            <span>Logout</span>
-          </p>
+          <span>Logout</span>
+        </p>
       </div>
     </div>
   );
