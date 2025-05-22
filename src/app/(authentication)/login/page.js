@@ -15,29 +15,64 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 
 // Validation schema for username and password
 const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }),
+  email: z
+    .string()
+    .nonempty({ message: "Email is required" })
+    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, { message: "Invalid email address" }),
   password: z.string().min(6, {
     message: "Password must be at least 6 characters.",
   }),
 });
+4;
 
 const Login = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/dashboard";
+
+  
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "",
+      email: "",
       password: "",
     },
   });
 
-  function onSubmit(values) {
-    console.log(values); // { username: "value", password: "value" }
-  }
+  const onSubmit = async (values) => {
+    const { email, password } = values;
+    try {
+      const { data, status } = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/login`,
+        { email, password }
+      );
+
+      if (data?.message && status === 200) {
+        Swal.fire({
+          title: data?.message,
+          icon: "success",
+          draggable: true,
+        });
+        router.push(callbackUrl);
+      }
+    } catch (err) {
+      if (err.response) {
+        const message = err.response.data.message;
+
+        Swal.fire({
+          title: message,
+          icon: "error",
+          draggable: true,
+        });
+      }
+    }
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-news-headline">
@@ -62,7 +97,7 @@ const Login = () => {
             {/* Username field */}
             <FormField
               control={form.control}
-              name="username"
+              name="email"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email</FormLabel>
@@ -90,7 +125,9 @@ const Login = () => {
             />
 
             <div className="flex justify-center w-full">
-              <Button type="submit" className="text-xl font-title py-6 px-7">Submit</Button>
+              <Button type="submit" className="text-xl font-title py-6 px-7">
+                Submit
+              </Button>
             </div>
           </form>
         </Form>

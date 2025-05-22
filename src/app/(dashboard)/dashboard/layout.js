@@ -1,24 +1,9 @@
 import { ReduxProvider } from "@/provider/ReduxProvider";
-// import { Inter, Merriweather, Lora } from "next/font/google";
 import "../../globals.css";
 import Sidebar from "@/components/dashboard/sidebar/Sidebar";
-
-// const inter = Inter({
-//   variable: "--font-inter",
-//   subsets: ["latin"],
-//   weight: ["300", "400", "500", "600", "700", "800", "900"],
-// });
-
-// const merriWeather = Merriweather({
-//   variable: "--font-merriweather",
-//   subsets: ["latin"],
-//   weight: ["300", "400", "700", "900"],
-// });
-// const loraSerif = Lora({
-//   variable: "--font-lora",
-//   subsets: ["latin"],
-//   weight: ["400", "500", "600", "700"],
-// });
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import jwt from "jsonwebtoken"
 
 export const metadata = {
   title:
@@ -30,23 +15,33 @@ export const metadata = {
   },
 };
 
-export default function DashboardLayout({ children }) {
+export default async function DashboardLayout({ children }) {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("token")?.value;
+
+  if (!token) {
+    // Login e redirect koro jodi token na thake
+    redirect("/login");
+  }
+
+  try {
+    jwt.verify(token, process.env.JWT_SECRET);
+  } catch (error) {
+    // Invalid token holeo login e redirect
+    redirect("/login");
+  }
+
   return (
-    <html lang="en">
-      <body>
-        <ReduxProvider>
-          <div className="flex min-h-screen">
-            <div className="w-[20%] bg-news-dark pb-5">
-              <div className="sticky top-10 h-screen">
-                <Sidebar />
-              </div>
-            </div>
-
-
-            <div className="w-[80%]">{children}</div>
+    <ReduxProvider>
+      <div className="flex min-h-screen">
+        <div className="w-[20%] bg-news-dark pb-5">
+          <div className="sticky top-10 h-screen">
+            <Sidebar />
           </div>
-        </ReduxProvider>
-      </body>
-    </html>
+        </div>
+
+        <div className="w-[80%]">{children}</div>
+      </div>
+    </ReduxProvider>
   );
 }
