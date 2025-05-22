@@ -4,7 +4,6 @@ import EditForm from "@/components/dashboard/updateNews/EditForm";
 
 const page = ({ params }) => {
   
-  console.log(params.id)
 
   return (
     <div className="p-5">
