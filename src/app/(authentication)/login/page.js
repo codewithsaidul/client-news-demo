@@ -65,9 +65,9 @@ const Login = () => {
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Username</FormLabel>
+                  <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="shadcn" {...field} />
+                    <Input placeholder="admin email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
