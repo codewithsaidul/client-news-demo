@@ -1,9 +1,13 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
 import { FaHome, FaUsers } from "react-icons/fa";
 import { IoMdLogOut } from "react-icons/io";
 import { MdAddBox, MdDashboard } from "react-icons/md";
 import { GiNewspaper } from "react-icons/gi";
+import Swal from "sweetalert2";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const navLinks = [
   {
@@ -39,6 +43,21 @@ const navLinks = [
 ];
 
 const Sidebar = () => {
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await axios("/api/logout");
+      router.push("/login");
+    } catch (err) {
+      Swal.fire({
+        title: "Logout failed",
+        icon: "error",
+        draggable: true,
+      });
+    }
+  };
+
   return (
     <div className="mt-16 px-8 flex flex-col justify-between h-[90vh]">
       <div>
@@ -72,7 +91,7 @@ const Sidebar = () => {
       </div>
 
       {/* Logout */}
-      <div>
+      <div onClick={handleLogout}>
         <p className="cursor-pointer text-white flex items-center gap-2 text-2xl">
           <span>
             <IoMdLogOut size={32} />
