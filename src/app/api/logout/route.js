@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
-export const GET = async () => {
+export const POST = async () => {
   const cookieStore = cookies();
   cookieStore.set("token", "", {
     path: "/",
