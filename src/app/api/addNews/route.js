@@ -1,10 +1,26 @@
+import { connectDB } from "@/lib/connectDB";
 import { verifyAccess } from "@/lib/verifyAccess";
 import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
-  const errorResponse = verifyAccess(req);
-  if (errorResponse) return errorResponse;
+  try {
+    const errorResponse = verifyAccess(req);
+    if (errorResponse) return errorResponse;
 
+    // get news data from client side
+    const data = await req.json();
 
-  return NextResponse.json({ message: "You have access" }, { status: 200 });
+    // connected with mongodb database
+    const db = await connectDB();
+
+    // insert news data on db
+    const result = await db.collection("allNews").insertOne(data);
+
+    return NextResponse.json(result, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Something went wrong" },
+      { status: 500 }
+    );
+  }
 };

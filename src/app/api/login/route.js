@@ -2,15 +2,12 @@ import { connectDB } from "@/lib/connectDB";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
 
 const JWT_SECRET = process.env.JWT_SECRET; // Add this in your .env.local
 
 export const POST = async (req) => {
   try {
     const { email, password } = await req.json();
-
-    console.log(email);
 
     const db = await connectDB();
     const user = await db.collection("users").findOne({ email });
