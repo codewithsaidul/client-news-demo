@@ -42,10 +42,9 @@ export const POST = async (req) => {
       maxAge: 60 * 60 * 24 * 7, // 7 days
     });
 
-    return new Response(
-      JSON.stringify({ message: "Login successful" }),
-      { status: 200 }
-    );
+    return new Response(JSON.stringify({ message: "Login successful" }), {
+      status: 200,
+    });
   } catch (err) {
     console.error("Registration error:", err);
     return new Response("Internal Server Error", { status: 500 });
