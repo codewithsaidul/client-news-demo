@@ -26,6 +26,7 @@ import { X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { z } from "zod";
 import { Controller, useForm } from "react-hook-form";
+import { uploadToImgBB } from "@/lib/uploadImage";
 
 // Validation schema for username and password
 const formSchema = z.object({
@@ -126,7 +127,12 @@ const AddNewsForm = () => {
   };
 
   const onSubmit = async (values) => {
-    console.log(values);
+
+    
+
+    const file = values.thumbnail[0];
+    const imgUrl = await uploadToImgBB(file)
+
   };
 
   return (
