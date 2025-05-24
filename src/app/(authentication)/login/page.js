@@ -29,7 +29,6 @@ const formSchema = z.object({
     message: "Password must be at least 6 characters.",
   }),
 });
-4;
 
 const Login = () => {
   const router = useRouter();
