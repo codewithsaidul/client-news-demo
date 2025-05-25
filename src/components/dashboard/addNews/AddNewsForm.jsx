@@ -21,68 +21,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useAddNewsMutation } from "@/features/addNews/addNewsAPI";
+import { uploadToImgBB } from "@/lib/uploadImage";
+import { formSchema } from "@/schema/formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { X } from "lucide-react";
-import { useState, useEffect } from "react";
-import { z } from "zod";
-import { Controller, useForm } from "react-hook-form";
-import { uploadToImgBB } from "@/lib/uploadImage";
-
-// Validation schema for username and password
-const formSchema = z.object({
-  // News Title
-  title: z
-    .string()
-    .min(10, { message: "Title must be at least 10 characters" })
-    .nonempty({ message: "Title is required" }),
-
-  // Thumbnail (will be a FileList if using file input)
-  thumbnail: z.custom((val) => val instanceof FileList && val.length > 0, {
-    message: "Thumbnail is required",
-  }),
-
-  // Description (textarea)
-  description: z
-    .string()
-    .min(50, { message: "Description must be at least 50 characters" }),
-
-  // Tags (array of strings, can be optional or required)
-  tags: z.array(z.string()).min(1, { message: "At least one tag is required" }),
-
-  // Category (dropdown)
-  category: z
-    .string()
-    .nonempty({ message: "Category is required" })
-    .refine(
-      (val) =>
-        [
-          "word",
-          "innovation",
-          "billionaires",
-          "entrepreneurs",
-          "leadership",
-          "investing",
-        ].includes(val),
-      {
-        message: "Invalid category selected",
-      }
-    ),
-
-  // Status (dropdown)
-  status: z.enum(["published", "unpublished"], {
-    required_error: "Status is required",
-  }),
-
-  // Priority (radio group)
-  priority: z.enum(["none", "isFeatured", "isEditorsPick", "isBreaking"], {
-    required_error: "Priority type is required",
-  }),
-});
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const AddNewsForm = () => {
   const [tags, setTags] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [addNews, { isLoading }] = useAddNewsMutation();
 
+  // get the react hook form with default values
   const form = useForm({
     resolver: zodResolver(formSchema),
     mode: "onSubmit",
@@ -93,7 +46,7 @@ const AddNewsForm = () => {
       description: "",
       tags: [], // This should be updated as user adds tags
       category: "",
-      status: "unpublished", // Or leave as "" if it's mandatory to select
+      status: "published", // Or leave as "" if it's mandatory to select
       priority: "none", // Default radio value
     },
   });
@@ -126,13 +79,40 @@ const AddNewsForm = () => {
     form.setValue("tags", updatedTags, { shouldValidate: true }); // Sync immediately
   };
 
+  // ====================== submit news data on db ====================
   const onSubmit = async (values) => {
-
-    
-
     const file = values.thumbnail[0];
-    const imgUrl = await uploadToImgBB(file)
+    const imgUrl = await uploadToImgBB(file);
 
+    const newsData = {
+      title: values.title,
+      thumbnail: imgUrl,
+      description: values.description,
+      tags: values.tags,
+      category: values.category,
+      status: values.status,
+      priority: values.priority,
+    };
+
+    try {
+      console.log(imgUrl);
+      const res = await addNews(newsData).unwrap();
+      // acknowledged
+
+      if (res.acknowledged) {
+        Swal.fire({
+          title: "News Added successfully!",
+          icon: "success",
+          draggable: true,
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        title: "Failed to add news",
+        icon: "error",
+        draggable: true,
+      });
+    }
   };
 
   return (
@@ -362,11 +342,10 @@ const AddNewsForm = () => {
           {/* submit button */}
           <div className="w-full">
             <Button
-              onClick={() => console.log("Button clicked")}
               type="submit"
               className="w-full text-xl font-medium font-title text-news-white-bg bg-news-dark p-7"
             >
-              Add News
+              {isLoading ? "Loading..." : "Add News"}
             </Button>
           </div>
         </form>

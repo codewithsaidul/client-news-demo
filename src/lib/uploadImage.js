@@ -8,6 +8,15 @@ export const uploadToImgBB = async (file) => {
     body: formData,
   });
 
+  if (!res.ok) {
+    const text = await res.text();
+    throw new Error(`ImgBB upload failed with status ${res.status}: ${text}`);
+  }
+
   const data = await res.json();
+
+  if (!data || !data.data || !data.data.url) {
+    throw new Error(`ImgBB upload returned invalid response: ${JSON.stringify(data)}`);
+  }
   return data.data.url; // use this URL in your DB
 };
