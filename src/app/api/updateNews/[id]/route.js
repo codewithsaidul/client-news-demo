@@ -17,6 +17,8 @@ export const PATCH = async (req, { params }) => {
       $set: updateData
     }
 
+    console.log(id)
+
     // connected with mongodb database
     const db = await connectDB();
 

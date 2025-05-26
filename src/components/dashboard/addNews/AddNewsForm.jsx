@@ -95,7 +95,6 @@ const AddNewsForm = () => {
     };
 
     try {
-      console.log(imgUrl);
       const res = await addNews(newsData).unwrap();
       // acknowledged
 
@@ -106,7 +105,7 @@ const AddNewsForm = () => {
           draggable: true,
         });
       }
-    } catch (error) {
+    } catch{
       Swal.fire({
         title: "Failed to add news",
         icon: "error",

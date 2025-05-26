@@ -1,10 +1,15 @@
-"use client"
+"use client";
 import EditForm from "@/components/dashboard/updateNews/EditForm";
+import { useGetSingleNewsQuery } from "@/features/getSingleNews/singleNewsAPI";
+import { use } from "react";
 
+const EditNews = ({ params }) => {
+  const { id } = use(params);
+  const { data: singleNews, isLoading } = useGetSingleNewsQuery(id);
 
-const page = ({ params }) => {
-  
-  console.log(params)
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="p-5">
@@ -13,10 +18,10 @@ const page = ({ params }) => {
       </div>
 
       <div className="mt-16">
-        <EditForm />
+        <EditForm singleNews={singleNews} />
       </div>
     </div>
   );
 };
 
-export default page;
+export default EditNews;

@@ -1,14 +1,16 @@
 import { newsData } from "@/constants/data"
-import { connectDB } from "@/lib/connectDB"
+import { connectDB } from "@/lib/connectDB";
 import { NextResponse } from "next/server"
 
 
 export const GET = async () => {
     try {
 
-        // const db = await connectDB();
-        // const result = await db.collection("allNews").find().toArray();
-        return NextResponse.json("result", { status: 200})
+        const db = await connectDB();
+        const result = await db.collection("allNews").find().toArray();
+        // return NextResponse.json(result, { status: 200})
+
+        return NextResponse.json(newsData)
     } catch (error) {
         return NextResponse.json(
       { error: "Something went wrong" },
