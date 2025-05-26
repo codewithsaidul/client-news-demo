@@ -14,11 +14,13 @@ import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 import { useDeleteNewsMutation } from "@/features/deleteNews/deleteNewsAPI";
 import { dateFormater } from "@/lib/utils";
 import Link from "next/link";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import { twMerge } from "tailwind-merge";
 
-const AllNews = () => {
-  const { data: allNews, isLoading } = useGetAllNewsQuery();
+const DashboardAllNews = () => {
+  const [ page, setPage ] = useState(1)
+  const { data, isLoading } = useGetAllNewsQuery(page);
   const [deleteNews] = useDeleteNewsMutation();
 
   if (isLoading) {
@@ -52,6 +54,9 @@ const AllNews = () => {
     }
   };
 
+  const { data: allNews, pagination} = data;
+
+
   return (
     <div>
       {allNews.length > 0 ? (
@@ -59,11 +64,13 @@ const AllNews = () => {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[100px]">Id</TableHead>
+                <TableHead className="w-[100px]">Sl No</TableHead>
                 <TableHead>Title</TableHead>
                 <TableHead>Description</TableHead>
+                <TableHead>Category</TableHead>
                 <TableHead>Status</TableHead>
-                {/* <Tablenews.idHead>Timestamp</Tablenews.idHead> */}
+                <TableHead>Timestamp</TableHead>
+                <TableHead>Action</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -74,7 +81,10 @@ const AllNews = () => {
                     {news.title}
                   </TableCell>
                   <TableCell className="truncate max-w-[300px]">
-                    {news.content}
+                    {news.description}
+                  </TableCell>
+                  <TableCell className="capitalize">
+                    {news.category}
                   </TableCell>
                   <TableCell>
                     <span
@@ -88,7 +98,7 @@ const AllNews = () => {
                       {news.status}
                     </span>
                   </TableCell>
-                  {/* <TableCell>{dateFormater(news.createdAt)}</TableCell> */}
+                  <TableCell>{dateFormater(news.createdAt)}</TableCell>
                   <TableCell className="flex gap-2">
                     <Button className="bg-blue-500">
                       <Link href={`/dashboard/editNews/${news._id}`}>Edit</Link>
@@ -106,7 +116,7 @@ const AllNews = () => {
           </Table>
 
           <div>
-            <PaginationPage />
+            <PaginationPage page={page} setPage={setPage} totalPages={pagination?.totalPages} />
           </div>
         </div>
       ) : (
@@ -118,4 +128,4 @@ const AllNews = () => {
   );
 };
 
-export default AllNews;
+export default DashboardAllNews;

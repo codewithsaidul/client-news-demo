@@ -5,7 +5,7 @@ import { apiSlice } from "../Api/apiSlice";
 export const allNewsAPI = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllNews: builder.query({
-      query: () => `/api/allNews`
+      query: (page) => `/api/allNews?page=${page}`
     }),
   }),
 });

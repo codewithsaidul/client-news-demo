@@ -33,7 +33,8 @@ import Swal from "sweetalert2";
 const AddNewsForm = () => {
   const [tags, setTags] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [addNews, { isLoading }] = useAddNewsMutation();
+  const [ addNews ] = useAddNewsMutation();
+  const [ isLoading, setIsLoading] = useState(false)
 
   // get the react hook form with default values
   const form = useForm({
@@ -81,6 +82,7 @@ const AddNewsForm = () => {
 
   // ====================== submit news data on db ====================
   const onSubmit = async (values) => {
+    setIsLoading(true);
     const file = values.thumbnail[0];
     const imgUrl = await uploadToImgBB(file);
 
@@ -96,7 +98,6 @@ const AddNewsForm = () => {
 
     try {
       const res = await addNews(newsData).unwrap();
-      // acknowledged
 
       if (res.acknowledged) {
         Swal.fire({
@@ -104,13 +105,16 @@ const AddNewsForm = () => {
           icon: "success",
           draggable: true,
         });
+        setIsLoading(false);
       }
-    } catch{
+    } catch (error) {
       Swal.fire({
         title: "Failed to add news",
         icon: "error",
         draggable: true,
       });
+      setIsLoading(false);
+      console.log(error)
     }
   };
 

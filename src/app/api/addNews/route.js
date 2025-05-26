@@ -1,4 +1,3 @@
-import { newsData } from "@/constants/data";
 import { connectDB } from "@/lib/connectDB";
 import { verifyAccess } from "@/lib/verifyAccess";
 import { NextResponse } from "next/server";
@@ -16,7 +15,7 @@ export const POST = async (req) => {
 
     // add timestamp
     const newsData = {
-      ...newsData,
+      ...data,
       createdAt: new Date()
     }
 

@@ -1,8 +1,8 @@
-import AllNews from "@/components/dashboard/allNews/AllNews";
+import DashboardAllNews from "@/components/dashboard/DashboardAllNews/DashboardAllNews";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
-import React from "react";
+
 
 const page = () => {
   return (
@@ -20,7 +20,7 @@ const page = () => {
       </div>
 
       <div className="mt-16">
-        <AllNews />
+        <DashboardAllNews />
       </div>
     </div>
   );
