@@ -1,12 +1,12 @@
-import { useGetAllNewsQuery } from "@/features/AllNews/allNewsAPI";
+import Heading from "@/components/SectionHeading/Heading";
+import Loader from "@/components/loading/Loader";
+import { useGetDummyNewsQuery } from "@/features/dummyNews/dummyNewsAPI";
 import FeatureNews from "../NewsSection/FeatureNews";
 import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";
-import Heading from "@/components/SectionHeading/Heading";
-import Loader from "@/components/loading/Loader";
 
 const InvestingSection = () => {
-  const { data, isLoading } = useGetAllNewsQuery();
+  const { data, isLoading } = useGetDummyNewsQuery();
 
   if (isLoading) {
     return (

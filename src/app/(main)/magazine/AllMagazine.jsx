@@ -3,10 +3,10 @@ import ArticaleCard from '@/components/CommonPageLayout/ArticaleCard';
 import HeroSection from '@/components/CommonPageLayout/HeroSection';
 import HightlightCard from '@/components/CommonPageLayout/HightlightCard';
 import Loader from '@/components/loading/Loader';
-import { useGetAllNewsQuery } from '@/features/AllNews/allNewsAPI';
+import { useGetDummyNewsQuery } from '@/features/dummyNews/dummyNewsAPI';
 
 const AllMagazine = () => {
-    const { data, isLoading } = useGetAllNewsQuery();
+    const { data, isLoading } = useGetDummyNewsQuery();
 
   if (isLoading) {
     return (

@@ -148,7 +148,7 @@ const EditForm = ({ singleNews }) => {
   // JSX render conditionally (not hook)
 
   const onSubmit = async (values) => {
-    let imgUrl = singleNews.thumbnail; // ধরি আগের থাম্বনেইল URL
+    let imgUrl = singleNews.thumbnail; // thumbnail url from db
 
     if (
       values.thumbnail &&
@@ -156,7 +156,7 @@ const EditForm = ({ singleNews }) => {
       values.thumbnail[0] instanceof File
     ) {
       const file = values.thumbnail[0];
-      imgUrl = await uploadToImgBB(file);
+      imgUrl = await uploadToImgBB(file); // new thumbnail url
     }
 
     const newsData = {

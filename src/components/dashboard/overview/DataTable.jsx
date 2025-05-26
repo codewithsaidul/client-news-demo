@@ -8,12 +8,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useGetAllNewsQuery } from "@/features/AllNews/allNewsAPI";
+import { useGetDummyNewsQuery } from "@/features/dummyNews/dummyNewsAPI";
 import { dateFormater } from "@/lib/utils";
 import { twMerge } from "tailwind-merge";
 
 const DataTable = () => {
-  const { data: allNews, isLoading } = useGetAllNewsQuery();
+  const { data: allNews, isLoading } = useGetDummyNewsQuery();
 
   if (isLoading) {
     return (

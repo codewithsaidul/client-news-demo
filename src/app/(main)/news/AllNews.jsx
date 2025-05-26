@@ -5,10 +5,10 @@ import HeroSection from "@/components/CommonPageLayout/HeroSection";
 import HightlightCard from "@/components/CommonPageLayout/HightlightCard";
 import Loader from "@/components/loading/Loader";
 import PaginationPage from "@/components/Shared/PaginationPage";
-import { useGetAllNewsQuery } from "@/features/AllNews/allNewsAPI";
+import { useGetDummyNewsQuery } from "@/features/dummyNews/dummyNewsAPI";
 
 const AllNews = () => {
-  const { data, isLoading } = useGetAllNewsQuery();
+  const { data, isLoading } = useGetDummyNewsQuery();
 
   if (isLoading) {
     return (

@@ -1,6 +1,7 @@
 "use client";
 import Loader from "@/components/loading/Loader";
-import { useGetAllNewsQuery } from "@/features/AllNews/allNewsAPI";
+import PaginationPage from "@/components/Shared/PaginationPage";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -9,14 +10,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { useGetDummyNewsQuery } from "@/features/dummyNews/dummyNewsAPI";
 import { dateFormater } from "@/lib/utils";
-import { twMerge } from "tailwind-merge";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import PaginationPage from "@/components/Shared/PaginationPage";
+import { twMerge } from "tailwind-merge";
 
 const AllNews = () => {
-  const { data: allNews, isLoading } = useGetAllNewsQuery();
+  const { data: allNews, isLoading } = useGetDummyNewsQuery();
 
   if (isLoading) {
     return (

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Hero = () => {
 
-    // const { data, isLoading } = useGetAllNewsQuery();
+    // const { data, isLoading } = useGetDummyNewsQuery();
   
     // if (isLoading) {
     //   return (

@@ -1,8 +1,6 @@
 "use client"
-import { useGetAllNewsQuery } from "@/features/AllNews/allNewsAPI";
-import Loader from "../loading/Loader";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 const HightlightCard = ( { allNews } ) => {
 
