@@ -1,19 +1,21 @@
 import { connectDB } from "@/lib/connectDB";
+import { verifyAccess } from "@/lib/verifyAccess";
 import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 
-export const GET = async (req, { params }) => {
+export const DELETE = async (req, { params }) => {
   try {
+    const errorResponse = verifyAccess(req);
+    if (errorResponse) return errorResponse;
 
-
-    const { id } = params
+    const { id } = params;
 
     // connected with mongodb database
     const db = await connectDB();
-    const query = { _id: new ObjectId(id)}
+    const query = { _id: new ObjectId(id) };
 
     // insert news data on db
-    const result = await db.collection("allNews").findOne(query);
+    const result = await db.collection("allNews").deleteOne(query);
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {

@@ -11,12 +11,15 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
+import { useDeleteNewsMutation } from "@/features/deleteNews/deleteNewsAPI";
 import { dateFormater } from "@/lib/utils";
 import Link from "next/link";
+import Swal from "sweetalert2";
 import { twMerge } from "tailwind-merge";
 
 const AllNews = () => {
   const { data: allNews, isLoading } = useGetAllNewsQuery();
+  const [deleteNews] = useDeleteNewsMutation();
 
   if (isLoading) {
     return (
@@ -29,6 +32,25 @@ const AllNews = () => {
       </div>
     );
   }
+
+  const deleteNewsByID = async (id) => {
+    try {
+      const { data } = await deleteNews(id);
+      if (data.acknowledged && data.deletedCount > 0) {
+        Swal.fire({
+          title: "News delete successfully!",
+          icon: "success",
+          draggable: true,
+        });
+      }
+    } catch {
+      Swal.fire({
+        title: "News deleted unsuccessfully!",
+        icon: "error",
+        draggable: true,
+      });
+    }
+  };
 
   return (
     <div>
@@ -71,7 +93,12 @@ const AllNews = () => {
                     <Button className="bg-blue-500">
                       <Link href={`/dashboard/editNews/${news._id}`}>Edit</Link>
                     </Button>
-                    <Button className="bg-red-600">Delete</Button>
+                    <Button
+                      className="bg-red-600 cursor-pointer"
+                      onClick={() => deleteNewsByID(news._id)}
+                    >
+                      Delete
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))}
