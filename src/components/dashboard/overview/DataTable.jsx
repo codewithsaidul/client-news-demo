@@ -8,12 +8,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useGetDummyNewsQuery } from "@/features/dummyNews/dummyNewsAPI";
+import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 import { dateFormater } from "@/lib/utils";
 import { twMerge } from "tailwind-merge";
 
 const DataTable = () => {
-  const { data: allNews, isLoading } = useGetDummyNewsQuery();
+  const { data: allNews, isLoading } = useGetAllNewsQuery();
 
   if (isLoading) {
     return (
@@ -35,17 +35,17 @@ const DataTable = () => {
             <TableHead className="w-[100px]">Id</TableHead>
             <TableHead>Title</TableHead>
             <TableHead>Description</TableHead>
-            <TableHead>Timestamp</TableHead>
+            {/* <TableHead>Timestamp</TableHead> */}
             <TableHead className="text-right">Status</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
-          {allNews.slice(0, 15).map((news) => (
-            <TableRow key={news.id}>
-              <TableCell className="font-medium">{news.id}</TableCell>
-              <TableCell className="text-xl font-title font-semibold truncate">{news.title}</TableCell>
-              <TableCell className="truncate">{news.content}</TableCell>
-              <TableCell>{dateFormater(news.createdAt)}</TableCell>
+          {allNews.slice(0, 15).map((news, index) => (
+            <TableRow key={news._id}>
+              <TableCell className="font-medium">{index + 1}</TableCell>
+              <TableCell className="text-xl font-title font-semibold truncate max-w-[300px]">{news.title}</TableCell>
+              <TableCell className="truncate max-w-[300px]">{news.content}</TableCell>
+              {/* <TableCell>{dateFormater(news.createdAt)}</TableCell> */}
               <TableCell className="text-right">
                 <span className={twMerge("p-2 rounded-lg capitalize",
                     news.status === "published" ? "bg-[#00C62C]/10 text-[#00C62C]" : "bg-[#FFA82E]/10 text-[#FFA82E]"

@@ -1,3 +1,4 @@
+import { newsData } from "@/constants/data";
 import { connectDB } from "@/lib/connectDB";
 import { verifyAccess } from "@/lib/verifyAccess";
 import { NextResponse } from "next/server";
@@ -13,8 +14,14 @@ export const POST = async (req) => {
     // connected with mongodb database
     const db = await connectDB();
 
+    // add timestamp
+    const newsData = {
+      ...newsData,
+      createdAt: new Date()
+    }
+
     // insert news data on db
-    const result = await db.collection("allNews").insertOne(data);
+    const result = await db.collection("allNews").insertOne(newsData);
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {
