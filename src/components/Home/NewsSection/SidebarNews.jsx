@@ -8,8 +8,8 @@ const SidebarNews = ( { allNews } ) => {
     <div className="min-[500px]:p-4 bg-news-white-bg min-[500px]:shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg h-fit">
       <div className="flex flex-col gap-5 w-full">
         {allNews.length > 0 &&
-          allNews.slice(6, 8).map((news) => (
-            <div key={news._id} className="w-full pr-4">
+          allNews.slice(6, 8).map((news, index) => (
+            <div key={index} className="w-full pr-4">
               <figure>
                 <Image
                   src={news.thumbnail}

@@ -10,7 +10,7 @@ export const GET = async (req) => {
     const limit =  20;
     const skip = (page - 1) * limit;
 
-
+    console.log(page)
     const query = {};
 
     if (priority !== "none") query.priority = priority;

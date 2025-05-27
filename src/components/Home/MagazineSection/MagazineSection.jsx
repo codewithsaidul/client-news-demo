@@ -1,12 +1,12 @@
 import Heading from "@/components/SectionHeading/Heading";
 import Loader from "@/components/loading/Loader";
-import { useGetDummyNewsQuery } from "@/features/dummyNews/dummyNewsAPI";
+import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 import FeatureNews from "../NewsSection/FeatureNews";
 import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";
 
 const MagazineSection = () => {
-  const { data, isLoading } = useGetDummyNewsQuery();
+  const { data: news, isLoading } = useGetAllNewsQuery( { page: 3 } );
 
   if (isLoading) {
     return (
@@ -20,15 +20,8 @@ const MagazineSection = () => {
     );
   }
 
-  const filterNews = data.filter(
-    (news) => !news.isFeatured && !news.isBreaking
-  );
+  const magazineNews = news.data;
 
-  const magazineNews = filterNews.filter(
-    (news) => news.category === "Business" // "magazine"
-  );
-
-  if (!isLoading && magazineNews <= 0) return null;
 
   return (
     <div className="mt-20">

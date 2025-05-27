@@ -7,7 +7,7 @@ import SidebarNews from "../NewsSection/SidebarNews";
 import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 
 const LifeSection = () => {
-  const { data: news, isLoading } = useGetAllNewsQuery( { page: 1 } );
+  const { data: news, isLoading } = useGetAllNewsQuery( { page: 2 } );
 
   if (isLoading) {
     return (

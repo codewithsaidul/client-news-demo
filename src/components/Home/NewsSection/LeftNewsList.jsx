@@ -7,9 +7,9 @@ const LeftNewsList = ({ allNews }) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-16 w-full">
       {allNews.length > 0 &&
-        allNews.slice(1, 5).map((news) => (
+        allNews.slice(1, 5).map((news, index) => (
           <div
-            key={news._id}
+            key={index}
             className="w-full flex max-[450px]:flex-col flex-row md:flex-col lg:flex-row min-[451px]:items-center gap-2"
           >
             <figure>
