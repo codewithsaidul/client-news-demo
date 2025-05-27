@@ -5,9 +5,9 @@ const ArticaleCard = ({ allNews }) => {
   return (
     <div className="mt-16 grid grid-cols-1  gap-10">
       {allNews.slice(4, 8).map((news) => (
-        <div key={news.id} className="border-b pb-10">
-          <Link href={news.id} className="flex gap-5 items-center">
-            <figure>
+        <div key={news._id} className="border-b pb-10">
+          <Link href={news._id} className="flex gap-5 items-center">
+            <figure className="w-[20%]">
               <Image
                 src={news.thumbnail}
                 alt={news.title}
@@ -17,16 +17,17 @@ const ArticaleCard = ({ allNews }) => {
               />
             </figure>
 
-            <div className="mt-5 space-y-2">
+            <div className="mt-5 space-y-2 w-[80%]">
               <h2 className="tex-xl sm:text-2xl font-title font-bold ">
                 {news.title}
               </h2>
-              <p className="text-lg font-medium text-gray-400">
-                {news.excerpt}
+              <p className="text-lg font-medium text-gray-400 line-clamp-4">
+                {news.description}
               </p>
               <p className="flex items-center gap-1 text-gray-400">
                 by
-                <span className="font-bold font-title">{news.author.name}</span>
+                {/* <span className="font-bold font-title">{news.author.name}</span> */}
+                <span className="font-bold font-title">Forbes Admin</span>
               </p>
             </div>
           </Link>
