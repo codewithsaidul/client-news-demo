@@ -1,14 +1,12 @@
-import Link from "next/link";
-import { IoIosArrowForward } from "react-icons/io";
-import MainFeaturedNews from "./MainFeaturedNews";
-import { useGetLatestNewsQuery } from "@/features/LatestNews/latestNewsAPI";
 import Loader from "@/components/loading/Loader";
-import FeatureSideNews from "./FeatureSideNews";
-import EditorsPick from "./EditorsPick";
 import Heading from "@/components/SectionHeading/Heading";
+import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
+import EditorsPick from "./EditorsPick";
+import FeatureSideNews from "./FeatureSideNews";
+import MainFeaturedNews from "./MainFeaturedNews";
 
 const FeaturedNewsSecion = () => {
-  const { data, isLoading } = useGetLatestNewsQuery();
+  const { data: news, isLoading } = useGetAllNewsQuery({ priority: "isFeatured"});
 
   if (isLoading) {
     return (
@@ -22,12 +20,12 @@ const FeaturedNewsSecion = () => {
     );
   }
 
-  const featuredNews = data.filter((news) => news.isFeatured);
+  const featuredNews = news.data;
 
   return (
     <section className="mb-20">
       {/* ================= Featured Heading ====================== */}
-     <Heading title="Featured" link="#" />
+     <Heading title="Featured" link="news" />
 
 
      {/* ====================== Feature Container =========================== */}

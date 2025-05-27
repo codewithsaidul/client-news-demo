@@ -1,9 +1,9 @@
 import Loader from "@/components/loading/Loader";
-import { useGetLatestNewsQuery } from "@/features/LatestNews/latestNewsAPI";
+import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 import Link from "next/link";
 
 const EditorsPick = () => {
-  const { data, isLoading } = useGetLatestNewsQuery();
+  const { data: news, isLoading } = useGetAllNewsQuery( { priority: "isEditorsPick" } );
 
   if (isLoading) {
     return (
@@ -17,9 +17,8 @@ const EditorsPick = () => {
     );
   }
 
-  const editorsPick = data.filter((news) => news.isEditorsPick);
+  const editorsPick = news.data
 
-  console.log(editorsPick);
 
   return (
     <div className="mt-10">
@@ -31,9 +30,9 @@ const EditorsPick = () => {
       {/* ============ Editor's Pick Container ================== */}
       <div className="mt-5">
         {editorsPick.length > 0 &&
-          editorsPick.slice(0, 3).map(({ id, title }) => (
-            <div key={id} className="border-b mt-8 pb-10">
-              <Link href="#" className="text-2xl text-news-text duration-500 hover:text-rose-500 hover:duration-500">
+          editorsPick.slice(0, 3).map(({ _id, category, title }) => (
+            <div key={_id} className="border-b mt-8 pb-10">
+              <Link href={`/news/${category}/${_id}`} className="text-2xl text-news-text duration-500 hover:text-rose-500 hover:duration-500">
                 {title}
               </Link>
             </div>

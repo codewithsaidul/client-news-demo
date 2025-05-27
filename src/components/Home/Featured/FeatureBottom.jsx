@@ -4,7 +4,7 @@ import Link from "next/link";
 const FeatureBottom = ({ news }) => {
   return (
     <div className="relative w-full max-lg:border-b max-lg:pb-8">
-      <Link href={`${news.id}`} className="relative">
+      <Link href={`/news/${news.category}/${news._id}`} className="relative">
         <figure className="w-full max-lg:hidden">
           <Image
             src={news.thumbnail}
@@ -26,7 +26,8 @@ const FeatureBottom = ({ news }) => {
           <span className="text-sm">{news.category}</span>
           <h2 className="text-2xl font-bold font-title my-1">{news.title}</h2>
           <p className="text-base">
-            <span className="max-lg:text-gray-500">by</span> {news.author.name}
+            {/* <span className="max-lg:text-gray-500">by</span> {news.author.name} */}
+            <span className="max-lg:text-gray-500">by</span> Forbes Admin
           </p>
         </div>
       </Link>

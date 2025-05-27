@@ -9,7 +9,7 @@ const FeatureSideNews = ({ featuredNews }) => {
       <div className="flex flex-col gap-5 w-full">
         {featuredNews.length > 0 &&
           featuredNews.map((news) => (
-            <div key={news.id} className="w-full flex items-center gap-3 border-b pb-10">
+            <div key={news._id} className="w-full flex items-center gap-3 border-b pb-10">
               <figure>
                 <Image
                   src={news.thumbnail}
@@ -20,11 +20,12 @@ const FeatureSideNews = ({ featuredNews }) => {
                 />
               </figure>
               <div className="mt-2">
-                <Link href={"#"} className="text-3xl font-title text-news-headline font-semibold">
+                <Link href={`/news/${news.category}/${news._id}`} className="text-3xl font-title text-news-headline font-semibold">
                   {news.title}
                 </Link>
                 <p className="text-lg mt-0.5 text-news-text">
-                  <span className="font-bold">{news.author.name}</span>
+                  {/* <span className="font-bold">{news.author.name}</span> */}
+                  <span className="font-bold">Forbes Admin</span>
 
                   <span className="mx-2">|</span>
 
