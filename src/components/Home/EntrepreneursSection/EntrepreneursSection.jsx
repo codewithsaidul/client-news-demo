@@ -4,6 +4,7 @@ import { useGetDummyNewsQuery } from "@/features/dummyNews/dummyNewsAPI";
 import FeatureNews from "../NewsSection/FeatureNews";
 import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";
+import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 
 const EntrepreneursSection = () => {
   const { data: news, isLoading } = useGetAllNewsQuery( { category: "entrepreneurs"});

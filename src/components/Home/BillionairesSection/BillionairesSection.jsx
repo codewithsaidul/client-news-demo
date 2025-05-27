@@ -4,9 +4,10 @@ import { useGetDummyNewsQuery } from "@/features/dummyNews/dummyNewsAPI";
 import FeatureNews from "../NewsSection/FeatureNews";
 import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";
+import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 
 const BillionairesSection = () => {
-  const { data, isLoading } = useGetDummyNewsQuery();
+  const { data: news, isLoading } = useGetAllNewsQuery( { category: "billionaires" } );
 
   if (isLoading) {
     return (
@@ -20,15 +21,8 @@ const BillionairesSection = () => {
     );
   }
 
-  const filterNews = data.filter(
-    (news) => !news.isFeatured && !news.isBreaking
-  );
 
-  const billionairesNews = filterNews.filter(
-    (news) => news.category === "Business"
-  );
-
-  if (!isLoading && billionairesNews <= 0) return null;
+  const billionairesNews = news.data;
 
   return (
     <div className="mt-20">
