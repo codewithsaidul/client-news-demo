@@ -16,7 +16,6 @@ export const GET = async (req) => {
     if (priority !== "none") query.priority = priority;
     if (category !== "none") query.category = category;
 
-    console.log(query)
 
     // isEditorsPick isFeatured isBreaking
 

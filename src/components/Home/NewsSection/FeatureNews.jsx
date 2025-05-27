@@ -13,25 +13,24 @@ const FeatureNews = ({ news }) => {
           alt={news.title}
           width={1280}
           height={780}
-          className="w-full h-96 object-cover"
+          className="w-full h-full object-cover"
         />
-        <Button className="text-xl font-title py-5 px-7 absolute -bottom-4 left-1/2 transform -translate-x-1/2">
-          {news.category === "Finance"
-            ? "Economy and Finance"
-            : news.category}
+        <Button className="text-xl font-title py-5 px-7 absolute -bottom-4 left-1/2 transform -translate-x-1/2 capitalize">
+          { news.category}
         </Button>
       </figure>
 
       <div className="text-center mt-8">
         <Link
-          href={"#"}
+          href={`/news/${news.category}/${news._id}`}
           className="text-2xl min-[350px]:text-3xl md:text-5xl font-bold font-title text-news-headline"
         >
           {news.title}
         </Link>
 
         <p className="text-lg mt-5 text-news-text">
-          <span className="font-bold">{news.author.name}</span>
+          {/* <span className="font-bold">{news.author.name}</span> */}
+          <span className="font-bold">Forbes Admin</span>
 
           <span className="mx-2">|</span>
 

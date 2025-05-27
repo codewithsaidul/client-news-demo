@@ -9,7 +9,7 @@ const LeftNewsList = ({ allNews }) => {
       {allNews.length > 0 &&
         allNews.slice(1, 5).map((news) => (
           <div
-            key={news.id}
+            key={news._id}
             className="w-full flex max-[450px]:flex-col flex-row md:flex-col lg:flex-row min-[451px]:items-center gap-2"
           >
             <figure>
@@ -23,11 +23,12 @@ const LeftNewsList = ({ allNews }) => {
             </figure>
             <div className="mt-2 flex-1 flex">
               <div>
-                <Link href={"#"} className="text-xl font-title font-bold">
+                <Link href={`/news/${news.category}/${news._id}`} className="text-xl font-title font-bold">
                   {news.title}
                 </Link>
                 <p className="text-base mt-0.5 text-news-text">
-                  <span className="font-bold">{news.author.name}</span>
+                  {/* <span className="font-bold">{news.author.name}</span> */}
+                  <span className="font-bold">Forbes Admin</span>
 
                   <span className="mx-2">|</span>
 

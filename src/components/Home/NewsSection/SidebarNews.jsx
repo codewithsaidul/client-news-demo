@@ -9,7 +9,7 @@ const SidebarNews = ( { allNews } ) => {
       <div className="flex flex-col gap-5 w-full">
         {allNews.length > 0 &&
           allNews.slice(6, 8).map((news) => (
-            <div key={news.id} className="w-full pr-4">
+            <div key={news._id} className="w-full pr-4">
               <figure>
                 <Image
                   src={news.thumbnail}
@@ -20,11 +20,12 @@ const SidebarNews = ( { allNews } ) => {
                 />
               </figure>
               <div className="mt-2">
-                <Link href={"#"} className="text-2xl font-title font-bold">
+                <Link href={`/news/${news.category}/${news._id}`} className="text-2xl font-title font-bold">
                   {news.title}
                 </Link>
                 <p className="text-lg mt-0.5 text-news-text">
-                  <span className="font-bold">{news.author.name}</span>
+                  {/* <span className="font-bold">{news.author.name}</span> */}
+                  <span className="font-bold">Forbes Admin</span>
 
                   <span className="mx-2">|</span>
 

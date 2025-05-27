@@ -4,9 +4,10 @@ import { useGetDummyNewsQuery } from "@/features/dummyNews/dummyNewsAPI";
 import FeatureNews from "../NewsSection/FeatureNews";
 import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";
+import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 
 const LifeSection = () => {
-  const { data, isLoading } = useGetDummyNewsQuery();
+  const { data: news, isLoading } = useGetAllNewsQuery( { page: 1 } );
 
   if (isLoading) {
     return (
@@ -20,16 +21,7 @@ const LifeSection = () => {
     );
   }
 
-  const filterNews = data.filter(
-    (news) => !news.isFeatured && !news.isBreaking
-  );
-
-  const businessNews = filterNews.filter(
-    (news) => news.category === "Business"
-  );
-
-  if (!isLoading && businessNews <= 0) return null;
-
+  const filterNews = news.data
   return (
     <div className="mt-20">
       {/* ========================= Section Heading ====================== */}
@@ -39,17 +31,17 @@ const LifeSection = () => {
       <div className="relative min-h-screen grid grid-cols-1 md:grid-cols-12 gap-10">
         <div className="md:col-span-8 relative order-2">
           {/* Left Column Content */}
-          {businessNews.length > 0 && (
+          {filterNews.length > 0 && (
             <div>
-              <FeatureNews news={businessNews[0]} />
-              <LeftNewsList allNews={businessNews} />
+              <FeatureNews news={filterNews[0]} />
+              <LeftNewsList allNews={filterNews} />
             </div>
           )}
         </div>
         <div className="md:col-span-4 order-1">
           <div className="sticky top-28">
             {/* Right Column Content */}
-            {businessNews.length > 0 && <SidebarNews allNews={businessNews} />}
+            {filterNews.length > 0 && <SidebarNews allNews={filterNews} />}
           </div>
         </div>
       </div>
