@@ -6,7 +6,7 @@ import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";
 
 const EntrepreneursSection = () => {
-  const { data, isLoading } = useGetDummyNewsQuery();
+  const { data: news, isLoading } = useGetAllNewsQuery( { category: "entrepreneurs"});
 
   if (isLoading) {
     return (
@@ -20,15 +20,8 @@ const EntrepreneursSection = () => {
     );
   }
 
-  const filterNews = data.filter(
-    (news) => !news.isFeatured && !news.isBreaking
-  );
 
-  const entrepreneursNews = filterNews.filter(
-    (news) => news.category === "Business"
-  );
-
-  if (!isLoading && entrepreneursNews <= 0) return null;
+  const entrepreneursNews = news.data;
 
   return (
     <div className="mt-20">
