@@ -2,7 +2,7 @@ import Login from "@/components/auth/Login"
 import { Suspense } from "react"
 
 
-const page = () => {
+const Page = () => {
   return (
     <Suspense fallback={<div>Loading login page...</div>}>
       <Login />
@@ -10,4 +10,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
