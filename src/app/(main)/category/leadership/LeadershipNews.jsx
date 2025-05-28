@@ -1,13 +1,19 @@
-"use client"
+"use client";
 
 import ArticaleCard from "@/components/CommonPageLayout/ArticaleCard";
 import HeroSection from "@/components/CommonPageLayout/HeroSection";
 import HightlightCard from "@/components/CommonPageLayout/HightlightCard";
 import Loader from "@/components/loading/Loader";
-import { useGetDummyNewsQuery } from "@/features/dummyNews/dummyNewsAPI";
+import PaginationPage from "@/components/Shared/PaginationPage";
+import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
+import { useState } from "react";
 
 const LeadershipNews = () => {
-   const { data, isLoading } = useGetDummyNewsQuery();
+  const [page, setPage] = useState(1);
+  const { data, isLoading } = useGetAllNewsQuery({
+    page: page,
+    category: "leadership",
+  });
 
   if (isLoading) {
     return (
@@ -21,13 +27,25 @@ const LeadershipNews = () => {
     );
   }
 
+  const { data: news, pagination } = data;
+
+  const leadershipNews = news.filter((news) => news.priority === "none");
+
   return (
     <div className="px-4 md:px-8 mt-20">
-      <HeroSection news={data[0]} />
-      <HightlightCard allNews={data} />
-      <ArticaleCard allNews={data} />
+      <HeroSection news={leadershipNews[0]} />
+      <HightlightCard allNews={leadershipNews} />
+      <ArticaleCard allNews={leadershipNews} />
+
+      <div className="mt-7">
+        <PaginationPage
+          page={page}
+          setPage={setPage}
+          totalPages={pagination?.totalPages}
+        />
+      </div>
     </div>
   );
-}
+};
 
-export default LeadershipNews
+export default LeadershipNews;
