@@ -17,6 +17,8 @@ export const GET = async (req) => {
     if (category !== "none") query.category = category;
 
 
+    console.log(query)
+
     // isEditorsPick isFeatured isBreaking
 
     // connecting with mongodb
@@ -29,7 +31,7 @@ export const GET = async (req) => {
       .limit(limit)
       .toArray();
 
-      const total = await db.collection("allNews").countDocuments();
+      const total = await db.collection("allNews").countDocuments(query);
     
     return NextResponse.json({
         data: result,
