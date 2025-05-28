@@ -1,5 +1,4 @@
 "use client";
-import Loader from "@/components/loading/Loader";
 import {
   Table,
   TableBody,
@@ -8,26 +7,11 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 import { dateFormater } from "@/lib/utils";
 import { twMerge } from "tailwind-merge";
 
-const DataTable = () => {
-  const { data: news, isLoading } = useGetAllNewsQuery( { page: 1 });
+const DataTable = ( { allNews }) => {
 
-  if (isLoading) {
-    return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-10 mt-10">
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
-      </div>
-    );
-  }
-
-  const allNews = news.data;
 
   return (
     <div className="mt-12">

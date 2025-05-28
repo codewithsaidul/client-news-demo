@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input";
 import Image from "next/image";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 // Validation schema for username and password
 const formSchema = z.object({

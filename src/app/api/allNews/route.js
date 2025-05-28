@@ -15,7 +15,6 @@ export const GET = async (req) => {
     if (priority !== "none") query.priority = priority;
     if (category !== "none") query.category = category;
 
-
     // connecting with mongodb
     const db = await connectDB();
     const result = await db
@@ -28,6 +27,12 @@ export const GET = async (req) => {
 
     const total = await db.collection("allNews").countDocuments();
 
+    // Count published and unpublished with same filters
+    const publishedCount = await db
+      .collection("allNews")
+      .countDocuments({ ...query, status: "published" });
+    const unpublishedCount = total - publishedCount;
+
     return NextResponse.json(
       {
         data: result,
@@ -35,6 +40,8 @@ export const GET = async (req) => {
           total,
           page,
           limit,
+          published: publishedCount,
+          unpublished: unpublishedCount,
           totalPages: Math.ceil(total / limit),
         },
       },

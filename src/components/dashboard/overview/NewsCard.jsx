@@ -1,7 +1,10 @@
 import Image from "next/image";
 import { FaNewspaper } from "react-icons/fa";
 
-const NewsCard = () => {
+const NewsCard = ( { published, totalNews, unpublished }) => {
+
+
+
   return (
     <div className="grid grid-cols-3 gap-7">
       {/* ============ Card Item 1 ============= */}
@@ -11,7 +14,7 @@ const NewsCard = () => {
         </div>
 
         <div className="text-center py-2">
-          <span className="text-2xl font-bold">150</span>
+          <span className="text-2xl font-bold">{totalNews}</span>
           <h3 className="text-xl text-news-text">Total News</h3>
         </div>
       </div>
@@ -29,7 +32,7 @@ const NewsCard = () => {
         </div>
 
         <div className="text-center py-2">
-          <span className="text-2xl font-bold">120</span>
+          <span className="text-2xl font-bold">{published}</span>
           <h3 className="text-xl text-news-text">Published</h3>
         </div>
       </div>
@@ -47,7 +50,7 @@ const NewsCard = () => {
         </div>
 
         <div className="text-center py-2">
-          <span className="text-2xl font-bold">30</span>
+          <span className="text-2xl font-bold">{unpublished}</span>
           <h3 className="text-xl text-news-text">Unublished</h3>
         </div>
       </div>
