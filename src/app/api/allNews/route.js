@@ -31,7 +31,7 @@ export const GET = async (req) => {
       .limit(limit)
       .toArray();
 
-      const total = await db.collection("allNews").countDocuments(query);
+      const total = await db.collection("allNews").countDocuments();
     
     return NextResponse.json({
         data: result,
