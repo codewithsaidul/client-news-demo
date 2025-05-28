@@ -7,15 +7,13 @@ export const GET = async (req) => {
     const page = parseInt(url.searchParams.get("page") || "1");
     const priority = url.searchParams.get("priority") || "none";
     const category = url.searchParams.get("category") || "none";
-    const limit =  20;
+    const limit = 20;
     const skip = (page - 1) * limit;
-
 
     const query = {};
 
     if (priority !== "none") query.priority = priority;
     if (category !== "none") query.category = category;
-
 
 
     // connecting with mongodb
@@ -28,9 +26,10 @@ export const GET = async (req) => {
       .limit(limit)
       .toArray();
 
-      const total = await db.collection("allNews").countDocuments();
-    
-    return NextResponse.json({
+    const total = await db.collection("allNews").countDocuments();
+
+    return NextResponse.json(
+      {
         data: result,
         pagination: {
           total,
@@ -38,7 +37,9 @@ export const GET = async (req) => {
           limit,
           totalPages: Math.ceil(total / limit),
         },
-      }, { status: 200 });
+      },
+      { status: 200 }
+    );
   } catch (error) {
     return NextResponse.json(
       { error: "Something went wrong" },

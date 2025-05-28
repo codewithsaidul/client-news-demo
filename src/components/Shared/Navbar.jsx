@@ -6,18 +6,35 @@ import Link from "next/link";
 import Image from "next/image";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 import { navMenuList } from "@/constants/data";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { Input } from "../ui/input";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [showInput, setShowInput] = useState(false);
   const pathName = usePathname();
+  const [query, setQuery] = useState("");
+  const router = useRouter();
+
+  const handleSearch = (e) => {
+    if (e.key === "Enter" && query.trim() !== "") {
+      router.push(`/search?s=${encodeURIComponent(query.trim())}`);
+      setQuery("");
+      setShowInput(false);
+    }
+  };
 
   let headerColor;
 
-  if (pathName === "/" || pathName === "/news" || pathName === "/lists" || pathName === "/life") {
-    headerColor = "bg-news-headline"
+  if (
+    pathName === "/" ||
+    pathName === "/news" ||
+    pathName === "/lists" ||
+    pathName === "/life"
+  ) {
+    headerColor = "bg-news-headline";
   } else {
-    headerColor = "bg-news-dark"
+    headerColor = "bg-news-dark";
   }
 
   if (pathName === "/dashboard") return null;
@@ -40,9 +57,9 @@ const Navbar = () => {
 
             <div className="max-sm:hidden">
               <ul className="flex gap-5">
-                {navMenuList.map(({id,link, name}) => (
+                {navMenuList.map(({ id, link, name }) => (
                   <li
-                  key={id}
+                    key={id}
                     className="text-news-white-bg text-xl font-title max-sm:border-b max-sm:border-white/30 max-sm:pb-7"
                   >
                     <Link href={link}>{name}</Link>
@@ -54,7 +71,20 @@ const Navbar = () => {
 
           {/* =============== search icon =================== */}
           <div className="flex items-center gap-5">
-            <span>
+            {showInput && (
+              <div className="transition-all duration-500">
+                <Input
+                  onChange={(e) => setQuery(e.target.value)}
+                  onKeyDown={handleSearch}
+                  placeholder="search here..."
+                  className="text-white"
+                />
+              </div>
+            )}
+            <span
+              onClick={() => setShowInput(!showInput)}
+              className="cursor-pointer"
+            >
               <FaMagnifyingGlass size={24} color="#FFF" />
             </span>
             <span className="text-3xl min-sm:hidden font-bold cursor-pointer transition-all duration-1000">
