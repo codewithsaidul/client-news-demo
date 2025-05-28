@@ -26,6 +26,7 @@ import { uploadToImgBB } from "@/lib/uploadImage";
 import { formSchema } from "@/schema/formSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { X } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -35,6 +36,8 @@ const AddNewsForm = () => {
   const [inputValue, setInputValue] = useState("");
   const [ addNews ] = useAddNewsMutation();
   const [ isLoading, setIsLoading] = useState(false)
+    const router = useRouter();
+
 
   // get the react hook form with default values
   const form = useForm({
@@ -103,18 +106,16 @@ const AddNewsForm = () => {
         Swal.fire({
           title: "News Added successfully!",
           icon: "success",
-          draggable: true,
         });
         setIsLoading(false);
+        router.push("/dashboard/allNews")
       }
     } catch (error) {
       Swal.fire({
         title: "Failed to add news",
         icon: "error",
-        draggable: true,
       });
       setIsLoading(false);
-      console.log(error)
     }
   };
 

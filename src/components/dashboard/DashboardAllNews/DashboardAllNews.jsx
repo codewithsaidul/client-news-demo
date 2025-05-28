@@ -42,14 +42,12 @@ const DashboardAllNews = () => {
         Swal.fire({
           title: "News delete successfully!",
           icon: "success",
-          draggable: true,
         });
       }
     } catch {
       Swal.fire({
         title: "News deleted unsuccessfully!",
         icon: "error",
-        draggable: true,
       });
     }
   };

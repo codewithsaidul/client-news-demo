@@ -13,7 +13,7 @@ import { dateFormater } from "@/lib/utils";
 import { twMerge } from "tailwind-merge";
 
 const DataTable = () => {
-  const { data: allNews, isLoading } = useGetAllNewsQuery();
+  const { data: news, isLoading } = useGetAllNewsQuery( { page: 1 });
 
   if (isLoading) {
     return (
@@ -27,6 +27,8 @@ const DataTable = () => {
     );
   }
 
+  const allNews = news.data;
+
   return (
     <div className="mt-12">
       <Table>
@@ -35,7 +37,7 @@ const DataTable = () => {
             <TableHead className="w-[100px]">Id</TableHead>
             <TableHead>Title</TableHead>
             <TableHead>Description</TableHead>
-            {/* <TableHead>Timestamp</TableHead> */}
+            <TableHead>Timestamp</TableHead>
             <TableHead className="text-right">Status</TableHead>
           </TableRow>
         </TableHeader>
@@ -45,7 +47,7 @@ const DataTable = () => {
               <TableCell className="font-medium">{index + 1}</TableCell>
               <TableCell className="text-xl font-title font-semibold truncate max-w-[300px]">{news.title}</TableCell>
               <TableCell className="truncate max-w-[300px]">{news.content}</TableCell>
-              {/* <TableCell>{dateFormater(news.createdAt)}</TableCell> */}
+              <TableCell>{dateFormater(news.createdAt)}</TableCell>
               <TableCell className="text-right">
                 <span className={twMerge("p-2 rounded-lg capitalize",
                     news.status === "published" ? "bg-[#00C62C]/10 text-[#00C62C]" : "bg-[#FFA82E]/10 text-[#FFA82E]"

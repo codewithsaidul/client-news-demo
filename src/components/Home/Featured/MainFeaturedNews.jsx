@@ -1,5 +1,3 @@
-import Loader from "@/components/loading/Loader";
-import { useGetLatestNewsQuery } from "@/features/LatestNews/latestNewsAPI";
 import Image from "next/image";
 import Link from "next/link";
 import FeatureBottom from "./FeatureBottom";

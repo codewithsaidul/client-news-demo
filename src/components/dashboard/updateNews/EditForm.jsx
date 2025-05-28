@@ -81,9 +81,10 @@ const formSchema = z.object({
 
 const EditForm = ({ singleNews }) => {
   const [tags, setTags] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [updateNews] = useUpdateNewsMutation();
-  const router = useRouter()
+  const router = useRouter();
 
   // get the react hook form with default values
   const form = useForm({
@@ -143,11 +144,11 @@ const EditForm = ({ singleNews }) => {
     form.setValue("tags", updatedTags, { shouldValidate: true }); // Sync immediately
   };
 
-  const isLoading = false;
 
   // JSX render conditionally (not hook)
 
   const onSubmit = async (values) => {
+    setIsLoading(true);
     let imgUrl = singleNews.thumbnail; // thumbnail url from db
 
     if (
@@ -176,19 +177,17 @@ const EditForm = ({ singleNews }) => {
         Swal.fire({
           title: "News update successfully!",
           icon: "success",
-          draggable: true,
         });
-
-        router.push("/dashboard")
+        setIsLoading(false)
+        router.push("/dashboard/allNews")
       }
     } catch (error) {
       Swal.fire({
         title: "News update failed",
         icon: "error",
-        draggable: true,
       });
 
-      console.log(error);
+      setIsLoading(false)
     }
   };
 

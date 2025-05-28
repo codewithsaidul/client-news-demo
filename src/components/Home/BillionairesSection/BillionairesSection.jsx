@@ -1,10 +1,9 @@
 import Heading from "@/components/SectionHeading/Heading";
 import Loader from "@/components/loading/Loader";
-import { useGetDummyNewsQuery } from "@/features/dummyNews/dummyNewsAPI";
+import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 import FeatureNews from "../NewsSection/FeatureNews";
 import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";
-import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 
 const BillionairesSection = () => {
   const { data: news, isLoading } = useGetAllNewsQuery( { category: "billionaires" } );

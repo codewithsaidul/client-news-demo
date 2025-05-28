@@ -1,11 +1,21 @@
 "use client";
 import EditForm from "@/components/dashboard/updateNews/EditForm";
 import { useGetSingleNewsQuery } from "@/features/getSingleNews/singleNewsAPI";
-import { use } from "react";
+import { use, useEffect } from "react";
 
 const EditNews = ({ params }) => {
   const { id } = use(params);
-  const { data: singleNews, isLoading } = useGetSingleNewsQuery(id);
+  const { data: singleNews, isLoading, refetch } = useGetSingleNewsQuery(id, {
+    refetchOnMountOrArgChange: true,
+    skip: false,
+  });
+
+  // যখন প্রয়োজন হবে তখন
+  useEffect(() => {
+    if (id) {
+      refetch();
+    }
+  }, [id, refetch]);
 
   if (isLoading) {
     return <div>Loading...</div>;
