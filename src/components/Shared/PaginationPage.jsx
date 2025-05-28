@@ -33,7 +33,7 @@ const PaginationPage = ({ page, setPage, totalPages }) => {
                 if (page > 1) setPage(page - 1);
               }}
               aria-disabled={isDisabled}
-              className={`px-3 py-1 rounded-md ${
+              className={`px-3 py-1 rounded-md cursor-pointer ${
                 isDisabled &&
                 "text-muted pointer-events-none cursor-not-allowed opacity-50"
               }`}
@@ -48,6 +48,7 @@ const PaginationPage = ({ page, setPage, totalPages }) => {
                   e.preventDefault();
                   setPage(p);
                 }}
+                className="cursor-pointer"
               >
                 {p}
               </PaginationLink>
@@ -61,7 +62,7 @@ const PaginationPage = ({ page, setPage, totalPages }) => {
                 if (page < totalPages) setPage(page + 1);
               }}
               aria-disabled={isDisabled}
-              className={`px-3 py-1 rounded-md ${
+              className={`px-3 py-1 rounded-md cursor-pointer ${
                 page === totalPages &&
                 "text-muted pointer-events-none cursor-not-allowed opacity-50"
               }`}
@@ -121,7 +122,7 @@ const PaginationPage = ({ page, setPage, totalPages }) => {
               if (page > 1) setPage(page - 1);
             }}
             aria-disabled={isDisabled}
-            className={`px-3 py-1 rounded-md ${
+            className={`px-3 py-1 rounded-md cursor-pointer ${
               isDisabled &&
               "text-muted pointer-events-none cursor-not-allowed opacity-50"
             }`}
@@ -145,6 +146,7 @@ const PaginationPage = ({ page, setPage, totalPages }) => {
                   e.preventDefault();
                   setPage(p);
                 }}
+                className="cursor-pointer"
               >
                 {p}
               </PaginationLink>
@@ -159,7 +161,7 @@ const PaginationPage = ({ page, setPage, totalPages }) => {
               if (page < totalPages) setPage(page + 1);
             }}
             aria-disabled={isDisabled}
-            className={`px-3 py-1 rounded-md ${
+            className={`px-3 py-1 rounded-md cursor-pointer ${
               page === totalPages &&
               "text-muted pointer-events-none cursor-not-allowed opacity-50"
             }`}
