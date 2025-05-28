@@ -6,7 +6,7 @@ export const GET = async (req) => {
     const url = new URL(req.url);
     const page = parseInt(url.searchParams.get("page") || "1");
     const search = url.searchParams.get("s") || "none";
-    const limit = 20;
+    const limit = 10;
     const skip = (page - 1) * limit;
 
     const query = {};
@@ -14,8 +14,6 @@ export const GET = async (req) => {
     if (search !== "none") {
       query.title = { $regex: search, $options: "i" }; // case-insensitive search on title
     }
-
-    console.log(query);
 
     // connecting with mongodb
     const db = await connectDB();
