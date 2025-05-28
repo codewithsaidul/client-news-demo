@@ -6,7 +6,7 @@ const ArticaleCard = ({ allNews }) => {
     <div className="mt-16 grid grid-cols-1  gap-10">
       {allNews.slice(4, 8).map((news) => (
         <div key={news._id} className="border-b pb-10">
-          <Link href={news._id} className="flex gap-5 items-center">
+          <Link href={`/news/${news.category}/${news._id}`} className="flex gap-5 items-center">
             <figure className="w-[20%]">
               <Image
                 src={news.thumbnail}

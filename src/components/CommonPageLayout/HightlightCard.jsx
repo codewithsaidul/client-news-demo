@@ -8,7 +8,7 @@ const HightlightCard = ( { allNews } ) => {
     <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {allNews.slice(1, 4).map((news) => (
         <div key={news._id}>
-          <Link href={news._id}>
+          <Link href={`/news/${news.category}/${news._id}`}>
             <figure>
               <Image
                 src={news.thumbnail}
