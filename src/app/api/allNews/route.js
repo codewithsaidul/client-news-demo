@@ -17,9 +17,6 @@ export const GET = async (req) => {
     if (category !== "none") query.category = category;
 
 
-    console.log(query)
-
-    // isEditorsPick isFeatured isBreaking
 
     // connecting with mongodb
     const db = await connectDB();

@@ -1,16 +1,20 @@
-"use client"
-import ArticaleCard from '@/components/CommonPageLayout/ArticaleCard';
-import HeroSection from '@/components/CommonPageLayout/HeroSection';
-import HightlightCard from '@/components/CommonPageLayout/HightlightCard';
-import Loader from '@/components/loading/Loader';
-import { useGetDummyNewsQuery } from '@/features/dummyNews/dummyNewsAPI';
+"use client";
+
+import ArticaleCard from "@/components/CommonPageLayout/ArticaleCard";
+import HeroSection from "@/components/CommonPageLayout/HeroSection";
+import HightlightCard from "@/components/CommonPageLayout/HightlightCard";
+import Loader from "@/components/loading/Loader";
+import PaginationPage from "@/components/Shared/PaginationPage";
+import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
+import { useState } from "react";
 
 const AllMagazine = () => {
-    const { data, isLoading } = useGetDummyNewsQuery();
+  const [page, setPage] = useState(1);
+  const { data, isLoading } = useGetAllNewsQuery({ page: page });
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-10 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-10 my-10">
         <Loader />
         <Loader />
         <Loader />
@@ -20,13 +24,24 @@ const AllMagazine = () => {
     );
   }
 
+  const { data: news, pagination } = data;
+
   return (
     <div className="px-4 md:px-8 mt-20">
-      <HeroSection news={data[0]} />
-      <HightlightCard allNews={data} />
-      <ArticaleCard allNews={data} />
+      <HeroSection news={news[0]} />
+      <HightlightCard allNews={news} />
+      <ArticaleCard allNews={news} />
+
+      <div className="mt-7">
+        <PaginationPage
+          page={page}
+          setPage={setPage}
+          totalPages={pagination?.totalPages}
+        />
+      </div>
     </div>
   );
-}
+};
+
 
 export default AllMagazine
