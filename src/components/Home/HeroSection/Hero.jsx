@@ -22,6 +22,8 @@ const Hero = () => {
     );
   }
 
+  console.log(news)
+
   const breakingNews = news.data[0];
 
 

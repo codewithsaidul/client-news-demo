@@ -19,8 +19,8 @@ import Swal from "sweetalert2";
 import { twMerge } from "tailwind-merge";
 
 const DashboardAllNews = () => {
-  const [ page, setPage ] = useState(1)
-  const { data, isLoading } = useGetAllNewsQuery(page);
+  const [page, setPage] = useState(1);
+  const { data, isLoading } = useGetAllNewsQuery({ page });
   const [deleteNews] = useDeleteNewsMutation();
 
   if (isLoading) {
@@ -34,6 +34,7 @@ const DashboardAllNews = () => {
       </div>
     );
   }
+
 
   const deleteNewsByID = async (id) => {
     try {
@@ -52,8 +53,7 @@ const DashboardAllNews = () => {
     }
   };
 
-  const { data: allNews, pagination} = data;
-
+  const { data: allNews, pagination } = data;
 
   return (
     <div>
@@ -81,9 +81,7 @@ const DashboardAllNews = () => {
                   <TableCell className="truncate max-w-[300px]">
                     {news.description}
                   </TableCell>
-                  <TableCell className="capitalize">
-                    {news.category}
-                  </TableCell>
+                  <TableCell className="capitalize">{news.category}</TableCell>
                   <TableCell>
                     <span
                       className={twMerge(
@@ -114,7 +112,11 @@ const DashboardAllNews = () => {
           </Table>
 
           <div>
-            <PaginationPage page={page} setPage={setPage} totalPages={pagination?.totalPages} />
+            <PaginationPage
+              page={page}
+              setPage={setPage}
+              totalPages={pagination?.totalPages}
+            />
           </div>
         </div>
       ) : (

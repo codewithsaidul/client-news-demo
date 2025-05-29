@@ -19,7 +19,6 @@ const Overview = () => {
 
   const { data: news, pagination } = data;
 
-  console.log(pagination)
 
 
   return (
