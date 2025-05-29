@@ -1,12 +1,12 @@
-
+import { Suspense } from "react"
 import Search from '@/components/search/Search'
 
 const page = () => {
     
   return (
-    <div>
+    <Suspense fallback={<div>Loading login page...</div>}>
         <Search />
-    </div>
+    </Suspense>
   )
 }
 
