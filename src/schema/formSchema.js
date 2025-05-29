@@ -31,12 +31,21 @@ export const formSchema = z.object({
     .refine(
       (val) =>
         [
-          "word",
+          "world news",
           "innovation",
           "billionaires",
           "entrepreneurs",
           "leadership",
           "investing",
+          "top 10", 
+          "must Read", 
+          "editor's Picks",
+          "travel", 
+          "lifestyle", 
+          "health",
+          "cover Story", 
+          "exclusive", 
+          "breaking Today"
         ].includes(val),
       {
         message: "Invalid category selected",
@@ -46,6 +55,11 @@ export const formSchema = z.object({
   // Status (dropdown)
   status: z.enum(["published", "unpublished"], {
     required_error: "Status is required",
+  }),
+
+  // Priority (radio group)
+  categoryType: z.enum(["normal", "life", "list", "magazine"], {
+    required_error: "Category type is required",
   }),
 
   // Priority (radio group)

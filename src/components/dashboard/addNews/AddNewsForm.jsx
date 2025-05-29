@@ -31,13 +31,27 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
+const categoryMap = {
+  normal: [
+    "World News",
+    "Innovation",
+    "Investing",
+    "Billionaires",
+    "Entrepreneurs",
+    "Leadership",
+  ],
+  life: ["Travel", "Lifestyle", "Health"],
+  list: ["Top 10", "Must Read", "Editor's Picks"],
+  magazine: ["Cover Story", "Exclusive", "Breaking Today"],
+};
+
 const AddNewsForm = () => {
   const [tags, setTags] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [ addNews ] = useAddNewsMutation();
-  const [ isLoading, setIsLoading] = useState(false)
-    const router = useRouter();
-
+  const [addNews] = useAddNewsMutation();
+  const [isLoading, setIsLoading] = useState(false);
+  const [categoryType, setCategoryType] = useState("normal");
+  const router = useRouter();
 
   // get the react hook form with default values
   const form = useForm({
@@ -50,6 +64,7 @@ const AddNewsForm = () => {
       description: "",
       tags: [], // This should be updated as user adds tags
       category: "",
+      newsType: "",
       status: "published", // Or leave as "" if it's mandatory to select
       priority: "none", // Default radio value
     },
@@ -97,6 +112,7 @@ const AddNewsForm = () => {
       category: values.category,
       status: values.status,
       priority: values.priority,
+      newsType: values.categoryType,
     };
 
     try {
@@ -108,7 +124,7 @@ const AddNewsForm = () => {
           icon: "success",
         });
         setIsLoading(false);
-        router.push("/dashboard/allNews")
+        router.push("/dashboard/allNews");
       }
     } catch (error) {
       Swal.fire({
@@ -117,6 +133,7 @@ const AddNewsForm = () => {
       });
       setIsLoading(false);
     }
+
   };
 
   return (
@@ -207,9 +224,52 @@ const AddNewsForm = () => {
             />
           </div>
 
+          {/* news category type */}
+          <div>
+            <FormField
+              control={form.control}
+              name="categoryType"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Select Category Type</FormLabel>
+                  <FormControl>
+                    <RadioGroup
+                      onValueChange={(value) => {
+                        field.onChange(value);
+                        setCategoryType(value);
+                        form.setValue("category", "")
+                      }}
+                      value={field.value || categoryType}
+                      className="flex items-center gap-16"
+                    >
+                      <div className="flex items-center gap-x-3">
+                        <RadioGroupItem value="normal" />
+                        <Label>Normal</Label>
+                      </div>
+                      <div className="flex items-center gap-x-3">
+                        <RadioGroupItem value="life" />
+                        <Label>Life</Label>
+                      </div>
+                      <div className="flex items-center gap-x-3">
+                        <RadioGroupItem value="list" />
+                        <Label>List</Label>
+                      </div>
+                      <div className="flex items-center gap-x-3">
+                        <RadioGroupItem value="magazine" />
+                        <Label>Magazine</Label>
+                      </div>
+                    </RadioGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
           {/* news category & status */}
           <div className="flex items-center gap-5">
             {/* news category */}
+            {/* Category */}
             <div className="w-full">
               <FormField
                 control={form.control}
@@ -220,6 +280,7 @@ const AddNewsForm = () => {
                     <Select
                       onValueChange={field.onChange}
                       value={field.value}
+                      
                       defaultValue=""
                     >
                       <SelectTrigger className="w-full">
@@ -228,16 +289,14 @@ const AddNewsForm = () => {
                       <SelectContent>
                         <SelectGroup>
                           <SelectLabel>Category</SelectLabel>
-                          <SelectItem value="word">World News</SelectItem>
-                          <SelectItem value="innovation">Innovation</SelectItem>
-                          <SelectItem value="billionaires">
-                            Billionaires
-                          </SelectItem>
-                          <SelectItem value="entrepreneurs">
-                            Entrepreneurs
-                          </SelectItem>
-                          <SelectItem value="leadership">Leadership</SelectItem>
-                          <SelectItem value="investing">Investing</SelectItem>
+                          {categoryMap[categoryType]?.map((cat, idx) => (
+                            <SelectItem
+                              key={idx}
+                              value={cat.toLowerCase().replace(/\s/g, "-")}
+                            >
+                              {cat}
+                            </SelectItem>
+                          ))}
                         </SelectGroup>
                       </SelectContent>
                     </Select>

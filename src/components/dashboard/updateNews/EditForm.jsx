@@ -56,12 +56,21 @@ const formSchema = z.object({
     .refine(
       (val) =>
         [
-          "word",
+          "world news",
           "innovation",
           "billionaires",
           "entrepreneurs",
           "leadership",
           "investing",
+          "top 10",
+          "must Read",
+          "editor's Picks",
+          "travel",
+          "lifestyle",
+          "health",
+          "cover Story",
+          "exclusive",
+          "breaking Today",
         ].includes(val),
       {
         message: "Invalid category selected",
@@ -74,15 +83,36 @@ const formSchema = z.object({
   }),
 
   // Priority (radio group)
+  categoryType: z.enum(["normal", "life", "list", "magazine"], {
+    required_error: "Category type is required",
+  }),
+
+  // Priority (radio group)
   priority: z.enum(["none", "isFeatured", "isEditorsPick", "isBreaking"], {
     required_error: "Priority type is required",
   }),
 });
 
+
+const categoryMap = {
+  normal: [
+    "World News",
+    "Innovation",
+    "Investing",
+    "Billionaires",
+    "Entrepreneurs",
+    "Leadership",
+  ],
+  life: ["Travel", "Lifestyle", "Health"],
+  list: ["Top 10", "Must Read", "Editor's Picks"],
+  magazine: ["Cover Story", "Exclusive", "Breaking Today"],
+};
+
 const EditForm = ({ singleNews }) => {
   const [tags, setTags] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [categoryType, setCategoryType] = useState( singleNews?.newsType || "normal");
   const [updateNews] = useUpdateNewsMutation();
   const router = useRouter();
 
@@ -95,6 +125,7 @@ const EditForm = ({ singleNews }) => {
       description: "",
       tags: [],
       category: singleNews?.category || "",
+      categoryType: singleNews?.newsType || "",
       status: "unpublished",
       priority: "featured",
     },
@@ -144,7 +175,6 @@ const EditForm = ({ singleNews }) => {
     form.setValue("tags", updatedTags, { shouldValidate: true }); // Sync immediately
   };
 
-
   // JSX render conditionally (not hook)
 
   const onSubmit = async (values) => {
@@ -166,6 +196,7 @@ const EditForm = ({ singleNews }) => {
       description: values.description,
       tags: values.tags,
       category: values.category,
+      newsType: values.categoryType,
       status: values.status,
       priority: values.priority,
     };
@@ -178,8 +209,8 @@ const EditForm = ({ singleNews }) => {
           title: "News update successfully!",
           icon: "success",
         });
-        setIsLoading(false)
-        router.push("/dashboard/allNews")
+        setIsLoading(false);
+        router.push("/dashboard/allNews");
       }
     } catch (error) {
       Swal.fire({
@@ -187,7 +218,7 @@ const EditForm = ({ singleNews }) => {
         icon: "error",
       });
 
-      setIsLoading(false)
+      setIsLoading(false);
     }
   };
 
@@ -279,6 +310,48 @@ const EditForm = ({ singleNews }) => {
             />
           </div>
 
+          {/* news category type */}
+          <div>
+            <FormField
+              control={form.control}
+              name="categoryType"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Select Category Type</FormLabel>
+                  <FormControl>
+                    <RadioGroup
+                      onValueChange={(value) => {
+                        field.onChange(value);
+                        setCategoryType(value);
+                        form.setValue("category", "");
+                      }}
+                      value={field.value || categoryType}
+                      className="flex items-center gap-16"
+                    >
+                      <div className="flex items-center gap-x-3">
+                        <RadioGroupItem value="normal" />
+                        <Label>Normal</Label>
+                      </div>
+                      <div className="flex items-center gap-x-3">
+                        <RadioGroupItem value="life" />
+                        <Label>Life</Label>
+                      </div>
+                      <div className="flex items-center gap-x-3">
+                        <RadioGroupItem value="list" />
+                        <Label>List</Label>
+                      </div>
+                      <div className="flex items-center gap-x-3">
+                        <RadioGroupItem value="magazine" />
+                        <Label>Magazine</Label>
+                      </div>
+                    </RadioGroup>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+
           {/* news category & status */}
           <div className="flex items-center gap-5">
             {/* news category */}
@@ -290,8 +363,9 @@ const EditForm = ({ singleNews }) => {
                   <FormItem>
                     <FormLabel>Category</FormLabel>
                     <Select
-                      value={singleNews.category}
                       onValueChange={field.onChange}
+                      value={field.value}
+                      defaultValue=""
                     >
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Select a Category" />
@@ -299,16 +373,14 @@ const EditForm = ({ singleNews }) => {
                       <SelectContent>
                         <SelectGroup>
                           <SelectLabel>Category</SelectLabel>
-                          <SelectItem value="word">World News</SelectItem>
-                          <SelectItem value="innovation">Innovation</SelectItem>
-                          <SelectItem value="billionaires">
-                            Billionaires
-                          </SelectItem>
-                          <SelectItem value="entrepreneurs">
-                            Entrepreneurs
-                          </SelectItem>
-                          <SelectItem value="leadership">Leadership</SelectItem>
-                          <SelectItem value="investing">Investing</SelectItem>
+                          {categoryMap[categoryType]?.map((cat, idx) => (
+                            <SelectItem
+                              key={idx}
+                              value={cat.toLowerCase().replace(/\s/g, "-")}
+                            >
+                              {cat}
+                            </SelectItem>
+                          ))}
                         </SelectGroup>
                       </SelectContent>
                     </Select>
