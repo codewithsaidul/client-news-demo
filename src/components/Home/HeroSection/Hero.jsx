@@ -57,12 +57,12 @@ const Hero = () => {
           </span>
 
           {/* ========================= title ======================= */}
-          <h1 className="max-[430px]:text-xl max-[649px]:text-2xl min-[650px]:text-4xl min-[960px]:text-6xl mt-3 mb-7 font-bold font-title duration-500 hover:underline hover:duration-500">
+          <h1 className="max-[430px]:text-xl max-[649px]:text-2xl min-[650px]:text-4xl min-[960px]:text-6xl mt-3 mb-7 font-bold font-title duration-500 hover:underline hover:duration-500 line-clamp-2">
             {breakingNews.title}
           </h1>
 
           {/* ========================= description ======================= */}
-          <p className="max-[430px]:text-sm text-base lg:text-2xl truncate">
+          <p className="max-[430px]:text-sm text-base lg:text-2xl line-clamp-2">
             {breakingNews.description}
           </p>
         </div>

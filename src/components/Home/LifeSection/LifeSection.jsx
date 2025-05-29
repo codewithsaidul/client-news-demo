@@ -22,7 +22,7 @@ const LifeSection = () => {
 
   const filterNews = news.data
   return (
-    <div className="mt-20">
+    <div className="max-[450px]:mt-72 max-[600px]:mt-48 mt-20">
       {/* ========================= Section Heading ====================== */}
       <Heading title="Life" link="/life" />
       {/* ========================= Section Heading ====================== */}
