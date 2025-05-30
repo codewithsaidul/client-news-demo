@@ -14,13 +14,13 @@ const FeatureSideNews = ({ featuredNews }) => {
                 <Image
                   src={news.thumbnail}
                   alt={news.title}
-                  width={200}
-                  height={200}
-                  className="w-full h-full"
+                  width={150}
+                  height={150}
+                  className="w-full h-auto"
                 />
               </figure>
               <div className="mt-2">
-                <Link href={`/news/${news.category}/${news._id}`} className="text-3xl font-title text-news-headline font-semibold">
+                <Link href={`/news/${news.category}/${news._id}`} className="text-xl font-title text-news-headline font-semibold">
                   {news.title}
                 </Link>
                 <p className="text-lg mt-0.5 text-news-text">

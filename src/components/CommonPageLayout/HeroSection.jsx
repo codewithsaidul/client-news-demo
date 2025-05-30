@@ -2,7 +2,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const HeroSection = ({news}) => {
+const HeroSection = ({ news }) => {
+
 
   return (
     <div className="flex flex-col min-[900px]:flex-row min-[900px]:items-center gap-5">

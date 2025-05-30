@@ -9,6 +9,7 @@ export const connectDB = async () => {
   try {
     const uri = `mongodb+srv://${process.env.NEXT_PUBLIC_USER_NAME}:${process.env.NEXT_PUBLIC_PASSWORD}@cluster0.lggjuua.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
+
     const client = new MongoClient(uri, {
       serverApi: {
         version: ServerApiVersion.v1,

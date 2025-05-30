@@ -12,9 +12,7 @@ const Hero = () => {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-10 my-10">
-        <Loader />
-        <Loader />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-10 my-20">
         <Loader />
         <Loader />
         <Loader />
@@ -22,7 +20,6 @@ const Hero = () => {
     );
   }
 
-  console.log(news)
 
   const breakingNews = news.data[0];
 

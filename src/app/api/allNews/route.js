@@ -17,6 +17,9 @@ export const GET = async (req) => {
 
     // connecting with mongodb
     const db = await connectDB();
+
+    const total = await db.collection("allNews").countDocuments(query);
+    
     const result = await db
       .collection("allNews")
       .find(query)
@@ -25,7 +28,6 @@ export const GET = async (req) => {
       .limit(limit)
       .toArray();
 
-    const total = await db.collection("allNews").countDocuments();
 
     // Count published and unpublished with same filters
     const publishedCount = await db
