@@ -10,13 +10,13 @@ const FeatureSideNews = ({ featuredNews }) => {
         {featuredNews.length > 0 &&
           featuredNews.map((news) => (
             <div key={news._id} className="w-full flex items-center gap-3 border-b pb-10">
-              <figure>
+              <figure className="max-w-24 max-h-24">
                 <Image
                   src={news.thumbnail}
                   alt={news.title}
                   width={150}
                   height={150}
-                  className="w-full h-auto"
+                  className="w-fit h-fit"
                 />
               </figure>
               <div className="mt-2">
