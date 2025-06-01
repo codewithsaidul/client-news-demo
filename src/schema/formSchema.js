@@ -31,21 +31,21 @@ export const formSchema = z.object({
     .refine(
       (val) =>
         [
-          "world news",
+          "world-news",
           "innovation",
           "billionaires",
           "entrepreneurs",
           "leadership",
           "investing",
-          "top 10", 
-          "must Read", 
-          "editor's Picks",
+          "top-10", 
+          "must-read", 
+          "editor's-picks",
           "travel", 
           "lifestyle", 
           "health",
-          "cover Story", 
+          "cover-story", 
           "exclusive", 
-          "breaking Today"
+          "breaking-today"
         ].includes(val),
       {
         message: "Invalid category selected",

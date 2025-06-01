@@ -30,6 +30,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { z } from "zod";
+import QuillEditor from "../addNews/QuillEditor";
 
 const formSchema = z.object({
   // News Title
@@ -56,21 +57,21 @@ const formSchema = z.object({
     .refine(
       (val) =>
         [
-          "world news",
+          "world-news",
           "innovation",
           "billionaires",
           "entrepreneurs",
           "leadership",
           "investing",
-          "top 10",
-          "must Read",
-          "editor's Picks",
+          "top-10",
+          "must-read",
+          "editor's-picks",
           "travel",
           "lifestyle",
           "health",
-          "cover Story",
+          "cover-story",
           "exclusive",
-          "breaking Today",
+          "breaking-today",
         ].includes(val),
       {
         message: "Invalid category selected",
@@ -93,7 +94,6 @@ const formSchema = z.object({
   }),
 });
 
-
 const categoryMap = {
   normal: [
     "World News",
@@ -112,7 +112,9 @@ const EditForm = ({ singleNews }) => {
   const [tags, setTags] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  const [categoryType, setCategoryType] = useState( singleNews?.newsType || "normal");
+  const [categoryType, setCategoryType] = useState(
+    singleNews?.newsType || "normal"
+  );
   const [updateNews] = useUpdateNewsMutation();
   const router = useRouter();
 
@@ -140,6 +142,7 @@ const EditForm = ({ singleNews }) => {
         description: singleNews.description,
         tags: singleNews.tags || [],
         category: singleNews.category || "",
+        categoryType: singleNews?.newsType || "",
         status: singleNews.status,
         priority: singleNews.priority,
       });
@@ -398,10 +401,7 @@ const EditForm = ({ singleNews }) => {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Status</FormLabel>
-                    <Select
-                      value={singleNews.status}
-                      onValueChange={field.onChange}
-                    >
+                    <Select value={field.value} onValueChange={field.onChange}>
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder="Select a status" />
                       </SelectTrigger>
@@ -471,12 +471,9 @@ const EditForm = ({ singleNews }) => {
                 <FormItem>
                   <FormLabel>Description</FormLabel>
                   <FormControl>
-                    <textarea
-                      {...field}
-                      placeholder="write your news"
-                      className={
-                        "file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input flex w-full min-w-0 rounded-md border bg-transparent px-3 py-3 shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive input mt-3 h-60 text-lg"
-                      }
+                    <QuillEditor
+                      value={field.value || ""}
+                      onChange={field.onChange}
                     />
                   </FormControl>
                   <FormMessage />
