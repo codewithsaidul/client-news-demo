@@ -29,8 +29,9 @@ const MainFeaturedNews = ( { featuredNews } ) => {
           />
 
           <div className="text-white absolute bottom-4 left-2 min-[540px]:bottom-12 min-[540px]:left-5 z-2 w-[90%] h-auto">
+            {/* max-[430px]:text-xl */}
             <span className="text-base capitalize">{category}</span>
-            <h2 className="max-[430px]:text-xl text-3xl sm:text-4xl md:text-4xl font-bold font-title my-2">
+            <h2 className="text-xl sm:text-4xl md:text-4xl font-bold font-title my-2">
               {title}
             </h2>
             <p className="text-base font-medium line-clamp-2">{description}</p>
