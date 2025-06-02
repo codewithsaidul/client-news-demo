@@ -136,6 +136,10 @@
     @apply bg-news-white-bg font-body box-border;
   }
 
+  html {
+    -webkit-text-size-adjust: 100%; /* Safari fix */
+  }
+
   .sidebar {
     scrollbar-width: none !important; /* Firefox এর জন্য */
   }
@@ -144,9 +148,4 @@
   .sidebar::-webkit-scrollbar {
     display: none !important;
   }
-
-
-
 }
-
-
