@@ -20,32 +20,30 @@ const Hero = () => {
     );
   }
 
-
   const breakingNews = news.data[0];
-
 
   return (
     <section className="my-20 min-h-[calc(100vh - 70px)] relative">
       <Link
         href={`/news/${breakingNews.category}/${breakingNews._id}`}
-        className="w-full h-[calc(100vh-80px)] bg-cover"
+        className="w-full h-auto"
       >
-        <figure>
+        <figure className="relative w-full h-[calc(100vh-80px)] bg-black">
           <Image
             src={breakingNews.thumbnail}
             alt="hero image"
-            width={1920}
-            height={1080}
-            className="w-full h-[calc(100vh-80px)] object-center"
+            fill
+            className="object-center  h-[calc(100vh-80px)]"
             priority
           />
         </figure>
-      <div
-        className="absolute inset-0 bg-black opacity-50"
-        style={{
-          zIndex: 1, // To ensure overlay is above the background image
-        }}
-      />
+
+        <div
+          className="absolute inset-0 bg-black opacity-50"
+          style={{
+            zIndex: 1, // To ensure overlay is above the background image
+          }}
+        />
 
         <div className="absolute max-[767px]:top-[70%] left-0 max-md:p-2 min-md:bottom-16 min-md:left-5 text-white min-md:right-10 z-2 max-md:bg-news-dark h-fit space-y-3 min-lg:w-[60%]">
           {/* ========================= category ======================= */}
