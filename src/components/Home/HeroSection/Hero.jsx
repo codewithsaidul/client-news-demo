@@ -25,10 +25,10 @@ const Hero = () => {
 
 
   return (
-    <section className="my-20 min-h-[calc(100vh - 70px)]">
+    <section className="my-20 min-h-[calc(100vh - 70px)] relative">
       <Link
         href={`/news/${breakingNews.category}/${breakingNews._id}`}
-        className="relative w-full h-[calc(100vh-80px)] bg-cover"
+        className="w-full h-[calc(100vh-80px)] bg-cover"
       >
         <figure>
           <Image

@@ -7,9 +7,9 @@ const MainFeaturedNews = ({ featuredNews }) => {
 
   return (
     <div>
-      <div className="border-b pb-10 w-full">
-        <Link href={`/news/${category}/${_id}`} className="relative w-full">
-          <figure className="relative w-full overflow-hidden">
+      <div className="border-b pb-10 relative w-full">
+        <Link href={`/news/${category}/${_id}`} className="w-full">
+          <figure className="w-full overflow-hidden">
             <Image
               src={thumbnail}
               alt={title}

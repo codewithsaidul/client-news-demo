@@ -4,7 +4,7 @@ import Link from "next/link";
 const FeatureBottom = ({ news }) => {
   return (
     <div className="relative w-full max-lg:border-b max-lg:pb-8">
-      <Link href={`/news/${news.category}/${news._id}`} className="relative">
+      <Link href={`/news/${news.category}/${news._id}`} className="">
         <figure className="w-full max-lg:hidden">
           <Image
             src={news.thumbnail}
