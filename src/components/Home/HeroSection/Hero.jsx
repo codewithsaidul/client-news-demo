@@ -36,7 +36,7 @@ const Hero = () => {
             alt="hero image"
             width={1920}
             height={1080}
-            className="w-full h-[calc(100vh-80px)] object-cover"
+            className="w-full h-[calc(100vh-80px)] object-center"
             priority
           />
         </figure>
