@@ -23,17 +23,17 @@ const Hero = () => {
   const breakingNews = news.data[0];
 
   return (
-    <section className="my-20 min-h-[calc(100vh - 70px)] relative">
+    <section className="my-20 min-h-screen relative">
       <Link
         href={`/news/${breakingNews.category}/${breakingNews._id}`}
         className="w-full h-auto"
       >
-        <figure className="relative w-full h-[calc(100vh-80px)] bg-black">
+        <figure className="relative w-full h-screen aspect-video">
           <Image
             src={breakingNews.thumbnail}
             alt="hero image"
             fill
-            className="object-center  h-[calc(100vh-80px)]"
+            className="object-center  h-screen"
             priority
           />
         </figure>
