@@ -29,7 +29,7 @@ const InnovationSection = () => {
       <Heading title="Innovation" link="/category/innovation" />
       {/* ========================= Section Heading ====================== */}
 
-      <div className="relative min-h-screen grid grid-cols-1 mxlgrid-cols-12 gap-10">
+      <div className="relative min-h-screen grid grid-cols-1 xl:grid-cols-12 gap-10">
         <div className="xl:col-span-8 relative order-1">
           {/* Left Column Content */}
           {innovationNews.length > 0 && (
