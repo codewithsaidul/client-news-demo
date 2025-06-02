@@ -10,29 +10,32 @@ const LeftNewsList = ({ allNews }) => {
         allNews.slice(1, 5).map((news, index) => (
           <div
             key={index}
-            className="w-full flex max-[450px]:flex-col flex-row md:flex-col lg:flex-row min-[451px]:items-center gap-2"
+            className="w-full flex flex-row md:flex-col lg:flex-row  gap-2"
           >
-            <figure>
+            {/* ===================== image ========================== */}
+            <figure className="max-w-96 max-h-96">
               <Image
                 src={news.thumbnail}
                 alt={news.title}
                 width={150}
                 height={350}
-                className="w-full h-auto object-cover"
+                className="w-24 md:w-full h-24 md:h-52 lg:w-28 lg:h-28 object-cover"
               />
             </figure>
+
+            {/* =================== content ===================== */}
             <div className="mt-2 flex-1 flex">
               <div>
-                <Link href={`/news/${news.category}/${news._id}`} className="text-xl font-title font-bold">
+                <Link href={`/news/${news.category}/${news._id}`} className="text-base sm:text-xl font-title font-bold max-[400px]:line-clamp-2">
                   {news.title}
                 </Link>
                 <p className="text-base mt-0.5 text-news-text">
                   {/* <span className="font-bold">{news.author.name}</span> */}
-                  <span className="font-bold">Forbes Admin</span>
+                  <span className="max-[400px]:text-sm font-bold">Forbes Admin</span>
 
                   <span className="mx-2">|</span>
 
-                  <span>{dateFormater(news.createdAt)}</span>
+                  <span className="max-[400px]:text-sm">{dateFormater(news.createdAt)}</span>
                 </p>
               </div>
             </div>

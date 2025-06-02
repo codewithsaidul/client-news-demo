@@ -35,7 +35,7 @@ const MainFeaturedNews = ({ featuredNews }) => {
         </Link>
       </div>
 
-      <div className="mt-5 flex flex-col lg:flex-row max-lg:gap-8 gap-5">
+      <div className="mt-16 flex flex-col lg:flex-row max-lg:gap-8 gap-5">
         {featuredNews.slice(1, 3).map((news) => (
           <FeatureBottom key={news._id} news={news} />
         ))}

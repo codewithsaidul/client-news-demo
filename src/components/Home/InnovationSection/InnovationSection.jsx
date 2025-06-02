@@ -29,8 +29,8 @@ const InnovationSection = () => {
       <Heading title="Innovation" link="/category/innovation" />
       {/* ========================= Section Heading ====================== */}
 
-      <div className="relative min-h-screen grid grid-cols-1 md:grid-cols-12 gap-10">
-        <div className="md:col-span-8 relative order-1">
+      <div className="relative min-h-screen grid grid-cols-1 mxlgrid-cols-12 gap-10">
+        <div className="xl:col-span-8 relative order-1">
           {/* Left Column Content */}
           {innovationNews.length > 0 && (
             <div>
@@ -39,7 +39,7 @@ const InnovationSection = () => {
             </div>
           )}
         </div>
-        <div className="md:col-span-4 order-2">
+        <div className="xl:col-span-4 order-2">
           <div className="sticky top-28">
             {/* Right Column Content */}
             {innovationNews.length > 0 && <SidebarNews allNews={innovationNews} />}

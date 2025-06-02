@@ -40,12 +40,12 @@ const Hero = () => {
             priority
           />
         </figure>
-        <div
-          className="absolute inset-0 bg-black opacity-50"
-          style={{
-            zIndex: 1, // To ensure overlay is above the background image
-          }}
-        />
+      <div
+        className="absolute inset-0 bg-black opacity-50"
+        style={{
+          zIndex: 1, // To ensure overlay is above the background image
+        }}
+      />
 
         <div className="absolute max-[767px]:top-[70%] left-0 max-md:p-2 min-md:bottom-16 min-md:left-5 text-white min-md:right-10 z-2 max-md:bg-news-dark h-fit space-y-3 min-lg:w-[60%]">
           {/* ========================= category ======================= */}

@@ -20,16 +20,16 @@ const FeatureSideNews = ({ featuredNews }) => {
                 />
               </figure>
               <div className="mt-2">
-                <Link href={`/news/${news.category}/${news._id}`} className="text-xl font-title text-news-headline font-semibold">
+                <Link href={`/news/${news.category}/${news._id}`} className="text-sm min-[450px]:text-xl font-title text-news-headline font-semibold line-clamp-2">
                   {news.title}
                 </Link>
                 <p className="text-lg mt-0.5 text-news-text">
                   {/* <span className="font-bold">{news.author.name}</span> */}
-                  <span className="font-bold">Forbes Admin</span>
+                  <span className="font-bold text-sm">Forbes Admin</span>
 
                   <span className="mx-2">|</span>
 
-                  <span>{dateFormater(news.createdAt)}</span>
+                  <span className="text-sm">{dateFormater(news.createdAt)}</span>
                 </p>
               </div>
             </div>
