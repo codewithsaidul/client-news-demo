@@ -18,6 +18,12 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { twMerge } from "tailwind-merge";
 
+const stripHtml = (html) => {
+  const div = document.createElement("div");
+  div.innerHTML = html;
+  return div.textContent || "";
+};
+
 const DashboardAllNews = () => {
   const [page, setPage] = useState(1);
   const { data, isLoading } = useGetAllNewsQuery({ page });
@@ -34,7 +40,6 @@ const DashboardAllNews = () => {
       </div>
     );
   }
-
 
   const deleteNewsByID = async (id) => {
     try {
@@ -78,7 +83,9 @@ const DashboardAllNews = () => {
                   <TableCell className="text-xl font-title font-semibold truncate max-w-[300px]">
                     {news.title}
                   </TableCell>
-                  <TableCell className="truncate max-w-[300px] overflow-hidden whitespace-nowrap text-ellipsis" dangerouslySetInnerHTML={{ __html: news.description }} />
+                  <TableCell className="truncate max-w-[300px] overflow-hidden whitespace-nowrap text-ellipsis">
+                    {stripHtml(news.description)}
+                  </TableCell>
                   <TableCell className="capitalize">{news.category}</TableCell>
                   <TableCell>
                     <span

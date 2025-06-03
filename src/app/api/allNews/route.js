@@ -1,25 +1,59 @@
 import { connectDB } from "@/lib/connectDB";
 import { NextResponse } from "next/server";
 
+const categoryMap = {
+  normal: [
+    "world-news",
+    "innovation",
+    "investing",
+    "billionaires",
+    "entrepreneurs",
+    "leadership",
+  ],
+  life: ["wellness", "travel", "lifestyle", "property", "style", "motors"],
+  list: ["top-10", "must-read", "editors-picks"],
+  magazine: ["cover-story", "exclusive", "breaking-today"],
+};
+
+const normalize = (val) => val.trim().toLowerCase();
+
 export const GET = async (req) => {
   try {
     const url = new URL(req.url);
     const page = parseInt(url.searchParams.get("page") || "1");
-    const priority = url.searchParams.get("priority") || "none";
-    const category = url.searchParams.get("category") || "none";
+    const priority = normalize(url.searchParams.get("priority") || "none");
+    const category = normalize(url.searchParams.get("category") || "none");
+    const newsType = normalize(
+      url.searchParams.get("newsType") || "noNewsType"
+    );
     const limit = 20;
     const skip = (page - 1) * limit;
 
     const query = {};
 
     if (priority !== "none") query.priority = priority;
-    if (category !== "none") query.category = category;
+
+    if (newsType !== "noNewsType") {
+      query.newsType = newsType;
+
+      if (category !== "none") {
+        // user specific category diyeche
+        query.category = category;
+      } else {
+        // user category na diye thakle, newsType er shob categories diye filter
+        query.category = { $in: categoryMap[newsType] };
+      }
+    } else {
+      // newsType nai, category specified thakle filter add korun
+      if (category !== "none") query.category = category;
+    }
+
 
     // connecting with mongodb
     const db = await connectDB();
 
     const total = await db.collection("allNews").countDocuments(query);
-    
+
     const result = await db
       .collection("allNews")
       .find(query)
@@ -27,7 +61,6 @@ export const GET = async (req) => {
       .skip(skip)
       .limit(limit)
       .toArray();
-
 
     // Count published and unpublished with same filters
     const publishedCount = await db

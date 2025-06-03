@@ -102,18 +102,18 @@ const AddNewsForm = () => {
   // ====================== submit news data on db ====================
   const onSubmit = async (values) => {
     setIsLoading(true);
-    // const file = values.thumbnail[0];
-    // const imgUrl = await uploadToImgBB(file);
+    const file = values.thumbnail[0];
+    const imgUrl = await uploadToImgBB(file);
 
     const newsData = {
       title: values.title,
-      thumbnail: "imgUrl",
+      thumbnail: imgUrl,
       description: values.description,
       tags: values.tags,
       category: values.category,
+      newsType: values.categoryType,
       status: values.status,
       priority: values.priority,
-      newsType: values.categoryType,
     };
 
 
