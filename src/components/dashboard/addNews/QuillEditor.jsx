@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css"; // Quill's default snow theme CSS
+import { uploadToImgBB } from "@/lib/uploadImage";
 
 export default function QuillEditor({ value, onChange }) {
   const editorRef = useRef(null);
@@ -15,6 +16,32 @@ export default function QuillEditor({ value, onChange }) {
         modules: {
           toolbar: {
             container: "#quill-toolbar", // Use external toolbar
+            handlers: {
+              image: async function () {
+                const input = document.createElement("input");
+                input.setAttribute("type", "file");
+                input.setAttribute("accept", "image/*");
+                input.click();
+
+                input.onchange = async () => {
+                  const file = input.files[0];
+                  if (file) {
+                    try {
+                      const range = q.getSelection(true);
+                      // Upload image to ImgBB
+                      const url = await uploadToImgBB(file);
+                      // Insert image into editor at cursor position
+                      q.insertEmbed(range.index, "image", url);
+                      // Move cursor after image
+                      q.setSelection(range.index + 1);
+                    } catch (error) {
+                      console.error("Image upload failed:", error);
+                      alert("Failed to upload image");
+                    }
+                  }
+                };
+              },
+            },
           },
         },
       });
@@ -43,17 +70,21 @@ export default function QuillEditor({ value, onChange }) {
       {/* External Toolbar */}
       <div id="quill-toolbar" className="mb-2">
         <select className="ql-header">
-          <option value="1"></option>
-          <option value="2"></option>
-          <option value="3"></option>
-          <option selected></option>
+          <option value="1">Heading 1</option>
+          <option value="2">Heading 2</option>
+          <option value="3">Heading 3</option>
+          <option value="">
+            Normal
+          </option>
         </select>
+
         <button className="ql-bold" />
         <button className="ql-italic" />
         <button className="ql-underline" />
         <button className="ql-strike" />
         <button className="ql-list" value="ordered" />
         <button className="ql-list" value="bullet" />
+        <button className="ql-image" />
         <button className="ql-link" />
         {/* <button className="ql-clean" /> */}
       </div>

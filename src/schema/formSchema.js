@@ -12,9 +12,7 @@ export const formSchema = z.object({
     .nonempty({ message: "Title is required" }),
 
   // Thumbnail (will be a FileList if using file input)
-  thumbnail: z.custom((val) => val instanceof FileList && val.length > 0, {
-    message: "Thumbnail is required",
-  }),
+  thumbnail: z.optional(),
 
   // Description (textarea)
   description: z
@@ -42,7 +40,10 @@ export const formSchema = z.object({
           "editor's-picks",
           "travel", 
           "lifestyle", 
-          "health",
+          "wellness",
+          "property",
+          "style",
+          "motors",
           "cover-story", 
           "exclusive", 
           "breaking-today"

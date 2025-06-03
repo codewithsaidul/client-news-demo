@@ -1,8 +1,6 @@
-import Banner from "@/components/Shared/Banner";
-import React from "react";
-import AllLifeNews from "./AllLifeNews";
-import PageTabs from "@/components/Shared/PageTabs";
-
+import Banner from '@/components/Shared/Banner';
+import PageTabs from '@/components/Shared/PageTabs';
+import WellnessNews from './WellnessNews';
 
 
 const tabs = [
@@ -15,19 +13,19 @@ const tabs = [
   { name: "Motors", href: "/life/motors" },
 ];
 
-
-
-
 const page = () => {
   return (
     <div>
-      <Banner title="life" image="/images/banner/LifeBanner.webp" />
-      <div className="mt-20">
-        <PageTabs tabs={tabs} />
-      </div>
-      <AllLifeNews />
-    </div>
-  );
-};
+        <Banner title="Wellness" color="bg-news-headline" />
 
-export default page;
+        <div className='mt-20'>
+          <PageTabs tabs={tabs} />
+        </div>
+
+        
+        <WellnessNews />
+    </div>
+  )
+}
+
+export default page

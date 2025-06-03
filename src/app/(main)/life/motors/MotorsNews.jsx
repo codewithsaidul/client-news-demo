@@ -9,9 +9,12 @@ import PaginationPage from "@/components/Shared/PaginationPage";
 import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 import { useState } from "react";
 
-const AllLifeNews = () => {
+const MotorsNews = () => {
   const [page, setPage] = useState(1);
-  const { data, isLoading } = useGetAllNewsQuery({ page: page, category: "life" });
+  const { data, isLoading } = useGetAllNewsQuery({
+    page: page,
+    category: "motors",
+  });
 
   if (isLoading) {
     return (
@@ -27,13 +30,15 @@ const AllLifeNews = () => {
 
   const { data: news, pagination } = data;
 
+  const motorsNews = news.filter((news) => news.priority === "none");
+
   return (
     <div>
-      {news.length > 0 ? (
+      {motorsNews.length > 0 ? (
         <div className="px-4 md:px-8 mt-20">
-          <HeroSection news={news[0]} />
-          <HightlightCard allNews={news} />
-          <ArticaleCard allNews={news} />
+          <HeroSection news={motorsNews[0]} />
+          <HightlightCard allNews={motorsNews} />
+          <ArticaleCard allNews={motorsNews} />
 
           <div className="mt-7">
             <PaginationPage
@@ -50,4 +55,4 @@ const AllLifeNews = () => {
   );
 };
 
-export default AllLifeNews;
+export default MotorsNews;

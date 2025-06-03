@@ -78,9 +78,7 @@ const DashboardAllNews = () => {
                   <TableCell className="text-xl font-title font-semibold truncate max-w-[300px]">
                     {news.title}
                   </TableCell>
-                  <TableCell className="truncate max-w-[300px]">
-                    {news.description}
-                  </TableCell>
+                  <TableCell className="truncate max-w-[300px] overflow-hidden whitespace-nowrap text-ellipsis" dangerouslySetInnerHTML={{ __html: news.description }} />
                   <TableCell className="capitalize">{news.category}</TableCell>
                   <TableCell>
                     <span

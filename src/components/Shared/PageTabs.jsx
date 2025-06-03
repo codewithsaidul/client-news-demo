@@ -12,7 +12,7 @@ export default function PageTabs( { tabs } ) {
 
   return (
     <div className="relative w-full min-[900px]:border-b min-[900px]:border-gray-300 min-[900px]:pb-5">
-      <div className="flex max-[899px]:flex-wrap max-[899px]:justify-center gap-5 min-[900px]:gap-x-12 relative px-4 lg:px-8">
+      <div className="flex max-[899px]:flex-wrap max-[899px]:justify-center gap-x-5 -gap-y-2 min-[900px]:gap-x-12  relative px-4 lg:px-8">
         {tabs.map((tab) => {
           const isActive = pathname === tab.href;
 
