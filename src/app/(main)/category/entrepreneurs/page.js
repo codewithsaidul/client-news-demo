@@ -1,7 +1,16 @@
 import Banner from '@/components/Shared/Banner'
 import PageTabs from '@/components/Shared/PageTabs'
-import React from 'react'
-import EntrepreneursNews from './EntrepreneursNews'
+import EntrepreneursNews from './EntrepreneursNews';
+
+
+const tabs = [
+  { name: "All News", href: "/news" },
+  { name: "Innovation", href: "/category/innovation" },
+  { name: "Entrepreneurs", href: "/category/entrepreneurs" },
+  { name: "Leadership", href: "/category/leadership" },
+  { name: "Investing", href: "/category/investing" },
+  { name: "Billionaires", href: "/category/billionaires" },
+];
 
 const page = () => {
   return (
@@ -9,7 +18,7 @@ const page = () => {
         <Banner title="Entrepreneurs" color="bg-news-headline" />
 
         <div className='mt-20'>
-          <PageTabs />
+          <PageTabs tabs={tabs} />
         </div>
 
         

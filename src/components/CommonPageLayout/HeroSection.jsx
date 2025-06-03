@@ -20,13 +20,13 @@ const HeroSection = ({ news }) => {
       </Link>
 
       <Link href="#" className="w-full min-[900px]:w-[60%]">
-        <figure>
+        <figure className="relative w-full max-h-[600px] aspect-square overflow-hidden">
           <Image
             src={news.thumbnail}
             alt={news.title}
             width={1200}
             height={1200}
-            className="w-full h-auto object-cover"
+            className="object-center"
           />
         </figure>
       </Link>

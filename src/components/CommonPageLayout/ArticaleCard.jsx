@@ -7,15 +7,16 @@ const ArticaleCard = ({ allNews }) => {
       {allNews.slice(4, 8).map((news) => (
         <div key={news._id} className="border-b pb-10">
           <Link href={`/news/${news.category}/${news._id}`} className="flex gap-5 items-center">
-            <figure className="w-[20%]">
-              <Image
-                src={news.thumbnail}
-                alt={news.title}
-                width={300}
-                height={300}
-                className="w-full h-auto object-cover"
-              />
-            </figure>
+            <div className="w-[20%]">
+              <figure className="relative w-full aspect-video overflow-hidden">
+                <Image
+                  src={news.thumbnail}
+                  alt={news.title}
+                  fill
+                  className="object-cover"
+                />
+              </figure>
+            </div>
 
             <div className="mt-5 space-y-2 w-[80%]">
               <h2 className="tex-xl sm:text-2xl font-title font-bold ">
