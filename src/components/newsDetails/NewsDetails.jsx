@@ -25,12 +25,12 @@ const NewsDetails = ({ params }) => {
   return (
     <div className="mt-20">
       <div>
-        <figure className="relative aspect-video w-full max-md:h-96">
+        <figure className="relative aspect-video w-full max-h-[300px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[600px]">
           <Image
             src={thumbnail}
             alt={title}
             fill
-            className="object-center max-md:h-96"
+            className="object-center"
           />
         </figure>
 
