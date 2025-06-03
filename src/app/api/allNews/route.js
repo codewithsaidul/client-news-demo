@@ -24,7 +24,7 @@ export const GET = async (req) => {
     const priority = normalize(url.searchParams.get("priority") || "none");
     const category = normalize(url.searchParams.get("category") || "none");
     const newsType = normalize(
-      url.searchParams.get("newsType") || "noNewsType"
+      url.searchParams.get("newsType") || "none"
     );
     const limit = 20;
     const skip = (page - 1) * limit;
@@ -33,7 +33,7 @@ export const GET = async (req) => {
 
     if (priority !== "none") query.priority = priority;
 
-    if (newsType !== "noNewsType") {
+    if (newsType !== "none") {
       query.newsType = newsType;
 
       if (category !== "none") {

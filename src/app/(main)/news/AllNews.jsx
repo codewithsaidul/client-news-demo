@@ -10,7 +10,7 @@ import { useState } from "react";
 
 const AllNews = () => {
   const [page, setPage] = useState(1);
-  const { data, isLoading } = useGetAllNewsQuery( { page: page } );
+  const { data, isLoading } = useGetAllNewsQuery( { page: page, newsType: "normal" } );
 
   if (isLoading) {
     return (
@@ -25,6 +25,7 @@ const AllNews = () => {
   }
 
   const { data: news, pagination } = data;
+
 
   return (
     <div className="px-4 md:px-8 mt-20">
