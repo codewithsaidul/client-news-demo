@@ -23,23 +23,21 @@ const NewsDetails = ({ params }) => {
   const { title, description, thumbnail, tags, category, createdAt } = news;
 
   return (
-    <div className="px-4 sm:px-8 md:px-16 lg:px-20 xl:px-32 mt-32">
+    <div className="mt-20">
       <div>
-        <figure>
+        <figure className="relative aspect-video w-full max-md:h-96">
           <Image
             src={thumbnail}
             alt={title}
-            width={1200}
-            height={780}
-            className="w-full h-[800px] object-cover rounded-xl"
+            fill
+            className="object-center max-md:h-96"
           />
         </figure>
 
-        <div>
+        <div className="px-4 sm:px-8 md:px-16 lg:px-20 xl:px-32">
           <div className="flex items-center gap-5 mt-5">
-            <p>Tags: </p>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 flex-wrap">
               {tags.map((tag, index) => (
                 <span key={index} className="text-gray-400">
                   #{tag}
@@ -48,7 +46,7 @@ const NewsDetails = ({ params }) => {
             </div>
           </div>
 
-          <div className="flex items-center gap-8 mt-3">
+          <div className="flex flex-wrap items-center gap-3 min-[525px]:gap-8 mt-3">
             <p className="text-xl font-medium font-title capitalize">
               Category: <span>{category}</span>
             </p>
