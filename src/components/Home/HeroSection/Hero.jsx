@@ -28,12 +28,12 @@ const Hero = () => {
         href={`/news/${breakingNews.category}/${breakingNews._id}`}
         className="w-full h-auto"
       >
-        <figure className="relative w-full h-screen aspect-video">
+        <figure className="relative w-full aspect-video h-screen">
           <Image
             src={breakingNews.thumbnail}
             alt="hero image"
             fill
-            className="object-center  h-screen"
+            className="object-center h-screen"
             priority
           />
         </figure>
@@ -45,7 +45,7 @@ const Hero = () => {
           }}
         />
 
-        <div className="absolute max-[767px]:top-[70%] left-0 max-md:p-2 min-md:bottom-16 min-md:left-5 text-white min-md:right-10 z-2 max-md:bg-news-dark h-fit space-y-3 min-lg:w-[60%]">
+        <div className="absolute max-[767px]:bottom-10 left-0 max-md:p-2 min-md:bottom-16 min-md:left-5 text-white min-md:right-10 z-2 h-fit space-y-3 min-lg:w-[60%]">
           {/* ========================= category ======================= */}
           <span className="max-[430px]:text-xs text-sm mb-3 capitalize">
             {breakingNews.category}

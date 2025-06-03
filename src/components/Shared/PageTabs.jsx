@@ -4,16 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 
-const tabs = [
-  { name: "All News", href: "/news" },
-  { name: "Innovation", href: "/category/innovation" },
-  { name: "Entrepreneurs", href: "/category/entrepreneurs" },
-  { name: "Leadership", href: "/category/leadership" },
-  { name: "Investing", href: "/category/investing" },
-  { name: "Billionaires", href: "/category/billionaires" },
-];
 
-export default function PageTabs() {
+
+export default function PageTabs( { tabs } ) {
   const pathname = usePathname();
 
 
