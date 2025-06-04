@@ -40,13 +40,13 @@ const MagazineDetails = ({ params }) => {
   return (
     <div className="mt-24">
       <div>
-        <figure className="relative aspect-[4/3] max-w-[600px] max-h-[300px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[800px] mx-auto">
+        <figure className="relative aspect-[3/4] max-w-[290px] sm:max-w-[500px] md:max-w-[600px] max-h-[1000px] px-4 mx-auto">
           <Image
             src={thumbnail}
             alt={title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
-            className="object-center"
+            className="object-center rounded"
           />
         </figure>
 

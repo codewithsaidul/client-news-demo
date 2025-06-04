@@ -177,7 +177,7 @@
   }
 
   .quill-content img {
-    @apply max-w-[800px]! max-h-[800px]! aspect-[3/4]! object-center! rounded-lg! my-4! mx-auto!;
+    @apply w-full max-w-[600px]! max-h-[1000px]! aspect-[3/4]! object-center! rounded-lg! my-4! mx-auto!;
   }
 
   .quill-content a {

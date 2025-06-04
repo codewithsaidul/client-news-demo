@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Banner = ({ color, image, title }) => {
-  const hasImageOrColor = image || color;
+
 
   return (
     <div
