@@ -12,31 +12,22 @@ export const PATCH = async (req, { params }) => {
     // get news data from client side
     const updateData = await req.json();
 
-    const { id } = params;
-    const query = { _id: new ObjectId(id)}
+    const { slug: sg } = await params;
+    const query = { slug: sg}
 
 
 
     // connected with mongodb database
     const db = await connectDB();
 
-    // Define slug exists checker for this DB collection
-    async function isSlugExists(slug) {
-      // check slug in DB except current id (to avoid conflict with same doc)
-      const existing = await db.collection("allNews").findOne({
-        slug,
-        _id: { $ne: new ObjectId(id) }
-      });
-      return existing ? true : false;
-    }
 
-    // Generate unique slug if title is provided
-    if (updateData.title) {
-      updateData.slug = await slugifyUnique(updateData.title, 50, isSlugExists);
-    }
     const updateDoc = {
       $set: updateData,
     };
+
+    console.log(updateDoc)
+
+
     // insert news data on db
     const result = await db.collection("allNews").updateOne(query, updateDoc);
 

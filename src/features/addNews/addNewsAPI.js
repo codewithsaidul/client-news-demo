@@ -41,7 +41,7 @@ export const addNewsAPI = apiSlice.injectEndpoints({
         }
       },
       // Invalidate the news list tag to refetch all queries after mutation
-      invalidatesTags: [{ type: "News", id: "LIST" }],
+      invalidatesTags: [{ type: "News", slug: "LIST" }],
     }),
   }),
 });

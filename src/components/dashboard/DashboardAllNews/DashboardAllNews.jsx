@@ -37,9 +37,9 @@ const DashboardAllNews = () => {
     );
   }
 
-  const deleteNewsByID = async (id) => {
+  const deleteNewsByID = async (slug) => {
     try {
-      const { data } = await deleteNews(id);
+      const { data } = await deleteNews(slug);
       if (data.acknowledged && data.deletedCount > 0) {
         Swal.fire({
           title: "News delete successfully!",
@@ -104,7 +104,7 @@ const DashboardAllNews = () => {
                     </Button>
                     <Button
                       className="bg-red-600 cursor-pointer"
-                      onClick={() => deleteNewsByID(news._id)}
+                      onClick={() => deleteNewsByID(news.slug)}
                     >
                       Delete
                     </Button>

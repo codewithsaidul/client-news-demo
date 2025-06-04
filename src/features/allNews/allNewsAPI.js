@@ -16,11 +16,11 @@ export const allNewsAPI = apiSlice.injectEndpoints({
         result
           ? [
               // tag each news item by its id
-              ...result.data.map(({ slug }) => ({ type: "News", id: slug })),
+              ...result.data.map(({ slug }) => ({ type: "News", slug: slug })),
               // also tag the whole list (important for refetching the whole page)
-              { type: "News", id: "LIST" },
+              { type: "News", slug: "LIST" },
             ]
-          : [{ type: "News", id: "LIST" }],
+          : [{ type: "News", slug: "LIST" }],
     }),
   }),
 });

@@ -31,10 +31,16 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import QuillEditor from "../addNews/QuillEditor";
-import { slugify } from "@/lib/slugify";
+// import QuillEditor from "../addNews/QuillEditor";
+import dynamic from "next/dynamic";
 
 
+
+// ✅ Dynamically import with SSR disabled
+const QuillEditor = dynamic(
+  () => import("../addNews/QuillEditor"),
+  { ssr: false }
+);
 
 
 const EditForm = ({ singleNews }) => {
@@ -134,8 +140,12 @@ const EditForm = ({ singleNews }) => {
       priority: values.priority,
     };
 
+
+    
     try {
-      const res = await updateNews({ id: singleNews._id, newsData }).unwrap();
+      
+      const res = await updateNews({ slug: singleNews.slug, newsData }).unwrap();
+
 
       if (res.acknowledged && res.modifiedCount > 0) {
         Swal.fire({

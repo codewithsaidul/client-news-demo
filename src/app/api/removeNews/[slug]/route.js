@@ -8,11 +8,11 @@ export const DELETE = async (req, { params }) => {
     const errorResponse = verifyAccess(req);
     if (errorResponse) return errorResponse;
 
-    const { id } = params;
+    const { slug } = params;
 
     // connected with mongodb database
     const db = await connectDB();
-    const query = { _id: new ObjectId(id) };
+    const query = { slug: slug};
 
     // insert news data on db
     const result = await db.collection("allNews").deleteOne(query);

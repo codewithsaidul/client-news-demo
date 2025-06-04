@@ -63,6 +63,6 @@ export const categoryMap = {
     "Leadership",
   ],
   life: ["Wellness", "Travel", "Lifestyle", "Property", "Style", "Motors"],
-  list: ["Top 10", "Must Read", "Editor's Picks"],
+  list: ["Top 10", "Must Read", "Editors Picks"],
   magazine: ["Cover Story", "Exclusive", "Breaking Today"],
 };

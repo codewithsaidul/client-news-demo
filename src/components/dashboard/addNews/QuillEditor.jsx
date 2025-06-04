@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Quill from "quill";
 import "quill/dist/quill.snow.css"; // Quill's default snow theme CSS
 import { uploadToImgBB } from "@/lib/uploadImage";
@@ -11,11 +11,17 @@ export default function QuillEditor({ value, onChange }) {
 
   useEffect(() => {
     if (editorRef.current && !quill) {
+
       const q = new Quill(editorRef.current, {
         theme: "snow",
         modules: {
           toolbar: {
-            container: "#quill-toolbar", // Use external toolbar
+            container: [
+              [{ header: [1, 2, 3, false] }],
+              ["bold", "italic", "underline", "strike"],
+              [{ list: "ordered" }, { list: "bullet" }],
+              ["image", "link"],
+            ], // Use external toolbar
             handlers: {
               image: async function () {
                 const input = document.createElement("input");
@@ -68,7 +74,7 @@ export default function QuillEditor({ value, onChange }) {
   return (
     <div className="bg-white rounded-md p-2">
       {/* External Toolbar */}
-      <div id="quill-toolbar" className="mb-2">
+      {/* <div id="quill-toolbar" className="mb-2">
         <select className="ql-header">
           <option value="1">Heading 1</option>
           <option value="2">Heading 2</option>
@@ -87,7 +93,7 @@ export default function QuillEditor({ value, onChange }) {
         <button className="ql-image" />
         <button className="ql-link" />
         {/* <button className="ql-clean" /> */}
-      </div>
+      {/*}  </div> */}
 
       {/* Editor Container */}
       <div
