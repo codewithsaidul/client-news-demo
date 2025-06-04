@@ -32,6 +32,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import QuillEditor from "../addNews/QuillEditor";
+import { slugify } from "@/lib/slugify";
 
 
 
@@ -121,6 +122,7 @@ const EditForm = ({ singleNews }) => {
       imgUrl = await uploadToImgBB(file); // new thumbnail url
     }
 
+    // slug: slugify(values.title),
     const newsData = {
       title: values.title,
       thumbnail: imgUrl,

@@ -4,14 +4,14 @@ import Link from "next/link";
 const FeatureBottom = ({ news }) => {
   return (
     <div className="relative w-full max-lg:border-b max-lg:pb-8">
-      <Link href={`/news/${news.category}/${news._id}`} className="">
+      <Link href={`/${news.newsType}/${news.category}/${news._id}`} className="">
         <figure className="w-full relative aspect-square max-h-[400px] max-lg:hidden">
           <Image
             src={news.thumbnail}
             alt={news.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
-            className="object-center"
+            className="object-center rounded"
           />
         </figure>
 

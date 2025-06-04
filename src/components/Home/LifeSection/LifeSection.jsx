@@ -6,7 +6,7 @@ import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";
 
 const LifeSection = () => {
-  const { data: news, isLoading } = useGetAllNewsQuery( { page: 2 } );
+  const { data: news, isLoading } = useGetAllNewsQuery( { page: 1, newsType: "life" } );
 
   if (isLoading) {
     return (
@@ -21,6 +21,8 @@ const LifeSection = () => {
   }
 
   const filterNews = news.data
+
+  
   return (
     <div className="max-[450px]:mt-60 max-[600px]:mt-60 mt-48">
       {/* ========================= Section Heading ====================== */}

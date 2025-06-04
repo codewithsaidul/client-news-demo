@@ -16,7 +16,7 @@ const MainFeaturedNews = ({ featuredNews }) => {
               alt={title}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
-              className="object-center"
+              className="object-center rounded"
             />
           </figure>
 

@@ -8,7 +8,7 @@ const SidebarNews = ( { allNews } ) => {
     <div className="min-[500px]:p-4 bg-news-white-bg xl:shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg h-fit">
       <div className="flex flex-col sm:flex-row xl:flex-col gap-5 w-full">
         {allNews.length > 0 &&
-          allNews.slice(6, 8).map((news, index) => (
+          allNews.slice(5, 7).map((news, index) => (
             <div key={index} className="w-full pr-4">
               <figure className="max-h-96">
                 <Image
@@ -20,7 +20,7 @@ const SidebarNews = ( { allNews } ) => {
                 />
               </figure>
               <div className="mt-2">
-                <Link href={`/news/${news.category}/${news._id}`} className="text-2xl font-title font-bold">
+                <Link href={`/${news.newsType}/${news.category}/${news._id}`} className="text-2xl font-title font-bold">
                   {news.title}
                 </Link>
                 <p className="text-lg mt-0.5 text-news-text">
