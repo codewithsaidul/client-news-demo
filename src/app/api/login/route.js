@@ -28,13 +28,13 @@ export const POST = async (req) => {
 
     // ✅ Generate JWT token
     const token = jwt.sign(
-      { userId: user._id, email: user.email },
+      { userId: user._id, email: user.email, role: user.role  },
       JWT_SECRET,
       { expiresIn: "7d" }
     );
 
     // ✅ Set cookie using `next/headers`
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     cookieStore.set("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",

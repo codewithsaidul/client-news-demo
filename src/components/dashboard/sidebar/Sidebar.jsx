@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { FaHome, FaUsers } from "react-icons/fa";
@@ -8,6 +8,8 @@ import { GiNewspaper } from "react-icons/gi";
 import Swal from "sweetalert2";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import Loader from "@/components/loading/Loader";
+import { useGetAllUsersQuery } from "@/features/getAllUsers/getAllUsers";
 
 const navLinks = [
   {
@@ -34,20 +36,19 @@ const navLinks = [
     href: "/dashboard/addNews",
     icon: <MdAddBox size={32} />,
   },
-  {
-    id: 5,
-    title: "Users",
-    href: "/dashboard/users",
-    icon: <FaUsers size={32} />,
-  },
 ];
 
 const Sidebar = () => {
   const router = useRouter();
+  const { data: users, isLoading } = useGetAllUsersQuery();
+
+  if (isLoading) {
+    return <div className="w-full mt-10 px-5 text-white">Loading...</div>;
+  }
 
   const handleLogout = async () => {
     try {
-      await axios("/api/logout");
+      await axios.post("/api/logout");
       router.push("/login");
     } catch (err) {
       Swal.fire({
@@ -57,6 +58,8 @@ const Sidebar = () => {
       });
     }
   };
+
+  const superAdmin = users.find((user) => user.role === "superadmin");
 
   return (
     <div className="mt-16 px-8 flex flex-col justify-between h-[90vh]">
@@ -86,6 +89,21 @@ const Sidebar = () => {
                 </Link>
               </li>
             ))}
+
+            {/* only super admin can see */}
+            {superAdmin.role === "superadmin" && (
+              <li className="border-b border-white/20 pb-3">
+                <Link
+                  href={"/dashboard/users"}
+                  className="flex items-center gap-2 text-white text-2xl"
+                >
+                  <span>
+                    <FaUsers size={32} />
+                  </span>
+                  Users
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

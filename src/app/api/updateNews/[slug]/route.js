@@ -1,13 +1,11 @@
 import { connectDB } from "@/lib/connectDB";
-import { slugifyUnique } from "@/lib/slugify";
-import { verifyAccess } from "@/lib/verifyAccess";
-import { ObjectId } from "mongodb";
+import { verifyRoles } from "@/lib/verifyRoles";
 import { NextResponse } from "next/server";
 
 export const PATCH = async (req, { params }) => {
   try {
-    const errorResponse = verifyAccess(req);
-    if (errorResponse) return errorResponse;
+    const auth = verifyRoles(req, ["superadmin", "editor"]);
+    if (auth) return auth;
 
     // get news data from client side
     const updateData = await req.json();

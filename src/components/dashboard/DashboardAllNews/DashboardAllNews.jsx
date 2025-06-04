@@ -1,5 +1,6 @@
 "use client";
 import Loader from "@/components/loading/Loader";
+import NoDataFound from "@/components/Shared/NoDataFound";
 import PaginationPage from "@/components/Shared/PaginationPage";
 import { Button } from "@/components/ui/button";
 import {
@@ -123,9 +124,7 @@ const DashboardAllNews = () => {
           </div>
         </div>
       ) : (
-        <div className="flex justify-center items-center min-h-[80vh]">
-          <p className="text-2xl font-medium font-title">No Data Found</p>
-        </div>
+        <NoDataFound />
       )}
     </div>
   );
