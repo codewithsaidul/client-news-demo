@@ -2,6 +2,7 @@
 
 import Loader from "@/components/loading/Loader";
 import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
+import { stripHtml } from "@/lib/stripHtml";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,7 +22,6 @@ const Hero = () => {
   }
 
   const breakingNews = news.data[0];
-  console.log(breakingNews);
 
   return (
     <section className="my-20 min-h-screen relative">
@@ -60,7 +60,7 @@ const Hero = () => {
 
           {/* ========================= description ======================= */}
           <p className="max-[430px]:text-sm text-base lg:text-2xl line-clamp-2">
-            {breakingNews.description}
+            {stripHtml(breakingNews.description)}
           </p>
         </div>
       </Link>

@@ -12,17 +12,13 @@ import {
 } from "@/components/ui/table";
 import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 import { useDeleteNewsMutation } from "@/features/deleteNews/deleteNewsAPI";
+import { stripHtml } from "@/lib/stripHtml";
 import { dateFormater } from "@/lib/utils";
 import Link from "next/link";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import { twMerge } from "tailwind-merge";
 
-const stripHtml = (html) => {
-  const div = document.createElement("div");
-  div.innerHTML = html;
-  return div.textContent || "";
-};
 
 const DashboardAllNews = () => {
   const [page, setPage] = useState(1);

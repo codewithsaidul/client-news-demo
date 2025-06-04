@@ -1,21 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import FeatureBottom from "./FeatureBottom";
+import { stripHtml } from "@/lib/stripHtml";
 
 const MainFeaturedNews = ({ featuredNews }) => {
-  const { _id, title, description, category, thumbnail } = featuredNews[0];
+  const { _id, title, description, category, newsType, thumbnail } = featuredNews[0];
 
   return (
     <div>
       <div className="border-b pb-10 relative w-full">
-        <Link href={`/news/${category}/${_id}`} className="w-full">
-          <figure className="w-full overflow-hidden">
+        <Link href={`/${newsType}/${category}/${_id}`} className="w-full">
+          <figure className="w-full relative aspect-square max-h-[600px] overflow-hidden">
             <Image
               src={thumbnail}
               alt={title}
-              width={450}
-              height={200}
-              className="w-full h-auto object-cover"
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
+              className="object-center"
             />
           </figure>
 
@@ -30,7 +31,7 @@ const MainFeaturedNews = ({ featuredNews }) => {
               {title}
             </h2>
 
-            <p className="text-base font-medium line-clamp-2">{description}</p>
+            <p className="text-base font-medium line-clamp-2">{stripHtml(description)}</p>
           </div>
         </Link>
       </div>

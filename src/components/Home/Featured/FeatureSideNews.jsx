@@ -10,17 +10,17 @@ const FeatureSideNews = ({ featuredNews }) => {
         {featuredNews.length > 0 &&
           featuredNews.map((news) => (
             <div key={news._id} className="w-full flex items-center gap-3 border-b pb-10">
-              <figure className="max-w-24 max-h-24">
+              <figure className="relative w-full aspect-square max-w-32 max-h-24">
                 <Image
                   src={news.thumbnail}
                   alt={news.title}
-                  width={150}
-                  height={150}
-                  className="w-fit h-fit"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
+                  className="object-center"
                 />
               </figure>
               <div className="mt-2">
-                <Link href={`/news/${news.category}/${news._id}`} className="text-sm min-[450px]:text-xl font-title text-news-headline font-semibold line-clamp-2">
+                <Link href={`/${news.newsType}/${news.category}/${news._id}`} className="text-sm min-[450px]:text-xl font-title text-news-headline font-semibold line-clamp-2">
                   {news.title}
                 </Link>
                 <p className="text-lg mt-0.5 text-news-text">
