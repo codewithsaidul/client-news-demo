@@ -4,6 +4,7 @@ import { use } from "react";
 import Loader from "../loading/Loader";
 import Image from "next/image";
 import { dateFormater } from "@/lib/utils";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 const NewsDetails = ({ params }) => {
   const { slug } = use(params);
   const { data: news, isLoading } = useGetSingleNewsQuery(slug);
@@ -30,13 +31,17 @@ const NewsDetails = ({ params }) => {
             src={thumbnail}
             alt={title}
             fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
             className="object-center"
           />
         </figure>
 
         <div className="px-4 sm:px-8 md:px-16 lg:px-20 xl:px-32">
-          <div className="flex items-center gap-5 mt-5">
+          <h1 className="my-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-title font-semibold">
+            {title}
+          </h1>
 
+          <div className="flex items-center gap-5 mt-5">
             <div className="flex items-center gap-3 flex-wrap">
               {tags.map((tag, index) => (
                 <span key={index} className="text-gray-400">
@@ -56,18 +61,10 @@ const NewsDetails = ({ params }) => {
             <span className="text-gray-500">{dateFormater(createdAt)}</span>
           </div>
 
-          <h1 className="my-10 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-title font-semibold">
-            {title}
-          </h1>
-
-          <p className="text-news-text text-lg">
-            {description.split("\n").map((line, index) => (
-              <span key={index}>
-                {line}
-                <br />
-              </span>
-            ))}
-          </p>
+          <p
+            className="text-news-text text-lg mt-8"
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(description) }}
+          />
         </div>
       </div>
     </div>
