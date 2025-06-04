@@ -1,4 +1,5 @@
 "use client";
+import { stripHtml } from "@/lib/stripHtml";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,7 +8,7 @@ const HightlightCard = ({ allNews }) => {
     <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {allNews.slice(1, 4).map((news) => (
         <div key={news._id}>
-          <Link href={`/news/${news.category}/${news._id}`}>
+          <Link href={`/${news.newsType}/${news.category}/${news.slug}`}>
             <figure className="relative aspect-square w-full max-h-[400px]  overflow-hidden rounded-lg">
               <Image
                 src={news.thumbnail}
@@ -23,7 +24,7 @@ const HightlightCard = ({ allNews }) => {
                 {news.title}
               </h2>
               <p className="text-lg font-medium text-gray-400 line-clamp-4">
-                {news.description}
+                {stripHtml(news.description)}
               </p>
               <p className="flex items-center gap-1 text-gray-400">
                 by

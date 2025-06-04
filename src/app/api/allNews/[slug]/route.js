@@ -1,16 +1,15 @@
 import { connectDB } from "@/lib/connectDB";
-import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
 
 export const GET = async (req, { params }) => {
   try {
 
 
-    const { id } = params
+     const { slug } = await params
 
     // connected with mongodb database
     const db = await connectDB();
-    const query = { _id: new ObjectId(id)}
+    const query = { slug: slug}
 
     // insert news data on db
     const result = await db.collection("allNews").findOne(query);

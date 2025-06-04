@@ -5,8 +5,8 @@ import Loader from "../loading/Loader";
 import Image from "next/image";
 import { dateFormater } from "@/lib/utils";
 const NewsDetails = ({ params }) => {
-  const { id } = use(params);
-  const { data: news, isLoading } = useGetSingleNewsQuery(id);
+  const { slug } = use(params);
+  const { data: news, isLoading } = useGetSingleNewsQuery(slug);
 
   if (isLoading) {
     return (
