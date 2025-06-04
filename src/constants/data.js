@@ -51,3 +51,18 @@ export const socialLinks = [
     link: "https://www.youtube.com",
   },
 ];
+
+
+export const categoryMap = {
+  news: [
+    "World News",
+    "Innovation",
+    "Investing",
+    "Billionaires",
+    "Entrepreneurs",
+    "Leadership",
+  ],
+  life: ["Wellness", "Travel", "Lifestyle", "Property", "Style", "Motors"],
+  list: ["Top 10", "Must Read", "Editor's Picks"],
+  magazine: ["Cover Story", "Exclusive", "Breaking Today"],
+};

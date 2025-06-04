@@ -21,109 +21,34 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { categoryMap } from "@/constants/data";
 import { useUpdateNewsMutation } from "@/features/update/updateNewsAPI";
 import { uploadToImgBB } from "@/lib/uploadImage";
+import { editFormSchema } from "@/schema/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { z } from "zod";
 import QuillEditor from "../addNews/QuillEditor";
 
-const formSchema = z.object({
-  // News Title
-  title: z
-    .string()
-    .min(10, { message: "Title must be at least 10 characters" })
-    .nonempty({ message: "Title is required" }),
 
-  // Thumbnail (optional file input)
-  thumbnail: z.any().optional(),
 
-  // Description (textarea)
-  description: z
-    .string()
-    .min(50, { message: "Description must be at least 50 characters" }),
-
-  // Tags (array of strings, can be optional or required)
-  tags: z.array(z.string()).min(1, { message: "At least one tag is required" }),
-
-  // Category (dropdown)
-  category: z
-    .string()
-    .nonempty({ message: "Category is required" })
-    .refine(
-      (val) =>
-        [
-          "world-news",
-          "innovation",
-          "billionaires",
-          "entrepreneurs",
-          "leadership",
-          "investing",
-          "top-10",
-          "must-read",
-          "editor's-picks",
-          "travel", 
-          "lifestyle", 
-          "wellness",
-          "property",
-          "style",
-          "motors",
-          "cover-story",
-          "exclusive",
-          "breaking-today",
-        ].includes(val),
-      {
-        message: "Invalid category selected",
-      }
-    ),
-
-  // Status (dropdown)
-  status: z.enum(["published", "unpublished"], {
-    required_error: "Status is required",
-  }),
-
-  // Priority (radio group)
-  categoryType: z.enum(["normal", "life", "list", "magazine"], {
-    required_error: "Category type is required",
-  }),
-
-  // Priority (radio group)
-  priority: z.enum(["none", "isFeatured", "isEditorsPick", "isBreaking"], {
-    required_error: "Priority type is required",
-  }),
-});
-
-const categoryMap = {
-  normal: [
-    "World News",
-    "Innovation",
-    "Investing",
-    "Billionaires",
-    "Entrepreneurs",
-    "Leadership",
-  ],
-  life: ["Wellness", "Travel", "Lifestyle", "Property", "Style", "Motors"],
-  list: ["Top 10", "Must Read", "Editor's Picks"],
-  magazine: ["Cover Story", "Exclusive", "Breaking Today"],
-};
 
 const EditForm = ({ singleNews }) => {
   const [tags, setTags] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [categoryType, setCategoryType] = useState(
-    singleNews?.newsType || "normal"
+    singleNews?.newsType || "news"
   );
   const [updateNews] = useUpdateNewsMutation();
   const router = useRouter();
 
   // get the react hook form with default values
   const form = useForm({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(editFormSchema),
     defaultValues: {
       title: "",
       thumbnail: undefined,
@@ -316,7 +241,7 @@ const EditForm = ({ singleNews }) => {
             />
           </div>
 
-          {/* news category type */}
+          {/* news  type */}
           <div>
             <FormField
               control={form.control}
@@ -335,8 +260,8 @@ const EditForm = ({ singleNews }) => {
                       className="flex items-center gap-16"
                     >
                       <div className="flex items-center gap-x-3">
-                        <RadioGroupItem value="normal" />
-                        <Label>Normal</Label>
+                        <RadioGroupItem value="news" />
+                        <Label>News</Label>
                       </div>
                       <div className="flex items-center gap-x-3">
                         <RadioGroupItem value="life" />

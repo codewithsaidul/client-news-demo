@@ -12,6 +12,7 @@ const BillionairesNews = () => {
   const [page, setPage] = useState(1);
   const { data, isLoading } = useGetAllNewsQuery({
     page: page,
+    newsType: "normal",
     category: "billionaires",
   });
 
@@ -36,7 +37,7 @@ const BillionairesNews = () => {
       <HeroSection news={billionairesNews[0]} />
       <HightlightCard allNews={billionairesNews} />
       <ArticaleCard allNews={billionairesNews} />
-
+?newsType=normal&category=innovation
       <div className="mt-7">
         <PaginationPage
           page={page}

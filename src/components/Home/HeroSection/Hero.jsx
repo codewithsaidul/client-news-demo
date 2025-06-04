@@ -7,7 +7,7 @@ import Link from "next/link";
 
 const Hero = () => {
   const { data: news, isLoading } = useGetAllNewsQuery({
-    priority: "isBreaking",
+    priority: "isBreaking"
   });
 
   if (isLoading) {
@@ -21,11 +21,12 @@ const Hero = () => {
   }
 
   const breakingNews = news.data[0];
+  console.log(breakingNews);
 
   return (
     <section className="my-20 min-h-screen relative">
       <Link
-        href={`/news/${breakingNews.category}/${breakingNews._id}`}
+        href={`/${breakingNews.newsType}/${breakingNews.category}/${breakingNews._id}`}
         className="w-full h-auto"
       >
         <figure className="relative w-full aspect-video h-screen">
@@ -34,6 +35,7 @@ const Hero = () => {
             alt="hero image"
             fill
             className="object-center h-screen"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
             priority
           />
         </figure>

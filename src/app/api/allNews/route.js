@@ -2,7 +2,7 @@ import { connectDB } from "@/lib/connectDB";
 import { NextResponse } from "next/server";
 
 const categoryMap = {
-  normal: [
+  news: [
     "world-news",
     "innovation",
     "investing",
@@ -15,17 +15,14 @@ const categoryMap = {
   magazine: ["cover-story", "exclusive", "breaking-today"],
 };
 
-const normalize = (val) => val.trim().toLowerCase();
 
 export const GET = async (req) => {
   try {
     const url = new URL(req.url);
     const page = parseInt(url.searchParams.get("page") || "1");
-    const priority = normalize(url.searchParams.get("priority") || "none");
-    const category = normalize(url.searchParams.get("category") || "none");
-    const newsType = normalize(
-      url.searchParams.get("newsType") || "none"
-    );
+    const priority = url.searchParams.get("priority") || "none";
+    const category = url.searchParams.get("category") || "none";
+    const newsType = url.searchParams.get("newsType") || "none";
     const limit = 20;
     const skip = (page - 1) * limit;
 
@@ -48,6 +45,7 @@ export const GET = async (req) => {
       if (category !== "none") query.category = category;
     }
 
+    console.log(query);
 
     // connecting with mongodb
     const db = await connectDB();

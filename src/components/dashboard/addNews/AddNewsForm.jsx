@@ -23,7 +23,7 @@ import {
 } from "@/components/ui/select";
 import { useAddNewsMutation } from "@/features/addNews/addNewsAPI";
 import { uploadToImgBB } from "@/lib/uploadImage";
-import { formSchema } from "@/schema/formSchema";
+import { addFormSchema, formSchema } from "@/schema/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -31,20 +31,8 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import QuillEditor from "./QuillEditor";
+import { categoryMap } from "@/constants/data";
 
-const categoryMap = {
-  normal: [
-    "World News",
-    "Innovation",
-    "Investing",
-    "Billionaires",
-    "Entrepreneurs",
-    "Leadership",
-  ],
-  life: ["Wellness", "Travel", "Lifestyle", "Property", "Style", "Motors"],
-  list: ["Top 10", "Must Read", "Editor's Picks"],
-  magazine: ["Cover Story", "Exclusive", "Breaking Today"],
-};
 
 const AddNewsForm = () => {
   const [tags, setTags] = useState([]);
@@ -56,7 +44,7 @@ const AddNewsForm = () => {
 
   // get the react hook form with default values
   const form = useForm({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(addFormSchema),
     mode: "onSubmit",
     reValidateMode: "onSubmit",
     defaultValues: {
@@ -65,7 +53,7 @@ const AddNewsForm = () => {
       description: "",
       tags: [], // This should be updated as user adds tags
       category: "",
-      categoryType: "normal",
+      categoryType: "news",
       status: "published", // Or leave as "" if it's mandatory to select
       priority: "none", // Default radio value
     },
@@ -225,7 +213,7 @@ const AddNewsForm = () => {
             />
           </div>
 
-          {/* news category type */}
+          {/* news  type */}
           <div>
             <FormField
               control={form.control}
@@ -240,12 +228,12 @@ const AddNewsForm = () => {
                         setCategoryType(value);
                         form.setValue("category", "");
                       }}
-                      value={field.value || "normal"}
+                      value={field.value || "news"}
                       className="flex items-center gap-16"
                     >
                       <div className="flex items-center gap-x-3">
-                        <RadioGroupItem value="normal" />
-                        <Label>Normal</Label>
+                        <RadioGroupItem value="news" />
+                        <Label>News</Label>
                       </div>
                       <div className="flex items-center gap-x-3">
                         <RadioGroupItem value="life" />

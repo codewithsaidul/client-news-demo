@@ -3,7 +3,7 @@ import { apiSlice } from "../Api/apiSlice";
 export const allNewsAPI = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllNews: builder.query({
-      query: ({ page = 1, category = "none", newsType = "none", priority = "none" }) => {
+      query: ({ page = 1, category, newsType, priority = "none" }) => {
         const params = new URLSearchParams();
         if (page) params.append("page", page.toString());
         if (category) params.append("category", category);
