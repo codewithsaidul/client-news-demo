@@ -7,22 +7,22 @@ import React from "react";
 const FeatureNews = ({ news }) => {
   return (
     <div>
-      <figure className="relative">
+      <figure className="relative aspect-square w-full max-h-[720px]">
         <Image
           src={news?.thumbnail}
           alt={news.title}
-          width={1280}
-          height={780}
-          className="w-full h-full object-cover"
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
+          className="object-center rounded"
         />
         <Button className="text-xl font-title py-5 px-7 absolute -bottom-4 left-1/2 transform -translate-x-1/2 capitalize">
-          { news.category}
+          {news.category}
         </Button>
       </figure>
 
       <div className="text-center mt-8">
         <Link
-          href={`/news/${news.category}/${news._id}`}
+          href={`/${news.newsType}/${news.category}/${news._id}`}
           className="text-2xl min-[350px]:text-3xl md:text-5xl font-bold font-title text-news-headline"
         >
           {news.title}

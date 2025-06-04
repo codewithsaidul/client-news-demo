@@ -45,7 +45,6 @@ export const GET = async (req) => {
       if (category !== "none") query.category = category;
     }
 
-    console.log(query);
 
     // connecting with mongodb
     const db = await connectDB();

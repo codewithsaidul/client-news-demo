@@ -6,7 +6,7 @@ import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";
 
 const EntrepreneursSection = () => {
-  const { data: news, isLoading } = useGetAllNewsQuery( { category: "entrepreneurs"});
+  const { data: news, isLoading } = useGetAllNewsQuery( { newsType: "news", category: "entrepreneurs"});
 
   if (isLoading) {
     return (

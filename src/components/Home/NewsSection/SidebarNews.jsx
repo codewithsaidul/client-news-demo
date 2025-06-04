@@ -10,13 +10,13 @@ const SidebarNews = ( { allNews } ) => {
         {allNews.length > 0 &&
           allNews.slice(5, 7).map((news, index) => (
             <div key={index} className="w-full pr-4">
-              <figure className="max-h-96">
+              <figure className="relative w-full aspect-square max-h-96">
                 <Image
                   src={news.thumbnail}
                   alt={news.title}
-                  width={600}
-                  height={600}
-                  className="w-full h-72 sm:h-96"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
+                  className="object-center rounded"
                 />
               </figure>
               <div className="mt-2">
