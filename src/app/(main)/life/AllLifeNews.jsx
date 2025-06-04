@@ -27,7 +27,7 @@ const AllLifeNews = () => {
 
   const { data: news, pagination } = data;
 
-  const lifeNews = news.filter(pNews => pNews.status === "published")
+  const lifeNews = news.filter(pNews => pNews.priority === "none" && pNews.status === "published")
 
   return (
     <div>

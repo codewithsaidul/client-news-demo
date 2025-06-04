@@ -51,6 +51,7 @@ const Navbar = () => {
                 alt="news logo"
                 width={100}
                 height={100}
+                priority
                 className="w-full h-full"
               />
             </Link>

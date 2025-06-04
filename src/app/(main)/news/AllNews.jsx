@@ -30,7 +30,7 @@ const AllNews = () => {
 
   const { data: news, pagination } = data;
 
-  const allNews = news.filter((all) => all.status === "published");
+  const allNews = news.filter((all) => all.priority === "none" && all.status === "published");
 
   return (
     <div>
