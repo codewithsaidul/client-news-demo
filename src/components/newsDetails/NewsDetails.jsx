@@ -23,6 +23,41 @@ const NewsDetails = ({ params }) => {
 
   const { title, description, thumbnail, tags, category, createdAt } = news;
 
+  const cleanDescription = sanitizeHtml(description, {
+    allowedTags: [
+      "p",
+      "b",
+      "i",
+      "em",
+      "strong",
+      "ul",
+      "ol",
+      "li",
+      "a",
+      "img",
+      "h1",
+      "h2",
+      "h3",
+      "br",
+    ],
+    allowedAttributes: {
+      img: ["src", "alt", "width", "height", "style"],
+      a: ["href", "target", "rel"],
+    },
+    transformTags: {
+      a: (tagName, attribs) => {
+        return {
+          tagName: "a",
+          attribs: {
+            ...attribs,
+            target: "_blank",
+            rel: "noopener noreferrer",
+          },
+        };
+      },
+    },
+  });
+
   return (
     <div className="mt-20">
       <div>
@@ -63,7 +98,7 @@ const NewsDetails = ({ params }) => {
 
           <p
             className="text-news-text text-lg mt-8"
-            dangerouslySetInnerHTML={{ __html: sanitizeHtml(description) }}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(cleanDescription) }}
           />
         </div>
       </div>

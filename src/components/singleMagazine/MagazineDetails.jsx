@@ -6,10 +6,6 @@ import Image from "next/image";
 import { dateFormater } from "@/lib/utils";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
-
-
-
-
 const MagazineDetails = ({ params }) => {
   const { slug } = use(params);
   const { data: news, isLoading } = useGetSingleNewsQuery(slug);
@@ -28,14 +24,40 @@ const MagazineDetails = ({ params }) => {
 
   const { title, description, thumbnail, tags, category, createdAt } = news;
 
-
   const cleanDescription = sanitizeHtml(description, {
-  allowedTags: ["p", "b", "i", "em", "strong", "ul", "ol", "li", "a", "img", "h1", "h2", "h3", "br"],
-  allowedAttributes: {
-    a: ["href", "target", "rel"],
-    img: ["src", "alt", "width", "height", "style"],
-  },
-});
+    allowedTags: [
+      "p",
+      "b",
+      "i",
+      "em",
+      "strong",
+      "ul",
+      "ol",
+      "li",
+      "a",
+      "img",
+      "h1",
+      "h2",
+      "h3",
+      "br",
+    ],
+    allowedAttributes: {
+      img: ["src", "alt", "width", "height", "style"],
+      a: ["href", "target", "rel"],
+    },
+    transformTags: {
+      a: (tagName, attribs) => {
+        return {
+          tagName: "a",
+          attribs: {
+            ...attribs,
+            target: "_blank",
+            rel: "noopener noreferrer",
+          },
+        };
+      },
+    },
+  });
 
   return (
     <div className="mt-24">
