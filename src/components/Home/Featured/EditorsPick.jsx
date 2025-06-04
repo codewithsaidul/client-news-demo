@@ -30,9 +30,9 @@ const EditorsPick = () => {
       {/* ============ Editor's Pick Container ================== */}
       <div className="mt-5">
         {editorsPick.length > 0 &&
-          editorsPick.slice(0, 3).map(({ _id, category, title }) => (
+          editorsPick.slice(0, 3).map(({ _id, slug, category, title }) => (
             <div key={_id} className="border-b mt-8 pb-5">
-              <Link href={`/news/${category}/${_id}`} className="text-xl text-news-text duration-500 hover:text-rose-500 hover:duration-500 line-clamp-2">
+              <Link href={`/news/${category}/${slug}`} className="text-xl text-news-text duration-500 hover:text-rose-500 hover:duration-500 line-clamp-2">
                 {title}
               </Link>
             </div>

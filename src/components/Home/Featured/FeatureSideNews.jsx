@@ -20,7 +20,7 @@ const FeatureSideNews = ({ featuredNews }) => {
                 />
               </figure>
               <div className="mt-2">
-                <Link href={`/${news.newsType}/${news.category}/${news._id}`} className="text-sm min-[450px]:text-xl font-title text-news-headline font-semibold line-clamp-2">
+                <Link href={`/${news.newsType}/${news.category}/${news.slug}`} className="text-sm min-[450px]:text-xl font-title text-news-headline font-semibold line-clamp-2">
                   {news.title}
                 </Link>
                 <p className="text-lg mt-0.5 text-news-text">

@@ -73,27 +73,6 @@ export default function QuillEditor({ value, onChange }) {
 
   return (
     <div className="bg-white rounded-md p-2">
-      {/* External Toolbar */}
-      {/* <div id="quill-toolbar" className="mb-2">
-        <select className="ql-header">
-          <option value="1">Heading 1</option>
-          <option value="2">Heading 2</option>
-          <option value="3">Heading 3</option>
-          <option value="" selected>
-            Normal
-          </option>
-        </select>
-
-        <button className="ql-bold" />
-        <button className="ql-italic" />
-        <button className="ql-underline" />
-        <button className="ql-strike" />
-        <button className="ql-list" value="ordered" />
-        <button className="ql-list" value="bullet" />
-        <button className="ql-image" />
-        <button className="ql-link" />
-        {/* <button className="ql-clean" /> */}
-      {/*}  </div> */}
 
       {/* Editor Container */}
       <div

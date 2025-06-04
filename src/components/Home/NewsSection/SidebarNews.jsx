@@ -20,7 +20,7 @@ const SidebarNews = ( { allNews } ) => {
                 />
               </figure>
               <div className="mt-2">
-                <Link href={`/${news.newsType}/${news.category}/${news._id}`} className="text-2xl font-title font-bold">
+                <Link href={`/${news.newsType}/${news.category}/${news.slug}`} className="text-2xl font-title font-bold">
                   {news.title}
                 </Link>
                 <p className="text-lg mt-0.5 text-news-text">

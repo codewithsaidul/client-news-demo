@@ -4,13 +4,13 @@ import FeatureBottom from "./FeatureBottom";
 import { stripHtml } from "@/lib/stripHtml";
 
 const MainFeaturedNews = ({ featuredNews }) => {
-  const { _id, title, description, category, newsType, thumbnail } = featuredNews[0];
+  const { slug, title, description, category, newsType, thumbnail } = featuredNews[0];
 
   return (
     <div>
-      <div className="border-b pb-10 relative w-full">
-        <Link href={`/${newsType}/${category}/${_id}`} className="w-full">
-          <figure className="w-full relative aspect-square max-h-[500px] overflow-hidden">
+      <div className=" relative w-full">
+        <Link href={`/${newsType}/${category}/${slug}`} className="w-full">
+          <figure className="w-full relative aspect-square max-h-[300px] sm:max-h-[500px] xl:max-h-[720px] overflow-hidden">
             <Image
               src={thumbnail}
               alt={title}
@@ -36,7 +36,7 @@ const MainFeaturedNews = ({ featuredNews }) => {
         </Link>
       </div>
 
-      <div className="mt-16 flex flex-col lg:flex-row max-lg:gap-8 gap-5">
+      <div className="mt-16 border-t pt-10 flex flex-col lg:flex-row max-lg:gap-8 gap-5">
         {featuredNews.slice(1, 3).map((news) => (
           <FeatureBottom key={news._id} news={news} />
         ))}

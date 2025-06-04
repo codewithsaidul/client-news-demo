@@ -26,7 +26,7 @@ const LeftNewsList = ({ allNews }) => {
             {/* =================== content ===================== */}
             <div className="mt-2 flex-1 flex">
               <div>
-                <Link href={`/${news.newsType}/${news.category}/${news._id}`} className="text-base sm:text-xl font-title font-bold line-clamp-2">
+                <Link href={`/${news.newsType}/${news.category}/${news.slug}`} className="text-base sm:text-xl font-title font-bold line-clamp-2">
                   {news.title}
                 </Link>
                 <p className="text-base mt-0.5 text-news-text">
