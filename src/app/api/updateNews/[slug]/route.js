@@ -25,7 +25,7 @@ export const PATCH = async (req, { params }) => {
       $set: updateData,
     };
 
-    console.log(updateDoc)
+
 
 
     // insert news data on db

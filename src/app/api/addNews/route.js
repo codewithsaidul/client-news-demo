@@ -1,4 +1,5 @@
 import { connectDB } from "@/lib/connectDB";
+import { slugifyUnique } from "@/lib/slugify";
 import { verifyAccess } from "@/lib/verifyAccess";
 import { NextResponse } from "next/server";
 
@@ -13,11 +14,20 @@ export const POST = async (req) => {
     // connected with mongodb database
     const db = await connectDB();
 
+    // function to check if slug exists in DB
+    async function isSlugExists(slug) {
+      const existing = await db.collection("allNews").findOne({ slug });
+      return !!existing;
+    }
+
+    const uniqueSlug = await slugifyUnique(data.title, 50, isSlugExists);
+
     // add timestamp
     const newsData = {
       ...data,
-      createdAt: new Date()
-    }
+      slug: uniqueSlug,
+      createdAt: new Date(),
+    };
 
     // insert news data on db
     const result = await db.collection("allNews").insertOne(newsData);

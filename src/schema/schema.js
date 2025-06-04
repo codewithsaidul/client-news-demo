@@ -2,6 +2,10 @@ import { z } from "zod";
 
 
 
+// custom((val) => val instanceof FileList && val.length > 0, {
+//     message: "Thumbnail is required",
+//   })
+
 
 // ===================== add form schema =================================
 export const addFormSchema = z.object({
@@ -12,9 +16,7 @@ export const addFormSchema = z.object({
     .nonempty({ message: "Title is required" }),
 
   // Thumbnail (will be a FileList if using file input)
-  thumbnail: z.custom((val) => val instanceof FileList && val.length > 0, {
-    message: "Thumbnail is required",
-  }),
+  thumbnail: z.optional(),
   // Description (textarea)
   description: z
     .string()

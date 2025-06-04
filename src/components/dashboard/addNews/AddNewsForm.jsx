@@ -21,17 +21,24 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { categoryMap } from "@/constants/data";
 import { useAddNewsMutation } from "@/features/addNews/addNewsAPI";
 import { uploadToImgBB } from "@/lib/uploadImage";
-import { addFormSchema, formSchema } from "@/schema/schema";
+import { addFormSchema } from "@/schema/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { X } from "lucide-react";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import QuillEditor from "./QuillEditor";
-import { categoryMap } from "@/constants/data";
+
+
+// ✅ Dynamically import with SSR disabled
+const QuillEditor = dynamic(
+  () => import("./QuillEditor"),
+  { ssr: false }
+);
 
 
 const AddNewsForm = () => {
@@ -39,7 +46,7 @@ const AddNewsForm = () => {
   const [inputValue, setInputValue] = useState("");
   const [addNews] = useAddNewsMutation();
   const [isLoading, setIsLoading] = useState(false);
-  const [categoryType, setCategoryType] = useState("normal");
+  const [categoryType, setCategoryType] = useState("news");
   const router = useRouter();
 
   // get the react hook form with default values
@@ -90,12 +97,12 @@ const AddNewsForm = () => {
   // ====================== submit news data on db ====================
   const onSubmit = async (values) => {
     setIsLoading(true);
-    const file = values.thumbnail[0];
-    const imgUrl = await uploadToImgBB(file);
+    // const file = values.thumbnail[0];
+    // const imgUrl = await uploadToImgBB(file);
 
     const newsData = {
       title: values.title,
-      thumbnail: imgUrl,
+      thumbnail: "imgUrl",
       description: values.description,
       tags: values.tags,
       category: values.category,

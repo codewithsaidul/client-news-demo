@@ -38,9 +38,9 @@ const MagazineDetails = ({ params }) => {
 });
 
   return (
-    <div className="mt-20">
+    <div className="mt-24">
       <div>
-        <figure className="relative aspect-video w-full max-h-[300px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[600px]">
+        <figure className="relative aspect-[4/3] max-w-[600px] max-h-[300px] md:max-h-[400px] lg:max-h-[500px] xl:max-h-[800px] mx-auto">
           <Image
             src={thumbnail}
             alt={title}
