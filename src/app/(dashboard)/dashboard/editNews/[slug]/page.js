@@ -1,24 +1,31 @@
 "use client";
 import EditForm from "@/components/dashboard/updateNews/EditForm";
+import Loader from "@/components/loading/Loader";
 import { useGetSingleNewsQuery } from "@/features/getSingleNews/singleNewsAPI";
 import { use, useEffect } from "react";
 
 const EditNews = ({ params }) => {
-  const { id } = use(params);
-  const { data: singleNews, isLoading, refetch } = useGetSingleNewsQuery(id, {
+  const { slug } = use(params);
+  const { data: singleNews, isLoading, refetch } = useGetSingleNewsQuery(slug, {
     refetchOnMountOrArgChange: true,
     skip: false,
   });
 
   // যখন প্রয়োজন হবে তখন
   useEffect(() => {
-    if (id) {
+    if (slug) {
       refetch();
     }
-  }, [id, refetch]);
+  }, [slug, refetch]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-10 my-10 px-6">
+        <Loader />
+        <Loader />
+        <Loader />
+      </div>
+    );
   }
 
   return (

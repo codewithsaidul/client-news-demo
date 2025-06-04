@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { stripHtml } from "@/lib/stripHtml";
 import { dateFormater } from "@/lib/utils";
 import { twMerge } from "tailwind-merge";
 
@@ -21,6 +22,7 @@ const DataTable = ( { allNews }) => {
             <TableHead className="w-[100px]">Id</TableHead>
             <TableHead>Title</TableHead>
             <TableHead>Description</TableHead>
+            <TableHead>Category</TableHead>
             <TableHead>Timestamp</TableHead>
             <TableHead className="text-right">Status</TableHead>
           </TableRow>
@@ -30,7 +32,8 @@ const DataTable = ( { allNews }) => {
             <TableRow key={news._id}>
               <TableCell className="font-medium">{index + 1}</TableCell>
               <TableCell className="text-xl font-title font-semibold truncate max-w-[300px]">{news.title}</TableCell>
-              <TableCell className="truncate max-w-[300px]">{news.content}</TableCell>
+              <TableCell className="truncate max-w-[300px]">{stripHtml(news.description)}</TableCell>
+              <TableCell className="capitalize">{news.newsType}</TableCell>
               <TableCell>{dateFormater(news.createdAt)}</TableCell>
               <TableCell className="text-right">
                 <span className={twMerge("p-2 rounded-lg capitalize",

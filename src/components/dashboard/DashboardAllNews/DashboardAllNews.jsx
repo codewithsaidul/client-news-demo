@@ -67,6 +67,7 @@ const DashboardAllNews = () => {
                 <TableHead>Title</TableHead>
                 <TableHead>Description</TableHead>
                 <TableHead>Category</TableHead>
+                <TableHead>News Type</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>Timestamp</TableHead>
                 <TableHead>Action</TableHead>
@@ -83,6 +84,7 @@ const DashboardAllNews = () => {
                     {stripHtml(news.description)}
                   </TableCell>
                   <TableCell className="capitalize">{news.category}</TableCell>
+                  <TableCell className="capitalize">{news.newsType}</TableCell>
                   <TableCell>
                     <span
                       className={twMerge(
@@ -98,7 +100,7 @@ const DashboardAllNews = () => {
                   <TableCell>{dateFormater(news.createdAt)}</TableCell>
                   <TableCell className="flex gap-2">
                     <Button className="bg-blue-500">
-                      <Link href={`/dashboard/editNews/${news._id}`}>Edit</Link>
+                      <Link href={`/dashboard/editNews/${news.slug}`}>Edit</Link>
                     </Button>
                     <Button
                       className="bg-red-600 cursor-pointer"
