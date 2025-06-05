@@ -20,7 +20,6 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 import { twMerge } from "tailwind-merge";
 
-
 const DashboardAllNews = () => {
   const [page, setPage] = useState(1);
   const { data, isLoading } = useGetAllNewsQuery({ page });
@@ -39,13 +38,25 @@ const DashboardAllNews = () => {
   }
 
   const deleteNewsByID = async (slug) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    });
     try {
-      const { data } = await deleteNews(slug);
-      if (data.acknowledged && data.deletedCount > 0) {
-        Swal.fire({
-          title: "News delete successfully!",
-          icon: "success",
-        });
+      if (result.isConfirmed) {
+        const { data } = await deleteNews(slug);
+        if (data.acknowledged && data.deletedCount > 0) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "News has been deleted.",
+            icon: "success",
+          });
+        }
       }
     } catch {
       Swal.fire({
@@ -101,7 +112,9 @@ const DashboardAllNews = () => {
                   <TableCell>{dateFormater(news.createdAt)}</TableCell>
                   <TableCell className="flex gap-2">
                     <Button className="bg-blue-500">
-                      <Link href={`/dashboard/editNews/${news.slug}`}>Edit</Link>
+                      <Link href={`/dashboard/editNews/${news.slug}`}>
+                        Edit
+                      </Link>
                     </Button>
                     <Button
                       className="bg-red-600 cursor-pointer"

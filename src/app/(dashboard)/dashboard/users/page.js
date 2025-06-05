@@ -4,17 +4,17 @@ import AllUsers from "@/components/users/AllUsers";
 const page = () => {
   return (
     <div className="p-5">
-      <div className="flex justify-between items-center border-b pb-7">
+      {/* <div className="flex justify-between items-center border-b pb-7">
         <h2 className="text-3xl font-bold font-title">All Users</h2>
         <div className="flex items-center gap-4">
           <Button className="cursor-pointer">
             Add New Users
           </Button>
         </div>
-      </div>
+      </div> */}
 
 
-      <div className="mt-16">
+      <div>
         <AllUsers />
       </div>
     </div>
