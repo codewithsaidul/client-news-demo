@@ -29,8 +29,7 @@ const FeatureNews = ({ news }) => {
         </Link>
 
         <p className="text-lg mt-5 text-news-text">
-          {/* <span className="font-bold">{news.author.name}</span> */}
-          <span className="font-bold">Forbes Admin</span>
+          <span className="font-bold">{news.author.name}</span>
 
           <span className="mx-2">|</span>
 

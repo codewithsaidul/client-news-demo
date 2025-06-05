@@ -29,8 +29,7 @@ const ArticaleCard = ({ allNews }) => {
               </p>
               <p className="flex items-center gap-1 text-gray-400">
                 by
-                {/* <span className="font-bold font-title">{news.author.name}</span> */}
-                <span className="font-bold font-title">Forbes Admin</span>
+                <span className="font-bold font-title">{news.author.name}</span>
               </p>
             </div>
           </Link>

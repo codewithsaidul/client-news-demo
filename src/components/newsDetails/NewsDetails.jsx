@@ -21,7 +21,7 @@ const NewsDetails = ({ params }) => {
     );
   }
 
-  const { title, description, thumbnail, tags, category, createdAt } = news;
+  const { title, description, thumbnail, tags, category, createdAt, author } = news;
 
   const cleanDescription = sanitizeHtml(description, {
     allowedTags: [
@@ -91,7 +91,7 @@ const NewsDetails = ({ params }) => {
               Category: <span>{category}</span>
             </p>
             <p className="text-lg font-normal">
-              By <span className="font-title font-bold">Forbes Admin</span>
+              By <span className="font-title font-bold">{author.name}</span>
             </p>
             <span className="text-gray-500">{dateFormater(createdAt)}</span>
           </div>

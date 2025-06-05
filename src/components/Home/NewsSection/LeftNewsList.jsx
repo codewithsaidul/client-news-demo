@@ -30,12 +30,11 @@ const LeftNewsList = ({ allNews }) => {
                   {news.title}
                 </Link>
                 <p className="text-base mt-0.5 text-news-text">
-                  {/* <span className="font-bold">{news.author.name}</span> */}
-                  <span className="max-[400px]:text-sm font-bold">Forbes Admin</span>
+                  <span className="font-bold max-sm:text-sm">{news.author.name}</span>
 
                   <span className="mx-2">|</span>
 
-                  <span className="max-[400px]:text-sm">{dateFormater(news.createdAt)}</span>
+                  <span className="max-sm:text-sm">{dateFormater(news.createdAt)}</span>
                 </p>
               </div>
             </div>

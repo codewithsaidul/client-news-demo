@@ -24,12 +24,11 @@ const SidebarNews = ( { allNews } ) => {
                   {news.title}
                 </Link>
                 <p className="text-lg mt-0.5 text-news-text">
-                  {/* <span className="font-bold">{news.author.name}</span> */}
-                  <span className="font-bold">Forbes Admin</span>
+                  <span className="font-bold max-sm:text-sm max-md:text-base">{news.author.name}</span>
 
                   <span className="mx-2">|</span>
 
-                  <span>{dateFormater(news.createdAt)}</span>
+                  <span className="max-sm:text-sm max-md:text-base">{dateFormater(news.createdAt)}</span>
                 </p>
               </div>
             </div>

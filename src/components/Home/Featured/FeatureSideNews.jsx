@@ -24,12 +24,11 @@ const FeatureSideNews = ({ featuredNews }) => {
                   {news.title}
                 </Link>
                 <p className="text-lg mt-0.5 text-news-text">
-                  {/* <span className="font-bold">{news.author.name}</span> */}
-                  <span className="font-bold text-sm">Forbes Admin</span>
+                  <span className="font-bold text-sm min-sm:text-base">{news.author.name}</span>
 
                   <span className="mx-2">|</span>
 
-                  <span className="text-sm">{dateFormater(news.createdAt)}</span>
+                  <span className="text-sm min-sm:text-base">{dateFormater(news.createdAt)}</span>
                 </p>
               </div>
             </div>

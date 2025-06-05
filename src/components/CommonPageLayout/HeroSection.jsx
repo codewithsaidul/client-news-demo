@@ -15,8 +15,7 @@ const HeroSection = ({ news }) => {
         <p className="text-xl font-medium text-news-text my-3 line-clamp-5">{stripHtml(news.description)}</p>
         <p className="flex items-center gap-1 text-base">
           <span className="font-bold">by</span>
-          {/* {news.author.name} */}
-          Forbes Admin
+          {news.author.name}
         </p>
       </Link>
 
