@@ -1,6 +1,9 @@
 "use client";
+import { useDeleteUserMutation } from "@/features/deleteUser/deleteUserAPI";
 import { useGetAllUsersQuery } from "@/features/getAllUsers/getAllUsers";
+import { useRegisterAdminMutation } from "@/features/registerAdmin/registerAdminAPI";
 import { dateFormater } from "@/lib/utils";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import Loader from "../loading/Loader";
 import CreateUserModal from "../modal/CreateUserModal";
@@ -15,14 +18,11 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-import { useGetCurrentUserQuery } from "@/features/currentUser/currentUserAPI";
-import { useRegisterAdminMutation } from "@/features/registerAdmin/registerAdminAPI";
-import { useState } from "react";
 
 const AllUsers = () => {
-  const { data: currUser } = useGetCurrentUserQuery();
   const { data: users, isLoading } = useGetAllUsersQuery();
   const [registerAdmin] = useRegisterAdminMutation();
+  const [deleteUser] = useDeleteUserMutation();
   const [open, setOpen] = useState(false);
 
   if (isLoading) {
@@ -80,27 +80,27 @@ const AllUsers = () => {
     });
     try {
       if (result.isConfirmed) {
-        const existingUser = users.find((user) => user._id === userId);
 
-        if (existingUser?.role === "superadmin") {
+        const res = await deleteUser(userId);
+
+        if (res?.data?.acknowledged && res?.data?.deletedCount > 0) {
           Swal.fire({
-            title: "Cann't deleted super admin",
+            title: "Deleted!",
+            text: "User has been deleted.",
+            icon: "success",
+          });
+        } else if (res?.error?.status === 400 && res?.error?.data?.message) {
+          Swal.fire({
+            title: "Failed to Delete!",
+            text: res.error.data.message,
             icon: "error",
           });
-        } else {
-          const { data } = await deleteNews(slug);
-          if (data.acknowledged && data.deletedCount > 0) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "News has been deleted.",
-              icon: "success",
-            });
-          }
         }
       }
-    } catch {
+    } catch (error) {
       Swal.fire({
-        title: "User deleted unsuccessfully!",
+        title: "Failed to Delete!",
+        text: "User delete unsuccessfully!",
         icon: "error",
       });
     }
