@@ -1,6 +1,7 @@
 import { connectDB } from "@/lib/connectDB";
 import { verifyRoles } from "@/lib/verifyRoles";
 import bcrypt from "bcryptjs";
+import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
   try {
@@ -13,8 +14,10 @@ export const POST = async (req) => {
     const db = await connectDB();
 
     const existingUser = await db.collection("users").findOne({ email });
+
+    // chekcing user already exist or not
     if (existingUser) {
-      return new Response(JSON.stringify({ message: "User already exists" }), {
+      return NextResponse.json({ message: "User already exists" }, {
         status: 400,
       });
     }
@@ -31,11 +34,10 @@ export const POST = async (req) => {
 
     await db.collection("users").insertOne(newUser);
 
-    return new Response(JSON.stringify({ message: "User registered successfully" }), {
+    return NextResponse.json({ message: "User registered successfully" }, {
       status: 200,
     });
   } catch (err) {
-    console.error("Registration error:", err);
-    return new Response("Internal Server Error", { status: 500 });
+    return NextResponse.json("Internal Server Error", { status: 500 });
   }
 };
