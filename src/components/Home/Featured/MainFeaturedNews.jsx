@@ -10,7 +10,7 @@ const MainFeaturedNews = ({ featuredNews }) => {
     <div>
       <div className=" relative w-full">
         <Link href={`/${newsType}/${category}/${slug}`} className="w-full">
-          <figure className="w-full relative aspect-square max-h-[300px] sm:max-h-[500px] xl:max-h-[720px] overflow-hidden">
+          <figure className="w-full relative aspect-video  max-h-[300px] sm:max-h-[500px] overflow-hidden">
             <Image
               src={thumbnail}
               alt={title}

@@ -7,7 +7,7 @@ import React from "react";
 const FeatureNews = ({ news }) => {
   return (
     <div>
-      <figure className="relative aspect-square w-full max-h-[300px] sm:max-h-[500px] xl:max-h-[720px]">
+      <figure className="relative aspect-video w-full max-h-[300px] sm:max-h-[500px]">
         <Image
           src={news?.thumbnail}
           alt={news.title}
