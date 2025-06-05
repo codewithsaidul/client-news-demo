@@ -17,9 +17,8 @@ export const GET = async (req, res) => {
 
   const db = await connectDB();
 
-  const result = await db.collection("users").findOne({ email: { $eq: decoded.email}}, { projection: { _id: 1, name: 1, email: 1, role: 1}});
+  const result = await db.collection("users").findOne({ email: { $eq: decoded.email}}, { projection: { _id: 1, name: 1, email: 1, role: 1, createdAt: 1}});
 
-  console.log(result)
 
   return NextResponse.json(result, { status: 200})
 };

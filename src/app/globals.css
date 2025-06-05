@@ -148,6 +148,7 @@
   .sidebar::-webkit-scrollbar {
     display: none !important;
   }
+
 }
 
 @layer utilities {
@@ -191,6 +192,6 @@
 
   .quill-content i,
   .quill-content em {
-    @apply italic
+    @apply italic;
   }
 }

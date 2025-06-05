@@ -15,7 +15,6 @@ const categoryMap = {
   magazine: ["cover-story", "exclusive", "breaking-today"],
 };
 
-
 export const GET = async (req) => {
   try {
     const url = new URL(req.url);
@@ -23,6 +22,7 @@ export const GET = async (req) => {
     const priority = url.searchParams.get("priority") || "none";
     const category = url.searchParams.get("category") || "none";
     const newsType = url.searchParams.get("newsType") || "none";
+    const authorEmail = url.searchParams.get("authorEmail") || "none";
     const limit = 20;
     const skip = (page - 1) * limit;
 
@@ -45,6 +45,10 @@ export const GET = async (req) => {
       if (category !== "none") query.category = category;
     }
 
+    // with author email
+    if (authorEmail !== "none") {
+      query["author.email"] = authorEmail;
+    }
 
     // connecting with mongodb
     const db = await connectDB();

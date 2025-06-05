@@ -18,12 +18,16 @@ import {
 import { useGetAllUsersQuery } from "@/features/user/getAllUsers/getAllUsers";
 import { useDeleteUserMutation } from "@/features/user/deleteUser/deleteUserAPI";
 import { useRegisterAdminMutation } from "@/features/auth/registerAdmin/registerAdminAPI";
+import { useUpdateUserMutation } from "@/features/user/update/updateUserAPI";
 
 const AllUsers = () => {
   const { data: users, isLoading } = useGetAllUsersQuery();
   const [registerAdmin] = useRegisterAdminMutation();
+  const [updateUser] = useUpdateUserMutation();
   const [deleteUser] = useDeleteUserMutation();
-  const [open, setOpen] = useState(false);
+  const [openCreateModal, setOpenCreateModal] = useState(false);
+  const [openUpdateModal, setOpenUpdateModal] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   if (isLoading) {
     return (
@@ -37,37 +41,66 @@ const AllUsers = () => {
     );
   }
 
+  // =================== create new user
   const handleCreate = async (adminData) => {
     // API call here
     try {
       const res = await registerAdmin(adminData);
-      setOpen(false);
 
       if (res?.data?.message) {
         Swal.fire({
           title: res?.data?.message,
           icon: "success",
         });
+        setOpenCreateModal(false);
       } else if (res.error.status === 400 && res.error.data.message) {
         Swal.fire({
           title: res?.error?.data?.message,
           icon: "error",
         });
+        setOpenCreateModal(false);
       }
     } catch (error) {
-      setOpen(false);
       Swal.fire({
         title: "Something went wrong",
+        icon: "error",
+      });
+      setOpenCreateModal(false);
+    }
+  };
+
+  const singleUser = (user) => {
+    setSelectedUser(user);
+    setOpenUpdateModal(true);
+  };
+
+  // ============= update user data ==========
+  const handleUpdate = async (adminData) => {
+    // API call here
+    try {
+      const res = await updateUser({
+        id: selectedUser?._id,
+        userData: adminData,
+      });
+      setOpenUpdateModal(false);
+      if (res?.data?.acknowledged && res?.data?.modifiedCount > 0) {
+        Swal.fire({
+          title: "Updated!",
+          text: "User info has been updated",
+          icon: "success",
+        });
+      }
+    } catch (error) {
+      setOpenUpdateModal(false);
+      Swal.fire({
+        title: "Failed to updte",
+        text: "Something went wrong",
         icon: "error",
       });
     }
   };
 
-  const handleUpdate = (adminData) => {
-    console.log("Updating:", adminData);
-    // API call here
-  };
-
+  // =================== delelete user by id
   const deleteUserByID = async (userId) => {
     const result = await Swal.fire({
       title: "Are you sure?",
@@ -107,10 +140,11 @@ const AllUsers = () => {
 
   return (
     <div>
+      {/* ============== heading ================= */}
       <div className="flex justify-between items-center border-b pb-7">
         <h2 className="text-3xl font-bold font-title">All Users</h2>
         <div className="flex items-center gap-4">
-          <Dialog open={open} onOpenChange={setOpen}>
+          <Dialog open={openCreateModal} onOpenChange={setOpenCreateModal}>
             <DialogTrigger asChild>
               <Button>Create User</Button>
             </DialogTrigger>
@@ -118,6 +152,8 @@ const AllUsers = () => {
           </Dialog>
         </div>
       </div>
+
+      {/* users container */}
       <div className="mt-16">
         {users.length > 0 ? (
           <div>
@@ -142,17 +178,12 @@ const AllUsers = () => {
                     <TableCell className="font-medium">{user.role}</TableCell>
                     <TableCell>{dateFormater(user.createdAt)}</TableCell>
                     <TableCell className="flex gap-2">
-                      <Dialog>
-                        <DialogTrigger asChild>
-                          <Button className="bg-blue-500 cursor-pointer">
-                            Edit
-                          </Button>
-                        </DialogTrigger>
-                        <UpdateUserModal
-                          initialData={user}
-                          onSubmit={handleUpdate}
-                        />
-                      </Dialog>
+                      <Button
+                        className="bg-blue-500 cursor-pointer"
+                        onClick={() => singleUser(user)}
+                      >
+                        Edit
+                      </Button>
                       <Button
                         className="bg-red-600 cursor-pointer"
                         onClick={() => deleteUserByID(user._id)}
@@ -164,6 +195,18 @@ const AllUsers = () => {
                 ))}
               </TableBody>
             </Table>
+
+            {openUpdateModal && (
+              <Dialog open={openUpdateModal} onOpenChange={setOpenUpdateModal}>
+                {/* <DialogTrigger asChild>
+
+                        </DialogTrigger> */}
+                <UpdateUserModal
+                  initialData={selectedUser}
+                  onSubmit={handleUpdate}
+                />
+              </Dialog>
+            )}
           </div>
         ) : (
           <div className="flex justify-center items-center min-h-[80vh]">

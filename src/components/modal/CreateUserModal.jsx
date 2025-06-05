@@ -29,7 +29,7 @@ import {
   SelectValue,
 } from "../ui/select";
 
-export default function CreateUserModal({ onSubmit, onCreate }) {
+export default function CreateUserModal({ onSubmit }) {
   const form = useForm({
     resolver: zodResolver(createUserSchema),
     defaultValues: {
@@ -141,7 +141,9 @@ export default function CreateUserModal({ onSubmit, onCreate }) {
                 Cancel
               </Button>
             </DialogClose>
-            <Button type="submit">Create</Button>
+            <Button type="submit" disabled={form.formState.isSubmitting}>
+              {form.formState.isSubmitting ? "Processing..." : "Create"}
+            </Button>
           </DialogFooter>
         </form>
       </Form>

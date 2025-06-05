@@ -3,7 +3,8 @@ import Header from "@/components/dashboard/DashboardAllNews/Header";
 
 
 
-const page = () => {
+const page = async () => {
+  
   return (
     <div className="p-5">
       <Header />
