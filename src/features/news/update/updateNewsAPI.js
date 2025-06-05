@@ -1,10 +1,11 @@
-import { apiSlice } from "../Api/apiSlice";
+import { apiSlice } from "@/features/Api/apiSlice";
+
 
 export const updateNewsAPI = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     updateNews: builder.mutation({
       query: ({ slug, newsData }) => ({
-        url: `/api/updateNews/${slug}`,
+        url: `/api/news/updateNews/${slug}`,
         method: "PATCH",
         body: newsData,
       }),

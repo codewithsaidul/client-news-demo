@@ -23,8 +23,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 const formSchema = z.object({
   email: z
     .string()
-    .nonempty({ message: "Email is required" })
-    .regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, { message: "Invalid email address" }),
+    .nonempty({ message: "Email is required" }),
   password: z.string().min(6, {
     message: "Password must be at least 6 characters.",
   }),
@@ -47,7 +46,7 @@ const Login = () => {
     const { email, password } = values;
     try {
       const { data, status } = await axios.post(
-        `${process.env.NEXT_PUBLIC_BASE_URL}/api/login`,
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/login`,
         { email, password }
       );
 

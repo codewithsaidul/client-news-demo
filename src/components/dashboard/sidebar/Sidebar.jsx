@@ -1,5 +1,5 @@
 "use client";
-import { useGetCurrentUserQuery } from "@/features/currentUser/currentUserAPI";
+import { useGetCurrentUserQuery } from "@/features/user/currentUser/currentUserAPI";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
@@ -44,7 +44,7 @@ const Sidebar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post("/api/logout");
+      await axios.post("/api/auth/logout");
       router.push("/login");
     } catch (err) {
       Swal.fire({

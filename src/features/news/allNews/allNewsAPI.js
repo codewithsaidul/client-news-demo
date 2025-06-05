@@ -1,4 +1,5 @@
-import { apiSlice } from "../Api/apiSlice";
+import { apiSlice } from "@/features/Api/apiSlice";
+
 
 export const allNewsAPI = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
@@ -10,7 +11,7 @@ export const allNewsAPI = apiSlice.injectEndpoints({
         if (newsType) params.append("newsType", newsType);
         if (priority) params.append("priority", priority);
 
-        return `/api/allNews?${params.toString()}`;
+        return `/api/news/allNews?${params.toString()}`;
       },
       providesTags: (result) =>
         result

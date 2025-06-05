@@ -12,9 +12,7 @@ export const DELETE = async (req, { params }) => {
 
     // ✅ Get token from cookies
     const cookieToken = req.cookies.get("token")?.value;
-    if (!cookieToken) {
-      return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
-    }
+
 
     const {
       decoded: { email: requesterEmail },

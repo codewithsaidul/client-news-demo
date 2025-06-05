@@ -1,10 +1,10 @@
 "use client";
-import { useGetSingleNewsQuery } from "@/features/getSingleNews/singleNewsAPI";
+import { useGetSingleNewsQuery } from "@/features/news/getSingleNews/singleNewsAPI";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
+import { dateFormater } from "@/lib/utils";
+import Image from "next/image";
 import { use } from "react";
 import Loader from "../loading/Loader";
-import Image from "next/image";
-import { dateFormater } from "@/lib/utils";
-import { sanitizeHtml } from "@/lib/sanitizeHtml";
 const NewsDetails = ({ params }) => {
   const { slug } = use(params);
   const { data: news, isLoading } = useGetSingleNewsQuery(slug);
@@ -21,7 +21,8 @@ const NewsDetails = ({ params }) => {
     );
   }
 
-  const { title, description, thumbnail, tags, category, createdAt, author } = news;
+  const { title, description, thumbnail, tags, category, createdAt, author } =
+    news;
 
   const cleanDescription = sanitizeHtml(description, {
     allowedTags: [

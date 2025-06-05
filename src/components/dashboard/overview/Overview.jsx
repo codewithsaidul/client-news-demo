@@ -1,8 +1,8 @@
 "use client"
-import NewsCard from "./NewsCard";
-import DataTable from "./DataTable";
-import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
 import Loader from "@/components/loading/Loader";
+import { useGetAllNewsQuery } from "@/features/news/allNews/allNewsAPI";
+import DataTable from "./DataTable";
+import NewsCard from "./NewsCard";
 
 const Overview = () => {
   const { data, isLoading } = useGetAllNewsQuery({ page: 1 });

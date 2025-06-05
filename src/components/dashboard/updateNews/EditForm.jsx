@@ -22,7 +22,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { categoryMap } from "@/constants/data";
-import { useUpdateNewsMutation } from "@/features/update/updateNewsAPI";
+import { useUpdateNewsMutation } from "@/features/news/update/updateNewsAPI";
 import { uploadToImgBB } from "@/lib/uploadImage";
 import { editFormSchema } from "@/schema/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -31,7 +31,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-// import QuillEditor from "../addNews/QuillEditor";
 import dynamic from "next/dynamic";
 
 

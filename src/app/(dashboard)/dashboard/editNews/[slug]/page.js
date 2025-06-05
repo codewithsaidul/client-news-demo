@@ -1,7 +1,7 @@
 "use client";
 import EditForm from "@/components/dashboard/updateNews/EditForm";
 import Loader from "@/components/loading/Loader";
-import { useGetSingleNewsQuery } from "@/features/getSingleNews/singleNewsAPI";
+import { useGetSingleNewsQuery } from "@/features/news/getSingleNews/singleNewsAPI";
 import { use, useEffect } from "react";
 
 const EditNews = ({ params }) => {

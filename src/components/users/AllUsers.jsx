@@ -1,7 +1,4 @@
 "use client";
-import { useDeleteUserMutation } from "@/features/deleteUser/deleteUserAPI";
-import { useGetAllUsersQuery } from "@/features/getAllUsers/getAllUsers";
-import { useRegisterAdminMutation } from "@/features/registerAdmin/registerAdminAPI";
 import { dateFormater } from "@/lib/utils";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -18,6 +15,9 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
+import { useGetAllUsersQuery } from "@/features/user/getAllUsers/getAllUsers";
+import { useDeleteUserMutation } from "@/features/user/deleteUser/deleteUserAPI";
+import { useRegisterAdminMutation } from "@/features/auth/registerAdmin/registerAdminAPI";
 
 const AllUsers = () => {
   const { data: users, isLoading } = useGetAllUsersQuery();
@@ -80,7 +80,6 @@ const AllUsers = () => {
     });
     try {
       if (result.isConfirmed) {
-
         const res = await deleteUser(userId);
 
         if (res?.data?.acknowledged && res?.data?.deletedCount > 0) {

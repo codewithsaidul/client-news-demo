@@ -1,13 +1,12 @@
 "use client";
-import { useGetSearchNewsQuery } from "@/features/searchNews/searchNewsAPI";
 import { useSearchParams } from "next/navigation";
-import React from "react";
 import Loader from "../loading/Loader";
 import { dateFormater } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 import PaginationPage from "../Shared/PaginationPage";
 import { useState } from "react";
+import { useGetSearchNewsQuery } from "@/features/news/searchNews/searchNewsAPI";
 
 const Search = () => {
   const searchParams = useSearchParams();

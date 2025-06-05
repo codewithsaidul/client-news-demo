@@ -1,9 +1,10 @@
-import { apiSlice } from "../Api/apiSlice";
+import { apiSlice } from "@/features/Api/apiSlice";
+
 
 export const allUsersAPI = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     getAllUsers: builder.query({
-      query: () => "/api/getAllUser",
+      query: () => "/api/user/getAllUsers",
       providesTags: (result) => 
         result.length > 0
           ? [

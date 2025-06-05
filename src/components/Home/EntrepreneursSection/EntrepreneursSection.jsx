@@ -1,6 +1,6 @@
 import Heading from "@/components/SectionHeading/Heading";
 import Loader from "@/components/loading/Loader";
-import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
+import { useGetAllNewsQuery } from "@/features/news/allNews/allNewsAPI";
 import FeatureNews from "../NewsSection/FeatureNews";
 import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";

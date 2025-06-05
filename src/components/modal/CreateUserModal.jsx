@@ -30,8 +30,6 @@ import {
 } from "../ui/select";
 
 export default function CreateUserModal({ onSubmit, onCreate }) {
-
-  
   const form = useForm({
     resolver: zodResolver(createUserSchema),
     defaultValues: {
@@ -43,12 +41,12 @@ export default function CreateUserModal({ onSubmit, onCreate }) {
   });
 
   const handleSubmit = async (data) => {
-   await onSubmit(data); // parent e handle korbe
-    // await onCreate(data)
+    await onSubmit(data); // parent e handle korbe
+    form.reset();
   };
 
   return (
-    <DialogContent  className="sm:max-w-[425px]">
+    <DialogContent className="sm:max-w-[425px]">
       <DialogHeader>
         <DialogTitle>Create User</DialogTitle>
         <DialogDescription>Create a new user.</DialogDescription>

@@ -1,7 +1,7 @@
 "use client";
 
 import Loader from "@/components/loading/Loader";
-import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
+import { useGetAllNewsQuery } from "@/features/news/allNews/allNewsAPI";
 import { stripHtml } from "@/lib/stripHtml";
 import Image from "next/image";
 import Link from "next/link";

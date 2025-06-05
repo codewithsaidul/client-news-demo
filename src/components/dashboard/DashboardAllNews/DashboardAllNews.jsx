@@ -11,8 +11,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
-import { useDeleteNewsMutation } from "@/features/deleteNews/deleteNewsAPI";
+import { useGetAllNewsQuery } from "@/features/news/allNews/allNewsAPI";
+import { useDeleteNewsMutation } from "@/features/news/deleteNews/deleteNewsAPI";
 import { stripHtml } from "@/lib/stripHtml";
 import { dateFormater } from "@/lib/utils";
 import Link from "next/link";

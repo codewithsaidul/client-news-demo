@@ -6,7 +6,7 @@ import HightlightCard from "@/components/CommonPageLayout/HightlightCard";
 import Loader from "@/components/loading/Loader";
 import NoDataFound from "@/components/Shared/NoDataFound";
 import PaginationPage from "@/components/Shared/PaginationPage";
-import { useGetAllNewsQuery } from "@/features/allNews/allNewsAPI";
+import { useGetAllNewsQuery } from "@/features/news/allNews/allNewsAPI";
 import { useState } from "react";
 
 const AllMagazine = () => {

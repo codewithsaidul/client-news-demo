@@ -1,5 +1,4 @@
 "use client";
-import Loader from "@/components/loading/Loader";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,8 +22,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { categoryMap } from "@/constants/data";
-import { useAddNewsMutation } from "@/features/addNews/addNewsAPI";
-import { useGetCurrentUserQuery } from "@/features/currentUser/currentUserAPI";
+import { useAddNewsMutation } from "@/features/news/addNews/addNewsAPI";
+import { useGetCurrentUserQuery } from "@/features/user/currentUser/currentUserAPI";
 import { uploadToImgBB } from "@/lib/uploadImage";
 import { addFormSchema } from "@/schema/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
