@@ -1,15 +1,14 @@
 "use client";
+import { useGetCurrentUserQuery } from "@/features/currentUser/currentUserAPI";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FaHome, FaUsers } from "react-icons/fa";
+import { GiNewspaper } from "react-icons/gi";
 import { IoMdLogOut } from "react-icons/io";
 import { MdAddBox, MdDashboard } from "react-icons/md";
-import { GiNewspaper } from "react-icons/gi";
 import Swal from "sweetalert2";
-import { useRouter } from "next/navigation";
-import axios from "axios";
-import Loader from "@/components/loading/Loader";
-import { useGetAllUsersQuery } from "@/features/getAllUsers/getAllUsers";
 
 const navLinks = [
   {
@@ -40,11 +39,8 @@ const navLinks = [
 
 const Sidebar = () => {
   const router = useRouter();
-  const { data: users, isLoading } = useGetAllUsersQuery();
+  const { data: user } = useGetCurrentUserQuery();
 
-  if (isLoading) {
-    return <div className="w-full mt-10 px-5 text-white">Loading...</div>;
-  }
 
   const handleLogout = async () => {
     try {
@@ -59,7 +55,6 @@ const Sidebar = () => {
     }
   };
 
-  const superAdmin = users.find((user) => user.role === "superadmin");
 
   return (
     <div className="mt-16 px-8 flex flex-col justify-between h-[90vh]">
@@ -91,7 +86,7 @@ const Sidebar = () => {
             ))}
 
             {/* only super admin can see */}
-            {superAdmin.role === "superadmin" && (
+            {user?.role === "superadmin" && (
               <li className="border-b border-white/20 pb-3">
                 <Link
                   href={"/dashboard/users"}

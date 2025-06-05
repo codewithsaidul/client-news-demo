@@ -15,9 +15,15 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
+import { useGetCurrentUserQuery } from "@/features/currentUser/currentUserAPI";
+import { useRegisterAdminMutation } from "@/features/registerAdmin/registerAdminAPI";
+import { useState } from "react";
 
 const AllUsers = () => {
+  const { data: currUser } = useGetCurrentUserQuery();
   const { data: users, isLoading } = useGetAllUsersQuery();
+  const [registerAdmin] = useRegisterAdminMutation();
+  const [open, setOpen] = useState(false);
 
   if (isLoading) {
     return (
@@ -31,17 +37,38 @@ const AllUsers = () => {
     );
   }
 
-  const handleCreate = (data) => {
-    console.log("Creating:", data);
+  const handleCreate = async (adminData) => {
+    // API call here
+    try {
+      const res = await registerAdmin(adminData);
+      setOpen(false);
+
+      if (res?.data?.message) {
+        Swal.fire({
+          title: res?.data?.message,
+          icon: "success",
+        });
+      } else if (res.error.status === 400 && res.error.data.message) {
+        Swal.fire({
+          title: res?.error?.data?.message,
+          icon: "error",
+        });
+      }
+    } catch (error) {
+      setOpen(false);
+      Swal.fire({
+        title: "Something went wrong",
+        icon: "error",
+      });
+    }
+  };
+
+  const handleUpdate = (adminData) => {
+    console.log("Updating:", adminData);
     // API call here
   };
 
-  const handleUpdate = (data) => {
-    console.log("Updating:", data);
-    // API call here
-  };
-
-  const deleteNewsByID = async (userId) => {
+  const deleteUserByID = async (userId) => {
     const result = await Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -84,7 +111,7 @@ const AllUsers = () => {
       <div className="flex justify-between items-center border-b pb-7">
         <h2 className="text-3xl font-bold font-title">All Users</h2>
         <div className="flex items-center gap-4">
-          <Dialog>
+          <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
               <Button>Create User</Button>
             </DialogTrigger>
@@ -118,13 +145,18 @@ const AllUsers = () => {
                     <TableCell className="flex gap-2">
                       <Dialog>
                         <DialogTrigger asChild>
-                          <Button className="bg-blue-500 cursor-pointer">Edit</Button>
+                          <Button className="bg-blue-500 cursor-pointer">
+                            Edit
+                          </Button>
                         </DialogTrigger>
-                        <UpdateUserModal  initialData={user} onSubmit={handleUpdate} />
+                        <UpdateUserModal
+                          initialData={user}
+                          onSubmit={handleUpdate}
+                        />
                       </Dialog>
                       <Button
                         className="bg-red-600 cursor-pointer"
-                        onClick={() => deleteNewsByID(user._id)}
+                        onClick={() => deleteUserByID(user._id)}
                       >
                         Delete
                       </Button>

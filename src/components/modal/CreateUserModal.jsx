@@ -29,34 +29,29 @@ import {
   SelectValue,
 } from "../ui/select";
 
-export default function CreateUserModal({
-  onSubmit,
-}) {
+export default function CreateUserModal({ onSubmit, onCreate }) {
+
+  
   const form = useForm({
     resolver: zodResolver(createUserSchema),
     defaultValues: {
       name: "",
       email: "",
       password: "",
-      role: ""
+      role: "",
     },
   });
 
-
-  const handleSubmit = (data) => {
-    onSubmit(data); // parent e handle korbe
-    console.log(data)
+  const handleSubmit = async (data) => {
+   await onSubmit(data); // parent e handle korbe
+    // await onCreate(data)
   };
 
   return (
-    <DialogContent className="sm:max-w-[425px]">
+    <DialogContent  className="sm:max-w-[425px]">
       <DialogHeader>
-        <DialogTitle>
-          Create User
-        </DialogTitle>
-        <DialogDescription>
-          Create a new user.
-        </DialogDescription>
+        <DialogTitle>Create User</DialogTitle>
+        <DialogDescription>Create a new user.</DialogDescription>
       </DialogHeader>
 
       <Form {...form}>
@@ -93,18 +88,22 @@ export default function CreateUserModal({
 
           {/* ======================= password ====================== */}
           <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input {...field} type="password" placeholder="Enter password" />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    {...field}
+                    type="password"
+                    placeholder="Enter password"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           {/* ================== user role ================ */}
           <FormField
@@ -144,9 +143,7 @@ export default function CreateUserModal({
                 Cancel
               </Button>
             </DialogClose>
-            <Button type="submit">
-              Create
-            </Button>
+            <Button type="submit">Create</Button>
           </DialogFooter>
         </form>
       </Form>

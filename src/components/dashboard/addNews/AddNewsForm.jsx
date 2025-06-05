@@ -1,4 +1,5 @@
 "use client";
+import Loader from "@/components/loading/Loader";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -23,6 +24,7 @@ import {
 } from "@/components/ui/select";
 import { categoryMap } from "@/constants/data";
 import { useAddNewsMutation } from "@/features/addNews/addNewsAPI";
+import { useGetCurrentUserQuery } from "@/features/currentUser/currentUserAPI";
 import { uploadToImgBB } from "@/lib/uploadImage";
 import { addFormSchema } from "@/schema/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -33,15 +35,11 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
-
 // ✅ Dynamically import with SSR disabled
-const QuillEditor = dynamic(
-  () => import("./QuillEditor"),
-  { ssr: false }
-);
-
+const QuillEditor = dynamic(() => import("./QuillEditor"), { ssr: false });
 
 const AddNewsForm = () => {
+  const { data: currUser} = useGetCurrentUserQuery();
   const [tags, setTags] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [addNews] = useAddNewsMutation();
@@ -70,6 +68,7 @@ const AddNewsForm = () => {
   useEffect(() => {
     form.setValue("tags", tags, { shouldValidate: false });
   }, [tags, form]);
+
 
   // for adding tags
   // For adding tag:
@@ -109,8 +108,11 @@ const AddNewsForm = () => {
       newsType: values.categoryType,
       status: values.status,
       priority: values.priority,
+      author: {
+        name: currUser.name,
+        email: currUser.email
+      }
     };
-
 
     try {
       const res = await addNews(newsData).unwrap();
