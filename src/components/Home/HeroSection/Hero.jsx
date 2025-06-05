@@ -24,12 +24,12 @@ const Hero = () => {
   const breakingNews = news.data[0];
 
   return (
-    <section className="my-20 min-h-[70vh] relative">
+    <section className="my-20 max-md:mb-60 h-auto lg:h-screen relative">
       <Link
         href={`/${breakingNews.newsType}/${breakingNews.category}/${breakingNews.slug}`}
         className="w-full h-auto"
       >
-        <figure className="relative w-full aspect-video max-[460px]:h-[60vh] max-md:h-[70vh] h-screen">
+        <figure className="relative w-full aspect-square h-auto lg:aspect-auto lg:h-screen">
           <Image
             src={breakingNews.thumbnail}
             alt="hero image"
@@ -47,7 +47,7 @@ const Hero = () => {
           }}
         />
 
-        <div className="absolute max-[767px]:bottom-10 left-0 max-md:p-2 min-md:bottom-16 min-md:left-5 text-white min-md:right-10 z-2 h-fit space-y-3 min-lg:w-[60%]">
+        <div className="absolute max-md:-bottom-40 left-0 max-md:p-2 min-md:bottom-16 min-md:left-5 text-white min-md:right-10 z-2 h-fit space-y-3 min-lg:w-[60%] max-md:bg-black">
           {/* ========================= category ======================= */}
           <span className="max-[430px]:text-xs text-sm mb-3 capitalize">
             {breakingNews.category}
