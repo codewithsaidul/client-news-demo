@@ -1,26 +1,16 @@
-import Loader from "@/components/loading/Loader";
 import Heading from "@/components/SectionHeading/Heading";
-import { useGetAllNewsQuery } from "@/features/news/allNews/allNewsAPI";
+import axios from "axios";
 import EditorsPick from "./EditorsPick";
 import FeatureSideNews from "./FeatureSideNews";
 import MainFeaturedNews from "./MainFeaturedNews";
 
-const FeaturedNewsSecion = () => {
-  const { data: news, isLoading } = useGetAllNewsQuery({ priority: "isFeatured"});
+const FeaturedNewsSecion = async () => {
+    const { data } = await axios(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/news/allNews?priority=isFeatured`
+  );
 
-  if (isLoading) {
-    return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-center gap-10 mb-10">
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
-      </div>
-    );
-  }
+  const featuredNews = data?.data;
 
-  const featuredNews = news.data;
 
   return (
     <section className="mb-20">

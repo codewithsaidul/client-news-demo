@@ -1,4 +1,3 @@
-"use client";
 import BillionairesSection from "@/components/Home/BillionairesSection/BillionairesSection";
 import EntrepreneursSection from "@/components/Home/EntrepreneursSection/EntrepreneursSection";
 import FeaturedNewsSecion from "@/components/Home/Featured/FeaturedNewsSecion";
@@ -29,3 +28,4 @@ export default function Home() {
     </main>
   );
 }
+

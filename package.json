@@ -27,6 +27,7 @@
     "dompurify": "^3.2.6",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.9.2",
+    "html-to-text": "^9.0.5",
     "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.503.0",
     "mongodb": "^6.16.0",

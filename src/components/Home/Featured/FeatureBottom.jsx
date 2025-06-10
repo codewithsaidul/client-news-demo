@@ -5,7 +5,7 @@ const FeatureBottom = ({ news }) => {
   return (
     <div className="relative w-full max-lg:border-b max-lg:pb-8">
       <Link href={`/${news.newsType}/${news.category}/${news.slug}`} className="">
-        <figure className="w-full relative aspect-square max-h-[400px] max-lg:hidden">
+        <figure className="w-full relative aspect-video max-h-[300px] max-lg:hidden">
           <Image
             src={news.thumbnail}
             alt={news.title}

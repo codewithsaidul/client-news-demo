@@ -26,7 +26,9 @@ export const GET = async (req) => {
     const limit = 20;
     const skip = (page - 1) * limit;
 
-    const query = {};
+    const query = {
+      status: "published"
+    };
 
     if (priority !== "none") query.priority = priority;
 
@@ -49,6 +51,9 @@ export const GET = async (req) => {
     if (authorEmail !== "none") {
       query["author.email"] = authorEmail;
     }
+
+    console.log(query)
+
 
     // connecting with mongodb
     const db = await connectDB();

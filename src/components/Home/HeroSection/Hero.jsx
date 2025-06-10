@@ -1,27 +1,14 @@
-"use client";
-
-import Loader from "@/components/loading/Loader";
-import { useGetAllNewsQuery } from "@/features/news/allNews/allNewsAPI";
-import { stripHtml } from "@/lib/stripHtml";
+import { stripHtmlOnServer } from "@/lib/server-utils";
+import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 
-const Hero = () => {
-  const { data: news, isLoading } = useGetAllNewsQuery({
-    priority: "isBreaking"
-  });
+const Hero = async () => {
+  const { data } = await axios(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/news/allNews?priority=isBreaking`
+  );
 
-  if (isLoading) {
-    return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-full gap-10 my-20">
-        <Loader />
-        <Loader />
-        <Loader />
-      </div>
-    );
-  }
-
-  const breakingNews = news.data[0];
+  const breakingNews = data?.data[0];
 
   return (
     <section className="my-20 max-md:mb-60 h-auto lg:h-screen relative">
@@ -32,7 +19,7 @@ const Hero = () => {
         <figure className="relative w-full aspect-square h-auto lg:aspect-auto lg:h-screen">
           <Image
             src={breakingNews.thumbnail}
-            alt="hero image"
+            alt={breakingNews.title}
             fill
             className="object-center h-screen"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
@@ -60,7 +47,7 @@ const Hero = () => {
 
           {/* ========================= description ======================= */}
           <p className="max-[430px]:text-sm text-base lg:text-2xl line-clamp-2">
-            {stripHtml(breakingNews.description)}
+            {stripHtmlOnServer(breakingNews.description)}
           </p>
         </div>
       </Link>

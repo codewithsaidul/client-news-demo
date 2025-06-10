@@ -1,7 +1,7 @@
+import { stripHtmlOnServer } from "@/lib/server-utils";
 import Image from "next/image";
 import Link from "next/link";
 import FeatureBottom from "./FeatureBottom";
-import { stripHtml } from "@/lib/stripHtml";
 
 const MainFeaturedNews = ({ featuredNews }) => {
   const { slug, title, description, category, newsType, thumbnail } = featuredNews[0];
@@ -31,7 +31,7 @@ const MainFeaturedNews = ({ featuredNews }) => {
               {title}
             </h2>
 
-            <p className="text-base font-medium line-clamp-2">{stripHtml(description)}</p>
+            <p className="text-base font-medium line-clamp-2">{stripHtmlOnServer(description)}</p>
           </div>
         </Link>
       </div>

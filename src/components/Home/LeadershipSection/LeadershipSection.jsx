@@ -4,48 +4,40 @@ import { useGetAllNewsQuery } from "@/features/news/allNews/allNewsAPI";
 import FeatureNews from "../NewsSection/FeatureNews";
 import LeftNewsList from "../NewsSection/LeftNewsList";
 import SidebarNews from "../NewsSection/SidebarNews";
+import axios from "axios";
 
-const LeadershipSection = () => {
-  const { data: news, isLoading } = useGetAllNewsQuery( { newsType: "news", category: "leadership" } );
+const LeadershipSection = async () => {
+  const { data } = await axios(
+    `${process.env.NEXT_PUBLIC_BASE_URL}/api/news/allNews?newsType=news&category=leadership`
+  );
 
-  if (isLoading) {
-    return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 items-center gap-10 mb-10">
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
-        <Loader />
-      </div>
-    );
-  }
-
-
-  const leadershipNews = news.data;
+  const leadershipNews = data?.data;
 
   return (
     <div className="mt-20">
-      {/* ========================= Section Heading ====================== */}
-      <Heading title="Leadership" link="/category/leadership" />
-      {/* ========================= Section Heading ====================== */}
-
-      <div className="relative min-h-screen grid grid-cols-1 xl:grid-cols-12 gap-10">
-        <div className="xl:col-span-8 relative xl:order-2">
-          {/* Left Column Content */}
-          {leadershipNews.length > 0 && (
-            <div>
-              <FeatureNews news={leadershipNews[0]} />
-              <LeftNewsList allNews={leadershipNews} />
+      {leadershipNews.length > 4 && (
+        <div>
+          {" "}
+          {/* ========================= Section Heading ====================== */}
+          <Heading title="Leadership" link="/category/leadership" />
+          {/* ========================= Section Heading ====================== */}
+          <div className="relative min-h-screen grid grid-cols-1 xl:grid-cols-12 gap-10">
+            <div className="xl:col-span-8 relative xl:order-2">
+              {/* Left Column Content */}
+              <div>
+                <FeatureNews news={leadershipNews[0]} />
+                <LeftNewsList allNews={leadershipNews} />
+              </div>
             </div>
-          )}
-        </div>
-        <div className="xl:col-span-4 xl:order-1">
-          <div className="sticky top-28">
-            {/* Right Column Content */}
-            {leadershipNews.length > 0 && <SidebarNews allNews={leadershipNews} />}
+            <div className="xl:col-span-4 xl:order-1">
+              <div className="sticky top-28">
+                {/* Right Column Content */}
+                <SidebarNews allNews={leadershipNews} />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
