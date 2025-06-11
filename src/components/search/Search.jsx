@@ -7,6 +7,7 @@ import Link from "next/link";
 import PaginationPage from "../Shared/PaginationPage";
 import { useState } from "react";
 import { useGetSearchNewsQuery } from "@/features/news/searchNews/searchNewsAPI";
+import { stripHtml } from "@/lib/stripHtml";
 
 const Search = () => {
   const searchParams = useSearchParams();
@@ -53,19 +54,19 @@ const Search = () => {
 
                   {/* news tite & description */}
                   <div className="max-[850px]:w-full max-[850px]:order-2 w-[65%] space-y-3">
-                    <Link href={`/news/${news.category}/${news._id}`}>
+                    <Link href={`/${news.newsType}/${news.category}/${news.slug}`}>
                       <h2 className="text-2xl font-title hover:underline mb-5">
                         {news.title}
                       </h2>
                     </Link>
-                    <p className="line-clamp-3">{news.description}</p>
+                    <p className="line-clamp-3">{stripHtml(news.description)}</p>
                     <p className="text-lg">
-                      By <span className="font-bold">Forbes Admin</span>
+                      By <span className="font-bold">{news.author.name}</span>
                     </p>
                   </div>
 
                   <figure className="max-[850px]:w-full max-[850px]:order-1 w-[20%]">
-                    <Link href={`/news/${news.category}/${news._id}`}>
+                    <Link href={`/${news.newsType}/${news.category}/${news.slug}`}>
                       <Image
                         src={news.thumbnail}
                         alt={news.title}

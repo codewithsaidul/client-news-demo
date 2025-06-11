@@ -52,8 +52,6 @@ export const GET = async (req) => {
       query["author.email"] = authorEmail;
     }
 
-    console.log(query)
-
 
     // connecting with mongodb
     const db = await connectDB();

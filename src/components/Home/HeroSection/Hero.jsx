@@ -21,9 +21,9 @@ const Hero = async () => {
             src={breakingNews.thumbnail}
             alt={breakingNews.title}
             fill
+            priority
             className="object-center h-screen"
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
-            priority
           />
         </figure>
 
