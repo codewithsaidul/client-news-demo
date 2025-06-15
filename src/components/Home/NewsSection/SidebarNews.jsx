@@ -5,10 +5,10 @@ import Link from "next/link";
 const SidebarNews = ({ allNews }) => {
   return (
     <div className="min-[500px]:p-4 bg-news-white-bg xl:shadow-[0_0px_4px_rgba(0,0,0,0.15)] rounded-lg h-fit">
-      <div className="flex flex-col sm:flex-row xl:flex-col gap-5 w-full">
+      <div className="flex flex-col w-full gap-5 sm:flex-row xl:flex-col">
         {allNews.slice(5, 7).map((news, index) => (
           <div key={index} className="w-full pr-4">
-            <figure className="relative w-full aspect-square max-h-96">
+            <figure className="relative w-full aspect-video max-h-[300px]">
               <Image
                 src={news.thumbnail}
                 alt={news.title}
@@ -20,7 +20,7 @@ const SidebarNews = ({ allNews }) => {
             <div className="mt-2">
               <Link
                 href={`/${news.newsType}/${news.category}/${news.slug}`}
-                className="text-2xl font-title font-bold"
+                className="text-2xl font-bold font-title"
               >
                 {news.title}
               </Link>

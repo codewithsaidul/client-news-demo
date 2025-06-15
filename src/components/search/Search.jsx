@@ -17,7 +17,7 @@ const Search = () => {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full gap-10 mt-32">
+      <div className="grid w-full grid-cols-1 gap-10 mt-32 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         <Loader />
         <Loader />
         <Loader />
@@ -31,12 +31,12 @@ const Search = () => {
 
 
   return (
-    <div className="mt-32 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-72">
-      <div className="border-b pb-10 border-orange-400/50">
-        <p className="text-xl font-title font-medium">
+    <div className="px-4 mt-32 sm:px-8 md:px-16 lg:px-24 xl:px-72">
+      <div className="pb-10 border-b border-orange-400/50">
+        <p className="text-xl font-medium font-title">
           Showing {pagination.total} result for:{" "}
         </p>
-        <p className="mt-5 text-3xl md:text-4xl font-semibold font-title">
+        <p className="mt-5 text-3xl font-semibold md:text-4xl font-title">
           {query}
         </p>
       </div>
@@ -45,7 +45,7 @@ const Search = () => {
         <div>
           <div className="mt-24 grid grid-cols-1 max-[850px]:gap-y-20 gap-10">
             {allNews.map((news) => (
-              <div key={news._id} className="border-b pb-12">
+              <div key={news._id} className="pb-12 border-b">
                 <div className="flex max-[850px]:flex-col flex-row max-[850px]:order-2 gap-7">
                   {/* news date */}
                   <div className="max-[850px]:w-full max-[850px]:order-3 w-[10%]">
@@ -55,7 +55,7 @@ const Search = () => {
                   {/* news tite & description */}
                   <div className="max-[850px]:w-full max-[850px]:order-2 w-[65%] space-y-3">
                     <Link href={`/${news.newsType}/${news.category}/${news.slug}`}>
-                      <h2 className="text-2xl font-title hover:underline mb-5">
+                      <h2 className="mb-5 text-2xl font-title hover:underline">
                         {news.title}
                       </h2>
                     </Link>
@@ -72,7 +72,7 @@ const Search = () => {
                         alt={news.title}
                         width={300}
                         height={400}
-                        className="w-full h-auto object-cover"
+                        className="object-cover w-full h-auto"
                       />
                     </Link>
                   </figure>

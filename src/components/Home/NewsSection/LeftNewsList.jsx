@@ -4,29 +4,29 @@ import Link from "next/link";
 
 const LeftNewsList = ({ allNews }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-16 w-full">
+    <div className="grid w-full grid-cols-1 gap-5 mt-16 sm:grid-cols-2">
       {allNews.slice(1, 5).map((news, index) => (
         <div
           key={index}
-          className="w-full flex flex-row md:flex-col lg:flex-row  gap-2"
+          className="flex flex-row w-full gap-2 md:flex-col lg:flex-row"
         >
           {/* ===================== image ========================== */}
-          <figure className="relative w-full aspect-square overflow-hidden max-w-32 max-h-32">
+          <figure className="relative w-full overflow-hidden aspect-square max-w-32 max-h-32">
             <Image
               src={news.thumbnail}
               alt={news.title}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
-              className="object-center rounded"
+              className="object-cover rounded"
             />
           </figure>
 
           {/* =================== content ===================== */}
-          <div className="mt-2 flex-1 flex">
+          <div className="flex flex-1 mt-2">
             <div>
               <Link
                 href={`/${news.newsType}/${news.category}/${news.slug}`}
-                className="text-base sm:text-xl font-title font-bold line-clamp-2"
+                className="text-base font-bold sm:text-xl font-title line-clamp-2"
               >
                 {news.title}
               </Link>

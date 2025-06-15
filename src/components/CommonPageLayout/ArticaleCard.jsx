@@ -4,12 +4,12 @@ import Link from "next/link";
 
 const ArticaleCard = ({ allNews }) => {
   return (
-    <div className="mt-16 grid grid-cols-1  gap-10">
+    <div className="grid grid-cols-1 gap-10 mt-16">
       {allNews.slice(4, 8).map((news) => (
-        <div key={news._id} className="border-b pb-10">
-          <Link href={`/${news.newsType}/${news.category}/${news.slug}`} className="flex gap-5 items-center">
+        <div key={news._id} className="pb-10 border-b">
+          <Link href={`/${news.newsType}/${news.category}/${news.slug}`} className="flex items-center gap-5">
             <div className="w-[20%]">
-              <figure className="relative w-full max-h-60 aspect-square overflow-hidden">
+              <figure className="relative w-full overflow-hidden max-h-60 aspect-square">
                 <Image
                   src={news.thumbnail}
                   alt={news.title}
@@ -21,7 +21,7 @@ const ArticaleCard = ({ allNews }) => {
             </div>
 
             <div className="mt-5 space-y-2 w-[80%]">
-              <h2 className="tex-xl sm:text-2xl font-title font-bold ">
+              <h2 className="font-bold tex-xl sm:text-2xl font-title ">
                 {news.title}
               </h2>
               <p className="text-lg font-medium text-gray-400 line-clamp-4">
