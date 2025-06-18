@@ -1,7 +1,8 @@
 import { z } from "zod";
 
 const passwordRegex =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
+
 
 export const createUserSchema = z.object({
   name: z.string().min(1, "Name is required"),
